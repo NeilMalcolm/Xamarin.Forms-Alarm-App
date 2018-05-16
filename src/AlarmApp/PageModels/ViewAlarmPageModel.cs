@@ -9,9 +9,10 @@ namespace AlarmApp.PageModels
 	{
 		string _name;
 		Alarm _alarm;
+		TimeSpan _time;
 		int _frequencyNumber;
 		string _frequencyPeriod;
-		TimeSpan _time;
+		DaysOfWeek _days;
 
 		public string Name
 		{
@@ -59,6 +60,12 @@ namespace AlarmApp.PageModels
 			}
 		}
 
+		public DaysOfWeek Days
+		{
+			get { return _days; }
+			set { _days = value; RaisePropertyChanged(); }
+		}
+
 		public ICommand UpdateAlarmCommand
 		{
 			get
@@ -89,6 +96,7 @@ namespace AlarmApp.PageModels
 			FrequencyPeriod = freq.Value;
 
 			Time = Alarm.Time;
+			Days = Alarm.Days;
 		}
 
 
@@ -101,6 +109,7 @@ namespace AlarmApp.PageModels
 
 			Alarm.Frequency = frequencyTimeSpan;
 			Alarm.Time = Time;
+			Alarm.Days = Days;
 
 			CoreMethods.PopPageModel(false, true);
 		}

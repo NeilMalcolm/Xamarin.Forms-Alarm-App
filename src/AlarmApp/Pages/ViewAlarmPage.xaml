@@ -8,59 +8,61 @@
 		<ToolbarItem Text="Update" Icon="save" Command="{Binding UpdateAlarmCommand}"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-		<StackLayout Spacing="0">
-			<Entry Text="{Binding Alarm.Name}" Placeholder="Name"/>
-			<Label Text="Alarms begin at" Style="{StaticResource LargeCenteredHeading}"/>
-			<TimePicker Time="{Binding Time}" HorizontalOptions="Center"/>
+		<ScrollView>
+			<StackLayout Spacing="0">
+				<Entry Text="{Binding Alarm.Name}" Placeholder="Name"/>
+				<Label Text="Alarms begin at" Style="{StaticResource LargeCenteredHeading}"/>
+				<TimePicker Time="{Binding Time}" HorizontalOptions="Center"/>
 
-			<!-- Occur Every section -->
-			<BoxView HeightRequest="1" Grid.ColumnSpan="2" BackgroundColor="{StaticResource PageSeparatorColor}" Margin="0, 20, 0, 0"/>
-			<Grid Padding="40, 20, 40, 30" BackgroundColor="#26000000">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="0.5*"/>
-					<RowDefinition Height="*"/>
-					<RowDefinition Height="0.5*"/>
-					<RowDefinition Height="*"/>
-				</Grid.RowDefinitions>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="0.3*"/>
-					<ColumnDefinition Width="*"/>
-				</Grid.ColumnDefinitions>
-				<Label Text="Repeat every" Grid.ColumnSpan="2" Style="{StaticResource LargeCenteredHeading}"/>
-				<Entry Text="{Binding FrequencyNumber}" Grid.Row="1" Keyboard="Numeric" Placeholder="15" FontSize="30"/>
-				<local:CustomPicker SelectedItem="{Binding FrequencyPeriod}" Grid.Row="1" Grid.Column="1" Title="Set Frequency" Hint="Minutes" FontSize="30" Margin="0, 0, 0, 20">
-					<local:CustomPicker.Items>
-						<x:String>Minutes</x:String>
-						<x:String>Hours</x:String>
-					</local:CustomPicker.Items>
-				</local:CustomPicker>
+				<!-- Occur Every section -->
+				<BoxView HeightRequest="1" Grid.ColumnSpan="2" BackgroundColor="{StaticResource PageSeparatorColor}" Margin="0, 20, 0, 0"/>
+				<Grid Padding="40, 20, 40, 30" BackgroundColor="#26000000">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="0.5*"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="0.5*"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="0.3*"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Label Text="Repeat every" Grid.ColumnSpan="2" Style="{StaticResource LargeCenteredHeading}"/>
+					<Entry Text="{Binding FrequencyNumber}" Grid.Row="1" Keyboard="Numeric" Placeholder="15" FontSize="30"/>
+					<local:CustomPicker SelectedItem="{Binding FrequencyPeriod}" Grid.Row="1" Grid.Column="1" Title="Set Frequency" Hint="Minutes" FontSize="30" Margin="0, 0, 0, 20">
+						<local:CustomPicker.Items>
+							<x:String>Minutes</x:String>
+							<x:String>Hours</x:String>
+						</local:CustomPicker.Items>
+					</local:CustomPicker>
 
-				<Label Text="For" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource LargeCenteredHeading}"/>
-				<Entry Grid.Row="3" Keyboard="Numeric" Placeholder="2" FontSize="30"/>
-				<local:CustomPicker Grid.Row="3" Grid.Column="1" Title="Set Frequency" Hint="Hours" FontSize="30">
-					<local:CustomPicker.Items>
-						<x:String>Minutes</x:String>
-						<x:String>Hours</x:String>
-					</local:CustomPicker.Items>
-				</local:CustomPicker>
+					<Label Text="For" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource LargeCenteredHeading}"/>
+					<Entry Grid.Row="3" Keyboard="Numeric" Placeholder="2" FontSize="30"/>
+					<local:CustomPicker Grid.Row="3" Grid.Column="1" Title="Set Frequency" Hint="Hours" FontSize="30">
+						<local:CustomPicker.Items>
+							<x:String>Minutes</x:String>
+							<x:String>Hours</x:String>
+						</local:CustomPicker.Items>
+					</local:CustomPicker>
+					
+				</Grid>
+				<BoxView HeightRequest="1" Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="{StaticResource PageSeparatorColor}"  Margin="0, 0, 0, 20"/>
 				
-			</Grid>
-			<BoxView HeightRequest="1" Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="{StaticResource PageSeparatorColor}"  Margin="0, 0, 0, 20"/>
-			
-		<!--	<Label Text="Alarms end at" Style="{StaticResource LargeCenteredHeading}"/>
-			<TimePicker Time="{Binding Alarm.Time, Mode=OneWayToSource}" HorizontalOptions="Center"/>-->
-			
-			<Label Text="On these days" Style="{StaticResource LargeCenteredHeading}"/>
-			<!-- Day of the week selectors -->
-			<Grid Padding="20">
-				<local:DayOfWeekButton Text="M"/>
-				<local:DayOfWeekButton Text="T" Grid.Column="1"/>
-				<local:DayOfWeekButton Text="W" Grid.Column="2"/>
-				<local:DayOfWeekButton Text="T" Grid.Column="3"/>
-				<local:DayOfWeekButton Text="F" Grid.Column="4"/>
-				<local:DayOfWeekButton Text="S" Grid.Column="5"/>
-				<local:DayOfWeekButton Text="S" Grid.Column="6"/>
-			</Grid>
-		</StackLayout>
+			<!--	<Label Text="Alarms end at" Style="{StaticResource LargeCenteredHeading}"/>
+				<TimePicker Time="{Binding Alarm.Time, Mode=OneWayToSource}" HorizontalOptions="Center"/>-->
+				
+				<Label Text="On these days" Style="{StaticResource LargeCenteredHeading}"/>
+				<!-- Day of the week selectors -->
+				<Grid Padding="20">
+					<local:DayOfWeekButton Text="M" IsSelected="{Binding Days.Monday}"/>
+					<local:DayOfWeekButton Text="T" IsSelected="{Binding Days.Tuesday}" Grid.Column="1"/>
+					<local:DayOfWeekButton Text="W" IsSelected="{Binding Days.Wednesday}" Grid.Column="2"/>
+					<local:DayOfWeekButton Text="T" IsSelected="{Binding Days.Thursday}" Grid.Column="3"/>
+					<local:DayOfWeekButton Text="F" IsSelected="{Binding Days.Friday}" Grid.Column="4"/>
+					<local:DayOfWeekButton Text="S" IsSelected="{Binding Days.Saturday}" Grid.Column="5"/>
+					<local:DayOfWeekButton Text="S" IsSelected="{Binding Days.Sunday}" Grid.Column="6"/>
+				</Grid>
+			</StackLayout>
+		</ScrollView>
 	</ContentPage.Content>
 </ContentPage>
