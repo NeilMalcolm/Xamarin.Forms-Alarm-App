@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AlarmApp.App">
+	<Application.Resources>
+		<!-- Application resource dictionary -->
+		<ResourceDictionary>
+
+			<!-- COLORS -->
+			
+			<Color x:Key="PrimaryColor">#1F2230</Color>
+			<Color x:Key="PrimaryDarkColor">#1A1E29</Color>
+			<!--<Color x:Key="AccentColor"></Color>-->
+
+			<!-- Would be good to reference primary here-->
+			<Color x:Key="ContentPageBackgroundColor"></Color>
+			<Color x:Key="SeparatorColor">#4A4E63</Color>
+			<Color x:Key="PageSeparatorColor">#80363E61</Color>
+
+			<!-- STYLES -->
+			
+			<!-- ContentPage Styles -->
+			<Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+				<Setter Property="BackgroundColor" Value="#1F2230"/>
+			</Style>
+
+			<!-- Label Styles -->
+			<Style TargetType="Label" ApplyToDerivedTypes="True">
+				<Setter Property="TextColor" Value="#FFFFFF"/>
+			</Style>
+
+			<Style x:Key="LargeCenteredHeading" TargetType="Label">
+				<Setter Property="FontSize" Value="24"/>
+				<Setter Property="HorizontalOptions" Value="Center"/>
+			</Style>
+
+			<!-- Entry Styles -->
+			<Style TargetType="Entry" ApplyToDerivedTypes="True">
+				<Setter Property="TextColor" Value="#FFFFFF"/>
+				<Setter Property="FontSize" Value="24"/>
+			</Style>
+			
+			<!-- Picker Styles -->
+			<Style TargetType="Picker" ApplyToDerivedTypes="True">
+				<Setter Property="TextColor" Value="#FFFFFF"/>
+			</Style>
+
+			<!-- TimePicker Styles -->
+			<Style TargetType="TimePicker" ApplyToDerivedTypes="True">
+				<Setter Property="TextColor" Value="#FFFFFF"/>
+			</Style>
+
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

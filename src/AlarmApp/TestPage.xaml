@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AlarmApp.TestPage">
+	<ContentPage.Content>
+		<StackLayout>
+			<TimePicker x:Name="StartTimePicker"/>
+			<StackLayout Orientation="Horizontal" Spacing="10">
+				<Label Text="Every "/>
+				<Entry x:Name="FrequencyEntry" Keyboard="Numeric"/>
+				<Label Text=" Minutes"/>
+			</StackLayout>
+			<TimePicker x:Name="EndTimePicker"/>
+			<Button Text="Set Alarm(s)" Pressed="Set_Pressed"/>
+			<Button Text="Delete Alarm" Pressed="Delete_Pressed"/>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

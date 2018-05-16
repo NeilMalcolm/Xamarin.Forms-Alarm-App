@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AlarmApp.Views.DaysOfWeekView">
+	<ContentView.Content>
+		<StackLayout Orientation="Horizontal">
+			<Label x:Name="MondayLabel" Text="M"/>
+			<Label x:Name="TuesdayLabel" Text="T"/>
+			<Label x:Name="WednesdayLabel" Text="W"/>
+			<Label x:Name="ThursdayLabel" Text="T"/>
+			<Label x:Name="FridayLabel" Text="F"/>
+			<Label x:Name="SaturdayLabel" Text="S"/>
+			<Label x:Name="SundayLabel" Text="S"/>
+		</StackLayout>
+	</ContentView.Content>
+</ContentView>
