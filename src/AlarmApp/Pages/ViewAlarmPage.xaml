@@ -9,6 +9,7 @@
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<StackLayout Spacing="0">
+			<Entry Text="{Binding Alarm.Name}" Placeholder="Name"/>
 			<Label Text="Alarms begin at" Style="{StaticResource LargeCenteredHeading}"/>
 			<TimePicker Time="{Binding Time}" HorizontalOptions="Center"/>
 

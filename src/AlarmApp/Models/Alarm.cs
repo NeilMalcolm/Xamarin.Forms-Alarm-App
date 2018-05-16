@@ -5,6 +5,7 @@ namespace AlarmApp.Models
 {
 	public class Alarm
 	{
+		public string Name { get; set; }
 		public TimeSpan Time { get; set; }
 		public TimeSpan Frequency { get; set; }
 

@@ -12,8 +12,15 @@ namespace AlarmApp.PageModels
 	{
 		IAlarmSetter _alarmSetter = DependencyService.Get<IAlarmSetter>();
 
+		string _name;
 		Alarm _alarm = new Alarm();
 		TimeSpan _time;
+
+		public string Name
+		{
+			get { return _name; }
+			set { _name = value; RaisePropertyChanged(); }
+		}
 
 		public Alarm Alarm
 		{
@@ -73,6 +80,8 @@ namespace AlarmApp.PageModels
 				Time = alarmDateTime.TimeOfDay,
 				Frequency = (TimeSpan)frequency,
 				IsActive = true
+				IsActive = true,
+				Name = Name
 			};
 
 			Defaults.AllAlarms.Add(alarm);

@@ -9,7 +9,8 @@
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<StackLayout Spacing="0">
-			<Label Text="Alarms begin at" Style="{StaticResource LargeCenteredHeading}"/>
+			<Entry Text="{Binding Name}" Placeholder="Name"/>
+			<Label Text="begins at" Style="{StaticResource LargeCenteredHeading}"/>
 			<TimePicker Time="{Binding Alarm.Time}" HorizontalOptions="Center"/>
 
 			<!-- Occur Every section -->

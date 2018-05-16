@@ -7,10 +7,17 @@ namespace AlarmApp.PageModels
 {
 	public class ViewAlarmPageModel : FreshBasePageModel
 	{
+		string _name;
 		Alarm _alarm;
 		int _frequencyNumber;
 		string _frequencyPeriod;
 		TimeSpan _time;
+
+		public string Name
+		{
+			get { return _name; }
+			set { _name = value; RaisePropertyChanged(); }
+		}
 
 		public Alarm Alarm 
 		{ 
