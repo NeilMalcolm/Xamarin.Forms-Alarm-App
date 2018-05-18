@@ -90,6 +90,7 @@
     <Compile Include="Views\DaysOfWeekView.xaml.cs">
       <DependentUpon>DaysOfWeekView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CircleLabel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

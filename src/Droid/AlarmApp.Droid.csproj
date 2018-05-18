@@ -134,6 +134,7 @@
     <Compile Include="Renderers\AndroidEntryRenderer.cs" />
     <Compile Include="Renderers\AndroidDayOfTheWeekButtonRenderer.cs" />
     <Compile Include="SplashActivity.cs" />
+    <Compile Include="Renderers\AndroidCircleLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -166,6 +167,7 @@
     <AndroidResource Include="Resources\drawable-xhdpi\save.png" />
     <AndroidResource Include="Resources\drawable-hdpi\save.png" />
     <AndroidResource Include="Resources\drawable\save.png" />
+    <AndroidResource Include="Resources\drawable\circle_drawable.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
