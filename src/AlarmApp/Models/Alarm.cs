@@ -25,8 +25,6 @@ namespace AlarmApp.Models
 			Days = new DaysOfWeek();
 		}
 
-		public bool Beep { get; set; }
-
 
 		/// <summary>
 		/// Gets the frequency as readable string.

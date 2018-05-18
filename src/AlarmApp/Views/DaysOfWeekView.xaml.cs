@@ -22,9 +22,6 @@ namespace AlarmApp.Views
 
 			var daysOfWeek = alarm.Days;
 
-			System.Diagnostics.Debug.WriteLine("mon: " + daysOfWeek.Monday);
-			System.Diagnostics.Debug.WriteLine("beep: " + alarm.Beep);
-
 			MondayLabel.IsVisible = daysOfWeek.Monday;
 			TuesdayLabel.IsVisible = daysOfWeek.Tuesday;
 			WednesdayLabel.IsVisible = daysOfWeek.Wednesday;

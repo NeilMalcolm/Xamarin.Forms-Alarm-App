@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AlarmApp.Views.DaysOfWeekView">
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="AlarmApp.Views.DaysOfWeekView"
+			 xmlns:controls="clr-namespace:AlarmApp.Controls">
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<Style x:Key="DaysOfWeekLabelStyle" TargetType="Label">
+				<Setter Property="BackgroundColor" Value="#FFFFFF"/>
+				<Setter Property="TextColor" Value="{StaticResource PrimaryColor}"/>
+				<Setter Property="WidthRequest" Value="20"/>
+				<Setter Property="HeightRequest" Value="20"/>
+				<Setter Property="HorizontalTextAlignment" Value="Center"/>
+				<Setter Property="VerticalTextAlignment" Value="Center"/>
+			</Style>
+		</ResourceDictionary>
+	</ContentView.Resources>
 	<ContentView.Content>
 		<StackLayout Orientation="Horizontal">
-			<Label x:Name="MondayLabel" Text="M"/>
-			<Label x:Name="TuesdayLabel" Text="T"/>
-			<Label x:Name="WednesdayLabel" Text="W"/>
-			<Label x:Name="ThursdayLabel" Text="T"/>
-			<Label x:Name="FridayLabel" Text="F"/>
-			<Label x:Name="SaturdayLabel" Text="S"/>
-			<Label x:Name="SundayLabel" Text="S"/>
+			<controls:CircleLabel x:Name="MondayLabel" Text="M" Style="{StaticResource DaysOfWeekLabelStyle}"/>
+			<controls:CircleLabel x:Name="TuesdayLabel" Text="T" Style="{StaticResource DaysOfWeekLabelStyle}"/>
+			<controls:CircleLabel x:Name="WednesdayLabel" Text="W" Style="{StaticResource DaysOfWeekLabelStyle}"/>
+			<controls:CircleLabel x:Name="ThursdayLabel" Text="T" Style="{StaticResource DaysOfWeekLabelStyle}"/>
+			<controls:CircleLabel x:Name="FridayLabel" Text="F" Style="{StaticResource DaysOfWeekLabelStyle}"/>
+			<controls:CircleLabel x:Name="SaturdayLabel" Text="S" Style="{StaticResource DaysOfWeekLabelStyle}"/>
+			<controls:CircleLabel x:Name="SundayLabel" Text="S" Style="{StaticResource DaysOfWeekLabelStyle}"/>
 		</StackLayout>
 	</ContentView.Content>
 </ContentView>
