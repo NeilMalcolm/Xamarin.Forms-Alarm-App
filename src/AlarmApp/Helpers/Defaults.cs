@@ -14,9 +14,19 @@ namespace AlarmApp
 		public readonly static TimeSpan TEST_FREQUENCY = new TimeSpan(0, 0, 0, 0);
 		public readonly static TimeSpan ONE_HOUR = new TimeSpan(0, 1, 0, 0);
 		public readonly static TimeSpan THREE_HOURS = new TimeSpan(0, 3, 0, 0);
-		public readonly static TimeSpan FIVE_HOURS  = new TimeSpan(0, 5, 0, 0);
+		public readonly static TimeSpan FIVE_HOURS = new TimeSpan(0, 5, 0, 0);
 
-		public static ObservableCollection<Alarm> TodaysAlarms = new ObservableCollection<Alarm>();
+		public static ObservableCollection<Alarm> TodaysAlarms = new ObservableCollection<Alarm>()
+		{
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}
+		};
 
 		public static ObservableCollection<Alarm> AllAlarms = new ObservableCollection<Alarm>();
 	}

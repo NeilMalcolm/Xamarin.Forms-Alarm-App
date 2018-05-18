@@ -2,17 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 			 x:Class="AlarmApp.Pages.AlarmListPage"
-			 xmlns:local="clr-namespace:AlarmApp.Views">
+			 xmlns:local="clr-namespace:AlarmApp.Views"
+			 xmlns:converters="clr-namespace:AlarmApp.Converters">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Text="New alarm" Icon="add_new" Command="{Binding NewAlarmCommand}"/>
 	</ContentPage.ToolbarItems>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:CountToBoolConverter x:Key="CountToBoolConverter"/>
+		</ResourceDictionary>
+	</ContentPage.Resources>
 	<ContentPage.Content>
-		<ListView ItemsSource="{Binding Alarms}" RowHeight="150" SelectedItem="{Binding SelectedAlarm}" ItemSelected="Handle_ItemSelected" SeparatorColor="{StaticResource SeparatorColor}">
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<local:AlarmListCell IsEnabled="{Binding IsActive}"/>
-				</DataTemplate>
-			</ListView.ItemTemplate>
-		</ListView>
+		<Grid>
+			<ListView x:Name="listView" ItemsSource="{Binding Alarms}" RowHeight="150" SelectedItem="{Binding SelectedAlarm}" ItemSelected="Handle_ItemSelected" SeparatorColor="{StaticResource SeparatorColor}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<local:AlarmListCell IsEnabled="{Binding IsActive}"/>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<Label Text="No alarms!" VerticalOptions="Center" HorizontalOptions="Center" InputTransparent="true">
+				<Label.Triggers>
+					<!-- If we have 0 items, show the label -->
+					<DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference listView}, Path=ItemsSource.Count}" Value="0">
+						<Setter Property="IsVisible" Value="true"/>
+					</DataTrigger>
+					<!-- If we have items, hide the label -->
+					<DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference listView}, Path=ItemsSource.Count, Converter={StaticResource CountToBoolConverter}}" Value="true">
+						<Setter Property="IsVisible" Value="false"/>
+					</DataTrigger>
+				</Label.Triggers>
+			</Label>
+		</Grid>
 	</ContentPage.Content>
 </ContentPage>

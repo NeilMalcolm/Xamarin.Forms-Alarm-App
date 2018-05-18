@@ -19,10 +19,10 @@ namespace AlarmApp.Views
 			if (BindingContext == null) return;
 			var alarm = (Alarm)BindingContext;
 
-			TimeLabel.Text = alarm.Time.ToString(@"hh\:mm");
+			NameLabel.Text = alarm.Name;
+			StartSpan.Text = alarm.Time.ToString(@"hh\:mm");
 			var freq = alarm.UserFriendlyFrequency;
 			FrequencyLabel.Text = string.IsNullOrWhiteSpace(freq) ? null : $"Every {freq}";
-			//DaysOfWeekView.BindingContext = alarm.Days;
 		}
 	}
 }
