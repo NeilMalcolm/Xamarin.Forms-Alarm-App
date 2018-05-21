@@ -21,5 +21,21 @@ namespace AlarmApp.Controls
 			set { SetValue(FontSizeProperty, value); }
 		}
 
+		public static readonly BindableProperty IsValidProperty = BindableProperty.Create("IsValid", typeof(bool?), typeof(CustomPicker), null, propertyChanged: OnIsValidChanged);
+
+		public bool? IsValid
+		{
+			get { return (bool?)GetValue(IsValidProperty); }
+			set { SetValue(IsValidProperty, value); }
+		}
+
+		public event EventHandler IsValidChanged;
+
+		static void OnIsValidChanged(BindableObject bindable, object oldValue, object newValue)
+		{
+			// Property changed implementation goes here
+			var picker = (CustomPicker)bindable;
+			picker.IsValidChanged?.Invoke(picker, null);
+		}
 	}
 }

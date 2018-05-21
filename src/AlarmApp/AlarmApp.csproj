@@ -54,6 +54,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\DaysOfWeekSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -76,8 +80,6 @@
     <Compile Include="Pages\ViewAlarmPage.xaml.cs">
       <DependentUpon>ViewAlarmPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageModels\ViewAlarmPageModel.cs" />
-    <Compile Include="PageModels\NewAlarmPageModel.cs" />
     <Compile Include="Pages\NewAlarmPage.xaml.cs">
       <DependentUpon>NewAlarmPage.xaml</DependentUpon>
     </Compile>
@@ -92,6 +94,13 @@
     </Compile>
     <Compile Include="Controls\CircleLabel.cs" />
     <Compile Include="Converters\CountToBoolConverter.cs" />
+    <Compile Include="Converters\InverseBoolConverter.cs" />
+    <Compile Include="PageModels\AlarmPageModels\AlarmBasePageModel.cs" />
+    <Compile Include="PageModels\AlarmPageModels\NewAlarmPageModel.cs" />
+    <Compile Include="PageModels\AlarmPageModels\ViewAlarmPageModel.cs" />
+    <Compile Include="Views\DaysOfWeekSelectionView.xaml.cs">
+      <DependentUpon>DaysOfWeekSelectionView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -122,6 +131,7 @@
     <Folder Include="Controls\" />
     <Folder Include="Views\" />
     <Folder Include="Converters\" />
+    <Folder Include="PageModels\AlarmPageModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

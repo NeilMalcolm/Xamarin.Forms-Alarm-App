@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 namespace AlarmApp.Models
 {
 	public class DaysOfWeek
@@ -26,6 +27,11 @@ namespace AlarmApp.Models
 			Friday = allDays[4];
 			Saturday = allDays[5];
 			Sunday = allDays[6];
+		}
+
+		public static bool GetHasADayBeenSelected(DaysOfWeek days)
+		{
+			return days.AllDays.Contains(true);
 		}
 	}
 }

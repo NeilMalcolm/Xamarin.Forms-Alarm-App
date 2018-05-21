@@ -8,34 +8,9 @@ using Xamarin.Forms;
 
 namespace AlarmApp.PageModels
 {
-	public class NewAlarmPageModel : FreshBasePageModel
+	public class NewAlarmPageModel : AlarmBasePageModel
 	{
 		IAlarmSetter _alarmSetter = DependencyService.Get<IAlarmSetter>();
-
-		string _name;
-		Alarm _alarm = new Alarm();
-		TimeSpan _time;
-
-		public string Name
-		{
-			get { return _name; }
-			set { _name = value; RaisePropertyChanged(); }
-		}
-
-		public Alarm Alarm
-		{
-			get { return _alarm; }
-			set { _alarm = value; RaisePropertyChanged(); }
-		}
-
-		public TimeSpan Time
-		{
-			get { return _time; }
-			set { _time = value; RaisePropertyChanged(); }
-		}
-
-		public int FrequencyNumber { get; set; }
-		public string FrequencyPeriod { get; set; }
 
 		public ICommand SaveAlarmCommand
 		{
@@ -50,7 +25,8 @@ namespace AlarmApp.PageModels
 
 		public NewAlarmPageModel()
 		{
-			_alarm.Time = DateTime.Now.TimeOfDay;
+			Alarm = new Alarm();
+			Alarm.Time = DateTime.Now.TimeOfDay;
 		}
 
 		public override void Init(object initData)

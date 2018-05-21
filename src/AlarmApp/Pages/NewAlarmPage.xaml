@@ -3,10 +3,17 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="AlarmApp.Pages.NewAlarmPage"
 			 xmlns:local="clr-namespace:AlarmApp.Controls"
+			 xmlns:converters="clr-namespace:AlarmApp.Converters"
+			 xmlns:views="clr-namespace:AlarmApp.Views"
 			 Title="New Alarm">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Text="Save" Icon="save" Command="{Binding SaveAlarmCommand}"/>
 	</ContentPage.ToolbarItems>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+		</ResourceDictionary>
+	</ContentPage.Resources>
 	<ContentPage.Content>
 		<ScrollView>
 			<StackLayout Spacing="0">
@@ -38,7 +45,7 @@
 
 					<Label Text="For" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource LargeCenteredHeading}"/>
 					<Entry Grid.Row="3" Keyboard="Numeric" Placeholder="2" FontSize="30"/>
-					<local:CustomPicker Grid.Row="3" Grid.Column="1" Title="Set Frequency" Hint="Hours" FontSize="30">
+					<local:CustomPicker Grid.Row="3" Grid.Column="1" Title="Set Frequency" Hint="Hours" FontSize="30" IsEnabled="{Binding Is}">
 						<local:CustomPicker.Items>
 							<x:String>Minutes</x:String>
 							<x:String>Hours</x:String>
@@ -53,15 +60,8 @@
 				
 				<Label Text="On these days" Style="{StaticResource LargeCenteredHeading}"/>
 				<!-- Day of the week selectors -->
-				<Grid Padding="20">
-					<local:DayOfWeekButton IsSelected="{Binding Alarm.Days.Monday}" Text="M"/>
-					<local:DayOfWeekButton IsSelected="{Binding Alarm.Days.Tuesday}" Text="T" Grid.Column="1"/>
-					<local:DayOfWeekButton IsSelected="{Binding Alarm.Days.Wednesday}" Text="W" Grid.Column="2"/>
-					<local:DayOfWeekButton IsSelected="{Binding Alarm.Days.Thursday}" Text="T" Grid.Column="3"/>
-					<local:DayOfWeekButton IsSelected="{Binding Alarm.Days.Friday}" Text="F" Grid.Column="4"/>
-					<local:DayOfWeekButton IsSelected="{Binding Alarm.Days.Saturday}" Text="S" Grid.Column="5"/>
-					<local:DayOfWeekButton IsSelected="{Binding Alarm.Days.Sunday}" Text="S" Grid.Column="6"/>
-				</Grid>
+				<views:DaysOfWeekSelectionView/>
+				<Label Text="Please select a day on which the alarm should be set" IsVisible="{Binding HasDayBeenSelected, Converter={StaticResource InverseBoolConverter}}"/>
 			</StackLayout>
 		</ScrollView>
 	</ContentPage.Content>
