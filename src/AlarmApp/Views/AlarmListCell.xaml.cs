@@ -21,6 +21,7 @@ namespace AlarmApp.Views
 
 			NameLabel.Text = alarm.Name;
 			StartSpan.Text = alarm.Time.ToString(@"hh\:mm");
+			EndSpan.Text = alarm.EndTime.ToString(@"hh\:mm");
 			var freq = alarm.UserFriendlyFrequency;
 			FrequencyLabel.Text = string.IsNullOrWhiteSpace(freq) ? null : $"Every {freq}";
 		}
