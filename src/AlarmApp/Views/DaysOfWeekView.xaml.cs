@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using AlarmApp.Models;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace AlarmApp.Views
 {
@@ -30,12 +31,20 @@ namespace AlarmApp.Views
 			var daysOfWeek = alarm.Days;
 			_sb = new StringBuilder();
 
+			bool isEveryDay = alarm.Days.AllDays.All(X => X == true);
+
+			if (isEveryDay)
+			{
+				DaysLabel.Text = "Every day";
+				return;
+			}
+
 			for (int i = 0; i < daysOfWeek.AllDays.Length; i++)
 			{
 				var hasDay = daysOfWeek.AllDays[i];
 				if(hasDay)
 				{
-					if (i > 0)
+					if (i > 0 && !string.IsNullOrWhiteSpace(_sb.ToString()))
 					{
 						_sb.Append(", ");
 					}
