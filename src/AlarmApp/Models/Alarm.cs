@@ -17,6 +17,16 @@ namespace AlarmApp.Models
 			}
 		}
 
+		public TimeSpan Duration { get; set; }
+
+		public string UserFriendlyDuration
+		{
+			get
+			{
+				return GetFrequencyAsReadableString(Duration);
+			}
+		}
+
 		public bool IsActive { get; set; }
 		public DaysOfWeek Days { get; set; }
 
@@ -64,7 +74,7 @@ namespace AlarmApp.Models
 		/// <returns>The frequency from the given values. Example: 5 and "minutes" will return a TimeSpan of 00:05:00</returns>
 		/// <param name="number">Number.</param>
 		/// <param name="period">Period.</param>
-		public static TimeSpan GetFrequencyFromNumberAndPeriod(int number, string period)
+		public static TimeSpan GetFrequencyDurationFromNumberAndPeriod(int number, string period)
 		{
 			if(period == "Minutes")
 			{
@@ -79,14 +89,14 @@ namespace AlarmApp.Models
 		/// Get the Frequency property of the Alarm as a unit of time and the number 
 		/// </summary>
 		/// <returns>The number and period from frequency. Example: if the frequency is 00:05:00 then Key = 5, Value = "Minutes"</returns>
-		public KeyValuePair<int, string> GetNumberAndPeriodFromFrequency()
+		public KeyValuePair<int, string> GetNumberAndPeriodFromTimeSpan(TimeSpan time)
 		{
-			if(Frequency.Hours > 0)
+			if(time.Hours > 0)
 			{
-				return new KeyValuePair<int, string>(Frequency.Hours, "Hours");
+				return new KeyValuePair<int, string>(time.Hours, "Hours");
 			}
 
-			return new KeyValuePair<int, string>(Frequency.Minutes, "Minutes");
+			return new KeyValuePair<int, string>(time.Minutes, "Minutes");
 		}
 
 

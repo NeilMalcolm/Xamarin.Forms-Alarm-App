@@ -31,9 +31,12 @@ namespace AlarmApp.PageModels
 			base.ViewIsAppearing(sender, e);
 
 			//set the properties of this PageModel to the alarm passed through
-			var freq = Alarm.GetNumberAndPeriodFromFrequency();
+			var freq = Alarm.GetNumberAndPeriodFromTimeSpan(Alarm.Frequency);
 			FrequencyNumber = freq.Key;
 			FrequencyPeriod = freq.Value;
+			var duration = Alarm.GetNumberAndPeriodFromTimeSpan(Alarm.Duration);
+			DurationNumber = duration.Key;
+			DurationPeriod= duration.Value;
 
 			Time = Alarm.Time;
 			Days = new DaysOfWeek(Alarm.Days.AllDays);
@@ -47,11 +50,13 @@ namespace AlarmApp.PageModels
 			//need UI feedback
 			if (!ValidateFields()) return;
 
-			var frequencyTimeSpan = Alarm.GetFrequencyFromNumberAndPeriod(FrequencyNumber, FrequencyPeriod);
+			var frequency = Alarm.GetFrequencyDurationFromNumberAndPeriod(FrequencyNumber, FrequencyPeriod);
+			var duration = Alarm.GetFrequencyDurationFromNumberAndPeriod(DurationNumber, DurationPeriod);
 
-			Alarm.Frequency = frequencyTimeSpan;
+			Alarm.Frequency = frequency;
 			Alarm.Time = Time;
 			Alarm.Days = Days;
+			Alarm.Duration = duration;
 
 			CoreMethods.PopPageModel(false, true);
 		}

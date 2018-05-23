@@ -145,11 +145,15 @@ namespace AlarmApp.PageModels
 		{
 			bool validation = true;
 		
-			if(FrequencyNumber == 0)
+			if(FrequencyNumber <= 0)
 			{
 				//Set which one to false
 				IsFrequencyNumberValid = false;
 				validation = false;
+			}
+			else
+			{
+				IsFrequencyNumberValid = true;
 			}
 
 			if(string.IsNullOrWhiteSpace(FrequencyPeriod))
@@ -157,12 +161,20 @@ namespace AlarmApp.PageModels
 				IsFrequencyPeriodValid = false;
 				validation = false;
 			}
+			else
+			{
+				IsFrequencyPeriodValid = true;
+			}
 
-			if (DurationNumber == 0)
+			if (DurationNumber <= 0)
 			{
 				//Set which one to false
 				IsDurationNumberValid = false;
 				validation = false;
+			}
+			else
+			{
+				IsDurationNumberValid = true;
 			}
 
 			if (string.IsNullOrWhiteSpace(DurationPeriod))
@@ -170,31 +182,12 @@ namespace AlarmApp.PageModels
 				IsDurationPeriodValid = false;
 				validation = false;
 			}
+			else
+			{
+				IsDurationPeriodValid = true;
+			}
 
 			return validation;
-		}
-
-		/// <summary>
-		/// Get the frequency as a TimeSpan object, FrequencyNumber represents either the hour or minute
-		/// value, depending on the FrequencyPeriod value. i.e. if FrequencyPeriod is Minutes and
-		/// FrequencyNumber is 5, we get a nullable TimeSpan of 0, 0, 5, 0 (dd, hh, mm, ss)
-		/// </summary>
-		/// <returns>The frequency as a TimeSpan object, null if either are not set</returns>
-		protected TimeSpan? GetFrequency()
-		{
-			//need some sort of UI feedback for user
-			if (FrequencyNumber <= 0 || FrequencyPeriod == null || FrequencyNumber == int.MaxValue)
-				return null;
-
-			TimeSpan frequency;
-
-			if (FrequencyPeriod == "Minutes")
-				frequency = new TimeSpan(0, FrequencyNumber, 0);
-
-			if (FrequencyPeriod == "Hours")
-				frequency = new TimeSpan(FrequencyNumber, 0, 0);
-
-			return frequency;
 		}
 	}
 }

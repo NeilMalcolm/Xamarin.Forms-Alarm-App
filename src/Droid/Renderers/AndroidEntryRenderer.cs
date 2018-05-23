@@ -51,7 +51,7 @@ namespace AlarmApp.Droid.Renderers
 			}
 			else
 			{
-				Control.Background.ClearColorFilter();
+				Control.Background = ResourcesCompat.GetDrawable(Resources, Resource.Drawable.control_selector, null);
 			}
 		}
 
@@ -61,18 +61,15 @@ namespace AlarmApp.Droid.Renderers
 
 			if(Element is CustomEntry)
 			{
-				if (e.PropertyName == Entry.IsFocusedProperty.PropertyName)
+				if (e.PropertyName == Entry.TextProperty.PropertyName)
 				{
-					if (!Element.IsFocused)
+					if (!string.IsNullOrWhiteSpace(Element.Text) && int.Parse(Element.Text) > 0)
 					{
-						if (!string.IsNullOrWhiteSpace(Element.Text) && int.Parse(Element.Text) > 0)
-						{
-							(Element as CustomEntry).IsValid = true;
-						}
-						else
-						{
-							(Element as CustomEntry).IsValid = false;
-						}
+						(Element as CustomEntry).IsValid = true;
+					}
+					else
+					{
+						(Element as CustomEntry).IsValid = false;
 					}
 				}
 			}

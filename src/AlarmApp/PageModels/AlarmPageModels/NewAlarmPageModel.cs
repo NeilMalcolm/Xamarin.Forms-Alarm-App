@@ -41,11 +41,8 @@ namespace AlarmApp.PageModels
 		{
 			if (!ValidateFields()) return;
 
-			var frequency = GetFrequency();
-
-			//need some UI feedback for user
-			if (frequency == null)
-				return;
+			var frequency = GetDurationOrFrequency(FrequencyNumber, FrequencyPeriod);
+			var duration = GetDurationOrFrequency(DurationNumber, DurationPeriod);
 			
 			var time = Alarm.Time;
 			var now = DateTime.Now;
@@ -53,8 +50,9 @@ namespace AlarmApp.PageModels
 			var alarmDateTime = new DateTime(now.Year, now.Month, now.Day, time.Hours, time.Minutes, time.Seconds, time.Milliseconds);
 
 			Alarm.Time = alarmDateTime.TimeOfDay;
-			Alarm.Frequency = (TimeSpan)frequency;
 			Alarm.IsActive = true;
+			Alarm.Frequency = (TimeSpan)frequency;
+			Alarm.Duration = (TimeSpan)duration;
 
 			//Set alarm and add to our list of alarms
 			_alarmSetter.SetAlarm(alarmDateTime);
@@ -76,6 +74,29 @@ namespace AlarmApp.PageModels
 			}
 
 			return s & validation;
+		}
+
+		/// <summary>
+		/// Get the duration or frequency as a TimeSpan object, number represents either the hour or minute
+		/// value, depending on the period value. i.e. if period is Minutes and
+		/// number is 5, we get a nullable TimeSpan of 0, 0, 5, 0 (dd, hh, mm, ss)
+		/// </summary>
+		/// <returns>The frequency as a TimeSpan object, null if either are not set</returns>
+		protected TimeSpan? GetDurationOrFrequency(int number, string period)
+		{
+			//need some sort of UI feedback for user
+			if (number <= 0 || period == null || number == int.MaxValue)
+				return null;
+
+			TimeSpan time;
+
+			if (period == "Minutes")
+				time = new TimeSpan(0, number, 0);
+
+			if (period == "Hours")
+				time = new TimeSpan(number, 0, 0);
+
+			return time;
 		}
 	}
 }

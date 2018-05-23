@@ -55,7 +55,7 @@ namespace AlarmApp.Droid.Renderers
 			}
 			else
 			{
-				Control.Background.ClearColorFilter();
+				Control.Background = ResourcesCompat.GetDrawable(Resources, Resource.Drawable.control_selector, null);
 			}
 		}
 
