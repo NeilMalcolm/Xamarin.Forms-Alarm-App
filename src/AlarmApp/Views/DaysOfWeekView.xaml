@@ -8,9 +8,6 @@
 			<Style x:Key="DaysOfWeekLabelStyle" TargetType="Label">
 <!--				<Setter Property="BackgroundColor" Value="#FFFFFF"/>-->
 				<Setter Property="TextColor" Value="#FFFFFF"/>
-				<Setter Property="WidthRequest" Value="20"/>
-				<Setter Property="HeightRequest" Value="20"/>
-				<Setter Property="VerticalTextAlignment" Value="Center"/>
 			</Style>
 		</ResourceDictionary>
 	</ContentView.Resources>

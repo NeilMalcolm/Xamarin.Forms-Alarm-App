@@ -26,7 +26,367 @@ namespace AlarmApp
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
 				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
-			}
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
 		};
 
 		public static ObservableCollection<Alarm> AllAlarms = new ObservableCollection<Alarm>();

@@ -106,7 +106,7 @@ namespace AlarmApp.Models
 		public override string ToString()
 		{
 			return base.ToString();
-			//return $"Alarm set for: {Time.ToString("hh/mm/ss")}, occuring every {Frequency.ToString("dd days, hh hours, mm minutes, ss seconds")}";
+			return $"Alarm set for: {Time.ToString("hh/mm/ss")}, occuring every {Frequency.ToString("dd days, hh hours, mm minutes, ss seconds")}";
 		}
 	}
 }
