@@ -77,7 +77,7 @@ namespace AlarmApp.Droid.Renderers
 		{
 			if (_dialog == null)
 			{
-				_dialog = new Android.App.TimePickerDialog(Context, this, DateTime.Now.Hour, DateTime.Now.Minute, true);    //this bool is where we set time format, true = 24 hours
+				_dialog = new Android.App.TimePickerDialog(Context, this, Element.Time.Hours, Element.Time.Minutes, true);    //this bool is where we set time format, true = 24 hours
 			}
 
 			_dialog.Show();
