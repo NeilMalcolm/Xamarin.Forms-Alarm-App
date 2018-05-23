@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using AlarmApp.Models;
@@ -11,10 +12,10 @@ namespace AlarmApp.PageModels
 	{
 		AlarmListType _alarmListType;
 
-		List<Alarm> _alarms;
-		private Alarm _selectedAlarm;
+		ObservableCollection<Alarm> _alarms = null;
+		Alarm _selectedAlarm;
 
-		public List<Alarm> Alarms
+		public ObservableCollection<Alarm> Alarms
 		{
 			get { return _alarms; }
 			set { _alarms = value; RaisePropertyChanged(); }
@@ -42,6 +43,18 @@ namespace AlarmApp.PageModels
 			} 
 		}
 
+		public ICommand DeleteAlarmCommand
+		{
+			get
+			{
+				return new Xamarin.Forms.Command((param) =>
+				{
+					Alarms.Remove((Alarm)param);
+				});
+			}
+
+		}
+
 		public AlarmListPageModel()
 		{
 		}
@@ -57,16 +70,33 @@ namespace AlarmApp.PageModels
 		{
 			base.ViewIsAppearing(sender, e);
 
-			if (_alarmListType == AlarmListType.All)
-				Alarms = Defaults.AllAlarms.ToList();
-			else
-				Alarms = Defaults.TodaysAlarms.ToList();
-
+			if (Alarms == null)
+			{
+				if (_alarmListType == AlarmListType.All)
+					Alarms = new ObservableCollection<Alarm>(Defaults.AllAlarms.ToList());
+				else
+					Alarms = new ObservableCollection<Alarm>(Defaults.TodaysAlarms.ToList());
+			}
 		}
 
 		private async void OpenPage(Alarm selectedAlarm)
 		{
 			await CoreMethods.PushPageModel<ViewAlarmPageModel>(selectedAlarm, false, true);
+		}
+
+		public override void ReverseInit(object returnedData)
+		{
+			base.ReverseInit(returnedData);
+
+			if((bool)returnedData)
+			{
+				Alarms.Clear();
+
+				if (_alarmListType == AlarmListType.All)
+					Alarms = new ObservableCollection<Alarm>(Defaults.AllAlarms.ToList());
+				else
+					Alarms = new ObservableCollection<Alarm>(Defaults.TodaysAlarms.ToList());
+			}
 		}
 	}
 }

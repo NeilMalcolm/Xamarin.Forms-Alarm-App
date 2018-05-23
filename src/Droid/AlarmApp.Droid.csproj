@@ -169,6 +169,11 @@
     <AndroidResource Include="Resources\drawable\save.png" />
     <AndroidResource Include="Resources\drawable\circle_drawable.xml" />
     <AndroidResource Include="Resources\drawable\control_background_invalid.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\delete.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\delete.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\delete.png" />
+    <AndroidResource Include="Resources\drawable\delete.png" />
+    <AndroidResource Include="Resources\values\colors.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />

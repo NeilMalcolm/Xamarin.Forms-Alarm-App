@@ -59,7 +59,7 @@ namespace AlarmApp.PageModels
 			Defaults.AllAlarms.Add(Alarm);
 
 			//pop the page
-			CoreMethods.PopPageModel(false, true);
+			CoreMethods.PopPageModel(true, false, true);
 		}
 
 		protected override bool ValidateFields()

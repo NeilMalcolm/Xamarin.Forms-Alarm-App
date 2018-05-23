@@ -58,7 +58,7 @@ namespace AlarmApp.PageModels
 			Alarm.Days = Days;
 			Alarm.Duration = duration;
 
-			CoreMethods.PopPageModel(false, true);
+			CoreMethods.PopPageModel(true, false,true);
 		}
 
 		protected override bool ValidateFields()
