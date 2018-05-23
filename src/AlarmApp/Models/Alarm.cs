@@ -27,6 +27,8 @@ namespace AlarmApp.Models
 			}
 		}
 
+		public TimeSpan EndTime { get { return Time.Add(Duration); } }
+
 		public bool IsActive { get; set; }
 		public DaysOfWeek Days { get; set; }
 
