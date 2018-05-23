@@ -2,16 +2,17 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 			 x:Class="AlarmApp.Views.DaysOfWeekSelectionView"
-			 xmlns:local="clr-namespace:AlarmApp.Controls">
+			 xmlns:local="clr-namespace:AlarmApp.Controls"
+			 x:Name="ThisView">
 	<ContentView.Content>
 		<Grid Padding="20">
-			<local:DayOfWeekButton x:Name="Monday" Text="M" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Monday}, Path=IsSelected}" IsSelected="{Binding Days.Monday}"/>
-			<local:DayOfWeekButton x:Name="Tuesday" Text="T" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Tuesday}, Path=IsSelected}" IsSelected="{Binding Days.Tuesday}" Grid.Column="1"/>
-			<local:DayOfWeekButton x:Name="Wednesday" Text="W" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Wednesday}, Path=IsSelected}" IsSelected="{Binding Days.Wednesday}" Grid.Column="2"/>
-			<local:DayOfWeekButton x:Name="Thursday" Text="T" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Thursday}, Path=IsSelected}" IsSelected="{Binding Days.Thursday}" Grid.Column="3"/>
-			<local:DayOfWeekButton x:Name="Friday" Text="F" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Friday}, Path=IsSelected}" IsSelected="{Binding Days.Friday}" Grid.Column="4"/>
-			<local:DayOfWeekButton x:Name="Saturday" Text="S" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Saturday}, Path=IsSelected}" IsSelected="{Binding Days.Saturday}" Grid.Column="5"/>
-			<local:DayOfWeekButton x:Name="Sunday" Text="S" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Sunday}, Path=IsSelected}" IsSelected="{Binding Days.Sunday}" Grid.Column="6"/>
+			<local:DayOfWeekButton x:Name="Monday" Text="M" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Monday}, Path=IsSelected}" IsSelected="{Binding Source={x:Reference ThisView}, Path=Days.Monday}"/>
+			<local:DayOfWeekButton x:Name="Tuesday" Text="T" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Tuesday}, Path=IsSelected}" IsSelected="{Binding Source={x:Reference ThisView}, Path=Days.Tuesday}" Grid.Column="1"/>
+			<local:DayOfWeekButton x:Name="Wednesday" Text="W" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Wednesday}, Path=IsSelected}" IsSelected="{Binding Source={x:Reference ThisView}, Path=Days.Wednesday}"  Grid.Column="2"/>
+			<local:DayOfWeekButton x:Name="Thursday" Text="T" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Thursday}, Path=IsSelected}" IsSelected="{Binding Source={x:Reference ThisView}, Path=Days.Thursday}"  Grid.Column="3"/>
+			<local:DayOfWeekButton x:Name="Friday" Text="F" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Friday}, Path=IsSelected}" IsSelected="{Binding Source={x:Reference ThisView}, Path=Days.Friday}" Grid.Column="4"/>
+			<local:DayOfWeekButton x:Name="Saturday" Text="S" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Saturday}, Path=IsSelected}" IsSelected="{Binding Source={x:Reference ThisView}, Path=Days.Saturday}" Grid.Column="5"/>
+			<local:DayOfWeekButton x:Name="Sunday" Text="S" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Sunday}, Path=IsSelected}" IsSelected="{Binding Source={x:Reference ThisView}, Path=Days.Sunday}" Grid.Column="6"/>
 		</Grid>
 	</ContentView.Content>
 </ContentView>

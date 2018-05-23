@@ -39,6 +39,8 @@ namespace AlarmApp.PageModels
 		/// </summary>
 		void SaveAlarm()
 		{
+			if (!ValidateFields()) return;
+
 			var frequency = GetFrequency();
 
 			//need some UI feedback for user
@@ -62,21 +64,18 @@ namespace AlarmApp.PageModels
 			CoreMethods.PopPageModel(false, true);
 		}
 
-		TimeSpan? GetFrequency()
+		protected override bool ValidateFields()
 		{
-			//need some sort of UI feedback for user
-			if (FrequencyNumber <= 0 || FrequencyPeriod == null || FrequencyNumber == int.MaxValue)
-				return null;
+			var s = base.ValidateFields();
+			var validation = true;
 
-			TimeSpan frequency;
+			if (!DaysOfWeek.GetHasADayBeenSelected(Alarm.Days))
+			{
+				HasDayBeenSelected = false;
+				validation = false;
+			}
 
-			if (FrequencyPeriod == "Minutes")
-				frequency = new TimeSpan(0, FrequencyNumber, 0);
-
-			if (FrequencyPeriod == "Hours")
-				frequency = new TimeSpan(FrequencyNumber, 0, 0);
-
-			return frequency;
+			return s & validation;
 		}
 	}
 }

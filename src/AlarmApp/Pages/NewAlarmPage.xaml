@@ -26,26 +26,26 @@
 				<Grid Padding="40, 20, 40, 30" BackgroundColor="#26000000">
 					<Grid.RowDefinitions>
 						<RowDefinition Height="0.5*"/>
-						<RowDefinition Height="*"/>
+						<RowDefinition Height="60"/>
 						<RowDefinition Height="0.5*"/>
-						<RowDefinition Height="*"/>
+						<RowDefinition Height="60"/>
 					</Grid.RowDefinitions>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="0.3*"/>
 						<ColumnDefinition Width="*"/>
 					</Grid.ColumnDefinitions>
 					<Label Text="Repeat every" Grid.ColumnSpan="2" Style="{StaticResource LargeCenteredHeading}"/>
-					<Entry Text="{Binding FrequencyNumber, Mode=OneWayToSource}" Grid.Row="1" Keyboard="Numeric" Placeholder="15" FontSize="30"/>
-					<local:CustomPicker SelectedItem="{Binding FrequencyPeriod, Mode=OneWayToSource}" Grid.Row="1" Grid.Column="1" Title="Set Frequency" Hint="Minutes" FontSize="30" Margin="0, 0, 0, 20">
+					<local:CustomEntry Text="{Binding FrequencyNumber, Mode=OneWayToSource}" IsValid="{Binding IsFrequencyNumberValid}" Grid.Row="1" Keyboard="Numeric" Placeholder="15" FontSize="30"/>
+					<local:CustomPicker SelectedItem="{Binding FrequencyPeriod, Mode=OneWayToSource}" IsValid="{Binding IsFrequencyPeriodValid}" Grid.Row="1" Grid.Column="1" Title="Set Frequency" Hint="Minutes" FontSize="30">
 						<local:CustomPicker.Items>
 							<x:String>Minutes</x:String>
 							<x:String>Hours</x:String>
 						</local:CustomPicker.Items>
 					</local:CustomPicker>
 
-					<Label Text="For" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource LargeCenteredHeading}"/>
-					<Entry Grid.Row="3" Keyboard="Numeric" Placeholder="2" FontSize="30"/>
-					<local:CustomPicker Grid.Row="3" Grid.Column="1" Title="Set Frequency" Hint="Hours" FontSize="30" IsEnabled="{Binding Is}">
+					<Label Text="For" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource LargeCenteredHeading}" Margin="0, 20, 0,0"/>
+					<local:CustomEntry Text="{Binding DurationNumber, Mode=OneWayToSource}" IsValid="{Binding IsDurationNumberValid}" Grid.Row="3" Keyboard="Numeric" Placeholder="2" FontSize="30"/>
+					<local:CustomPicker SelectedItem="{Binding DurationPeriod}" IsValid="{Binding IsDurationPeriodValid}" Grid.Row="3" Grid.Column="1" Title="Set Frequency" Hint="Hours" FontSize="30">
 						<local:CustomPicker.Items>
 							<x:String>Minutes</x:String>
 							<x:String>Hours</x:String>
@@ -60,7 +60,7 @@
 				
 				<Label Text="On these days" Style="{StaticResource LargeCenteredHeading}"/>
 				<!-- Day of the week selectors -->
-				<views:DaysOfWeekSelectionView/>
+				<views:DaysOfWeekSelectionView Days="{Binding Alarm.Days}"/>
 				<Label Text="Please select a day on which the alarm should be set" IsVisible="{Binding HasDayBeenSelected, Converter={StaticResource InverseBoolConverter}}"/>
 			</StackLayout>
 		</ScrollView>

@@ -51,7 +51,7 @@ namespace AlarmApp.Droid.Renderers
 		{
 			if(!(bool)_customPicker.IsValid)
 			{
-				Control.Background.SetColorFilter(_invalidBackgroundColor, AGraphics.PorterDuff.Mode.Src);
+				Control.Background = ResourcesCompat.GetDrawable(Resources, Resource.Drawable.control_background_invalid, null);
 			}
 			else
 			{

@@ -39,22 +39,6 @@ namespace AlarmApp.PageModels
 			Days = new DaysOfWeek(Alarm.Days.AllDays);
 		}
 
-		protected override void ViewIsDisappearing(object sender, EventArgs e)
-		{
-			base.ViewIsDisappearing(sender, e);
-
-			System.Diagnostics.Debug.WriteLine("ALARM.DAYS");
-			foreach(bool b in Alarm.Days.AllDays)
-			{
-				System.Diagnostics.Debug.WriteLine(b.ToString());
-			}
-			System.Diagnostics.Debug.WriteLine("DAYS");
-			foreach (bool b in Days.AllDays)
-			{
-				System.Diagnostics.Debug.WriteLine(b.ToString());
-			}
-		}
-
 		/// <summary>
 		/// Updates the alarm with the values edited by the user
 		/// </summary>
@@ -72,5 +56,18 @@ namespace AlarmApp.PageModels
 			CoreMethods.PopPageModel(false, true);
 		}
 
+		protected override bool ValidateFields()
+		{
+			var s = base.ValidateFields();
+			var validation = true;
+
+			if (!DaysOfWeek.GetHasADayBeenSelected(Days))
+			{
+				HasDayBeenSelected = false;
+				validation = false;
+			}
+
+			return s & validation;
+		}
 	}
 }

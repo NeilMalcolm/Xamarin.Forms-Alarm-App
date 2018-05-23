@@ -168,6 +168,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\save.png" />
     <AndroidResource Include="Resources\drawable\save.png" />
     <AndroidResource Include="Resources\drawable\circle_drawable.xml" />
+    <AndroidResource Include="Resources\drawable\control_background_invalid.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />

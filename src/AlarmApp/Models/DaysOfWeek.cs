@@ -31,6 +31,7 @@ namespace AlarmApp.Models
 
 		public static bool GetHasADayBeenSelected(DaysOfWeek days)
 		{
+			if (days == null) return false;
 			return days.AllDays.Contains(true);
 		}
 	}
