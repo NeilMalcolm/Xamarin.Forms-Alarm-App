@@ -6,17 +6,17 @@
 	<ContentView.Resources>
 		<ResourceDictionary>
 			<Style x:Key="DaysOfWeekLabelStyle" TargetType="Label">
-				<Setter Property="BackgroundColor" Value="#FFFFFF"/>
-				<Setter Property="TextColor" Value="{StaticResource PrimaryColor}"/>
+<!--				<Setter Property="BackgroundColor" Value="#FFFFFF"/>-->
+				<Setter Property="TextColor" Value="#FFFFFF"/>
 				<Setter Property="WidthRequest" Value="20"/>
 				<Setter Property="HeightRequest" Value="20"/>
-				<Setter Property="HorizontalTextAlignment" Value="Center"/>
 				<Setter Property="VerticalTextAlignment" Value="Center"/>
 			</Style>
 		</ResourceDictionary>
 	</ContentView.Resources>
 	<ContentView.Content>
-		<StackLayout Orientation="Horizontal">
+		<Label x:Name="DaysLabel" Style="{StaticResource DaysOfWeekLabelStyle}"/>
+	<!--	<StackLayout Orientation="Horizontal">
 			<controls:CircleLabel x:Name="MondayLabel" Text="M" Style="{StaticResource DaysOfWeekLabelStyle}"/>
 			<controls:CircleLabel x:Name="TuesdayLabel" Text="T" Style="{StaticResource DaysOfWeekLabelStyle}"/>
 			<controls:CircleLabel x:Name="WednesdayLabel" Text="W" Style="{StaticResource DaysOfWeekLabelStyle}"/>
@@ -24,6 +24,6 @@
 			<controls:CircleLabel x:Name="FridayLabel" Text="F" Style="{StaticResource DaysOfWeekLabelStyle}"/>
 			<controls:CircleLabel x:Name="SaturdayLabel" Text="S" Style="{StaticResource DaysOfWeekLabelStyle}"/>
 			<controls:CircleLabel x:Name="SundayLabel" Text="S" Style="{StaticResource DaysOfWeekLabelStyle}"/>
-		</StackLayout>
+		</StackLayout>-->
 	</ContentView.Content>
 </ContentView>
