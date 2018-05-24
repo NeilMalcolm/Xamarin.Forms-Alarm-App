@@ -48,6 +48,23 @@
 				<Setter Property="TextColor" Value="#FFFFFF"/>
 			</Style>
 
+			<!-- AlarmListCell Styles -->
+
+			<Style x:Key="AlarmNameHeading" TargetType="Label">
+				<Setter Property="TextColor" Value="#C0C9F6"/>
+				<Setter Property="FontSize" Value="25"/>
+			</Style>
+
+			<Style x:Key="AlarmTimeHeading" TargetType="Label">
+				<Setter Property="TextColor" Value="#D9DFFA"/>
+				<Setter Property="FontSize" Value="50"/>
+			</Style>
+
+			<Style x:Key="AlarmExtrasHeading" TargetType="Label">
+				<Setter Property="TextColor" Value="#D9DFFA"/>
+				<Setter Property="FontSize" Value="14"/>
+			</Style>
+
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

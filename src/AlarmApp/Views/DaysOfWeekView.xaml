@@ -3,16 +3,8 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 			 x:Class="AlarmApp.Views.DaysOfWeekView"
 			 xmlns:controls="clr-namespace:AlarmApp.Controls">
-	<ContentView.Resources>
-		<ResourceDictionary>
-			<Style x:Key="DaysOfWeekLabelStyle" TargetType="Label">
-<!--				<Setter Property="BackgroundColor" Value="#FFFFFF"/>-->
-				<Setter Property="TextColor" Value="#FFFFFF"/>
-			</Style>
-		</ResourceDictionary>
-	</ContentView.Resources>
 	<ContentView.Content>
-		<Label x:Name="DaysLabel" Style="{StaticResource DaysOfWeekLabelStyle}"/>
+		<Label x:Name="DaysLabel" Style="{StaticResource AlarmExtrasHeading}"/>
 	<!--	<StackLayout Orientation="Horizontal">
 			<controls:CircleLabel x:Name="MondayLabel" Text="M" Style="{StaticResource DaysOfWeekLabelStyle}"/>
 			<controls:CircleLabel x:Name="TuesdayLabel" Text="T" Style="{StaticResource DaysOfWeekLabelStyle}"/>

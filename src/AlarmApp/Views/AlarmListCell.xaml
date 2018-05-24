@@ -5,20 +5,20 @@
 		  xmlns:local="clr-namespace:AlarmApp.Views">
 	<ViewCell.View>
 		<StackLayout Padding="20, 0" Spacing="3" VerticalOptions="CenterAndExpand">
-			<Label x:Name="NameLabel" FontSize="25" Margin="0, 0, 0, -10"/>
+			<Label x:Name="NameLabel" Style="{StaticResource AlarmNameHeading}" Margin="0, 0, 0, -10"/>
 <!--			<Label x:Name="TimeLabel" FontSize="50"/>-->
-			<Label FontSize="50">
+			<Label  Style="{StaticResource AlarmTimeHeading}">
 				<Label.FormattedText>
 					<FormattedString>
 						<Span x:Name="StartSpan"/>
-						<Span Text=" - "/>
+						<Span Text=" - " ForegroundColor="#515777"/>
 						<Span x:Name="EndSpan"/>
 					</FormattedString>
 				</Label.FormattedText>
 			</Label>
 			<StackLayout Orientation="Horizontal" Spacing="0">
-				<Label x:Name="FrequencyLabel" FontSize="14"/>
-				<Label Text=" on " FontSize="14"/>
+				<Label x:Name="FrequencyLabel" Style="{StaticResource AlarmExtrasHeading}"/>
+				<Label Text=" on " Style="{StaticResource AlarmExtrasHeading}"/>
 				<local:DaysOfWeekView x:Name="DaysOfWeekView" HorizontalOptions="FillAndExpand"/>
 			</StackLayout>
 		</StackLayout>
