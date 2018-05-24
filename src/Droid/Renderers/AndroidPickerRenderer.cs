@@ -34,6 +34,8 @@ namespace AlarmApp.Droid.Renderers
 				Control.Hint = _customPicker.Hint;
 
 			_customPicker.IsValidChanged += OnIsValidChanged;
+			Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(null, null, ResourcesCompat.GetDrawable(Resources, Resource.Drawable.picker_icon, null), null);
+			Control.CompoundDrawablePadding = 20;
 			Control.TextSize = (float) _customPicker.FontSize;
 
 			Control.SetPaddingRelative(5, 5, 5, 5);

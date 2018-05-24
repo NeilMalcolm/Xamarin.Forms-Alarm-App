@@ -178,6 +178,10 @@
     <AndroidResource Include="Resources\drawable-hdpi\clock.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\clock.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\clock.png" />
+    <AndroidResource Include="Resources\drawable\picker_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\picker_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\picker_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\picker_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
