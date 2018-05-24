@@ -27,6 +27,8 @@ namespace AlarmApp.Droid.Renderers
 
 			if (Control == null) return;
 
+			Control.SetCompoundDrawablesRelativeWithIntrinsicBounds(ResourcesCompat.GetDrawable(Resources, Resource.Drawable.clock, null), null, null, null);
+			Control.CompoundDrawablePadding = 20;
 			Control.TextSize = 65;
 			Control.Background = ResourcesCompat.GetDrawable(Resources, Resource.Drawable.control_selector, null);
 			Control.SetPaddingRelative(10, 10, 10, 10);

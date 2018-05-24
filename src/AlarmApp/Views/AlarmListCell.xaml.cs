@@ -19,7 +19,14 @@ namespace AlarmApp.Views
 			if (BindingContext == null) return;
 			var alarm = (Alarm)BindingContext;
 
-			NameLabel.Text = alarm.Name;
+			if (string.IsNullOrWhiteSpace(alarm.Name))
+				NameLabel.IsVisible = false;
+			else
+			{
+				NameLabel.Text = alarm.Name;
+				NameLabel.IsVisible = true;
+			}
+			
 			StartSpan.Text = alarm.Time.ToString(@"hh\:mm");
 			EndSpan.Text = alarm.EndTime.ToString(@"hh\:mm");
 			var freq = alarm.UserFriendlyFrequency;
