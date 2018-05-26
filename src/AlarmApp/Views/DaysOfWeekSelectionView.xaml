@@ -5,7 +5,19 @@
 			 xmlns:local="clr-namespace:AlarmApp.Controls"
 			 x:Name="ThisView">
 	<ContentView.Content>
-		<Grid Padding="20">
+		<Grid x:Name="DayGrid" Padding="20" ColumnSpacing="7.5">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="55"/>
+				<ColumnDefinition Width="55"/>
+				<ColumnDefinition Width="55"/>
+				<ColumnDefinition Width="55"/>
+				<ColumnDefinition Width="55"/>
+				<ColumnDefinition Width="55"/>
+				<ColumnDefinition Width="55"/>
+			</Grid.ColumnDefinitions>
 			<local:DayOfWeekButton x:Name="Monday" Text="M" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Monday}, Path=IsSelected}" IsSelected="{Binding Source={x:Reference ThisView}, Path=Days.Monday}"/>
 			<local:DayOfWeekButton x:Name="Tuesday" Text="T" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Tuesday}, Path=IsSelected}" IsSelected="{Binding Source={x:Reference ThisView}, Path=Days.Tuesday}" Grid.Column="1"/>
 			<local:DayOfWeekButton x:Name="Wednesday" Text="W" Command="{Binding DayPressedCommand}" CommandParameter="{Binding Source={x:Reference Wednesday}, Path=IsSelected}" IsSelected="{Binding Source={x:Reference ThisView}, Path=Days.Wednesday}"  Grid.Column="2"/>

@@ -33,5 +33,6 @@ namespace AlarmApp.Views
 			base.OnBindingContextChanged();
 			System.Diagnostics.Debug.WriteLine("bindingcontext: " + this.BindingContext.GetType());
 		}
+
 	}
 }
