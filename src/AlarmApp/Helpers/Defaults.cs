@@ -21,7 +21,34 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(1, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Second Alarm",
+				Time = default(DateTime).TimeOfDay.Add(FIVE_HOURS),
+				Frequency = new TimeSpan(0, 10, 0),
+				IsActive = true,
+				Duration = new TimeSpan(5, 0, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Third alarm",
+				Time = default(DateTime).TimeOfDay.Add(THREE_HOURS),
+				Frequency = new TimeSpan(0, 5, 0),
+				IsActive = true,
+				Duration = new TimeSpan(0, 30, 0),
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+			}, 
+			new Alarm
+			{
+				Name = "Name of alarm",
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -30,7 +57,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -39,7 +66,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -48,7 +75,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -57,7 +84,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -66,7 +93,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -75,7 +102,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -84,7 +111,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -93,7 +120,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -102,7 +129,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -111,7 +138,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -120,7 +147,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -129,7 +156,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -138,7 +165,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -147,7 +174,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -156,7 +183,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -165,7 +192,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -174,7 +201,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -183,7 +210,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -192,7 +219,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -201,7 +228,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -210,7 +237,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -219,7 +246,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -228,7 +255,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -237,7 +264,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -246,7 +273,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -255,7 +282,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -264,7 +291,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -273,7 +300,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -282,7 +309,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -291,7 +318,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -300,7 +327,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -309,7 +336,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -318,7 +345,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -327,7 +354,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -336,7 +363,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -345,7 +372,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
@@ -354,34 +381,7 @@ namespace AlarmApp
 			new Alarm
 			{
 				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
-				Frequency = new TimeSpan(0, 5, 0),
-				IsActive = true,
-				Duration = new TimeSpan(1, 0, 0),
-				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
-			}, 
-			new Alarm
-			{
-				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
-				Frequency = new TimeSpan(0, 5, 0),
-				IsActive = true,
-				Duration = new TimeSpan(1, 0, 0),
-				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
-			}, 
-			new Alarm
-			{
-				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
-				Frequency = new TimeSpan(0, 5, 0),
-				IsActive = true,
-				Duration = new TimeSpan(1, 0, 0),
-				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
-			}, 
-			new Alarm
-			{
-				Name = "Name of alarm",
-				Time = DateTime.Now.TimeOfDay.Add(ONE_HOUR),
+				Time = default(DateTime).TimeOfDay.Add(ONE_HOUR),
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = true,
 				Duration = new TimeSpan(1, 0, 0),
