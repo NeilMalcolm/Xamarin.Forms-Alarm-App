@@ -17,7 +17,7 @@
 	<ContentPage.Content>
 		<ScrollView>
 			<StackLayout Spacing="0">
-				<Entry Text="{Binding Alarm.Name}" Placeholder="Name"/>
+				<Entry Text="{Binding Alarm.Name}" Placeholder="Name" Margin="40, 0, 40, 20"/>
 				<Label Text="Alarms begin at" Style="{StaticResource LargeCenteredHeading}"/>
 				<TimePicker Time="{Binding Time}" HorizontalOptions="Center"/>
 
@@ -54,13 +54,10 @@
 					
 				</Grid>
 				<BoxView HeightRequest="1" Grid.Row="3" Grid.ColumnSpan="2" BackgroundColor="{StaticResource PageSeparatorColor}"  Margin="0, 0, 0, 20"/>
-				
-			<!--	<Label Text="Alarms end at" Style="{StaticResource LargeCenteredHeading}"/>
-				<TimePicker Time="{Binding Alarm.Time, Mode=OneWayToSource}" HorizontalOptions="Center"/>-->
-				
+			
 				<Label Text="On these days" Style="{StaticResource LargeCenteredHeading}"/>
 				<!-- Day of the week selectors -->
-				<views:DaysOfWeekSelectionView Days="{Binding Days}"/>
+				<views:DaysOfWeekSelectionView Days="{Binding Days}" HorizontalOptions="Center"/>
 				<Label Text="Please select a day on which the alarm should be set" IsVisible="{Binding HasDayBeenSelected, Converter={StaticResource InverseBoolConverter}}"/>
 			</StackLayout>
 		</ScrollView>
