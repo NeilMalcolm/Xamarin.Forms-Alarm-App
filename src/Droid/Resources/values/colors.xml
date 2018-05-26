@@ -4,4 +4,5 @@
 	<color name="primaryDark">#1A1E29</color>
 	<color name="accent">#FF4081</color>
 	<color name="actionModeBackground">#1A1E29</color>
+	<color name="listViewHighlighted">#263269</color>
 </resources>

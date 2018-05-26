@@ -23,6 +23,7 @@
 
 	
         <item name="actionModeBackground">@color/actionModeBackground</item>
+  		<item name="android:colorLongPressedHighlight">@color/listViewHighlighted</item>
 	</style>
 	<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
 		<item name="colorAccent">#FF4081</item>

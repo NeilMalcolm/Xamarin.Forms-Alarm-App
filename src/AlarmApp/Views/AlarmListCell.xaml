@@ -6,7 +6,6 @@
 	<ViewCell.View>
 		<StackLayout Padding="20, 0" Spacing="3" VerticalOptions="CenterAndExpand">
 			<Label x:Name="NameLabel" Style="{StaticResource AlarmNameHeading}" Margin="0, 0, 0, -10"/>
-<!--			<Label x:Name="TimeLabel" FontSize="50"/>-->
 			<Label  Style="{StaticResource AlarmTimeHeading}">
 				<Label.FormattedText>
 					<FormattedString>
