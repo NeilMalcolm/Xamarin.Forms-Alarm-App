@@ -28,9 +28,9 @@ namespace AlarmApp.Models
 		}
 
 		public TimeSpan EndTime { get { return Time.Add(Duration); } }
-
 		public bool IsActive { get; set; }
 		public DaysOfWeek Days { get; set; }
+		public bool OccursToday { get { return Days.Equals(DateTime.Now.DayOfWeek); } }
 
 		public Alarm()
 		{

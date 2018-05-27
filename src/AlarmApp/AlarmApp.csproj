@@ -102,6 +102,7 @@
       <DependentUpon>DaysOfWeekSelectionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CustomEntry.cs" />
+    <Compile Include="Helpers\AlarmListGroup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

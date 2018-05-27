@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Input;
 using AlarmApp.Models;
 using FreshMvvm;
+using AlarmApp.Helpers;
 
 namespace AlarmApp.PageModels
 {
@@ -12,14 +13,23 @@ namespace AlarmApp.PageModels
 	{
 		AlarmListType _alarmListType;
 
-		ObservableCollection<Alarm> _alarms = null;
+		//List<AlarmListGroup> _alarms = null;
 		Alarm _selectedAlarm;
+
+		//public List<AlarmListGroup> Alarms
+		//{
+		//	get { return _alarms; }
+		//	set { _alarms = value; RaisePropertyChanged(); }
+		//}
+
+		ObservableCollection<Alarm> _alarms;
 
 		public ObservableCollection<Alarm> Alarms
 		{
 			get { return _alarms; }
 			set { _alarms = value; RaisePropertyChanged(); }
 		}
+
 
 		public Alarm SelectedAlarm
 		{
@@ -49,6 +59,9 @@ namespace AlarmApp.PageModels
 			{
 				return new Xamarin.Forms.Command((param) =>
 				{
+					//Defaults.AllAlarms.Remove((Alarm)param);
+					//Alarms.Clear();
+					//CreateLists();
 					Alarms.Remove((Alarm)param);
 				});
 			}
@@ -63,23 +76,18 @@ namespace AlarmApp.PageModels
 		{
 			base.Init(initData);
 
-			_alarmListType = (AlarmListType)initData;
+			if (initData != null)
+				_alarmListType = (AlarmListType)initData;
 		}
 
 		protected override void ViewIsAppearing(object sender, EventArgs e)
 		{
 			base.ViewIsAppearing(sender, e);
 
-			if (Alarms == null)
-			{
-				if (_alarmListType == AlarmListType.All)
-					Alarms = new ObservableCollection<Alarm>(Defaults.AllAlarms.ToList());
-				else
-					Alarms = new ObservableCollection<Alarm>(Defaults.TodaysAlarms.ToList());
-			}
+			CreateLists();
 		}
 
-		private async void OpenPage(Alarm selectedAlarm)
+		async void OpenPage(Alarm selectedAlarm)
 		{
 			await CoreMethods.PushPageModel<ViewAlarmPageModel>(selectedAlarm, false, true);
 		}
@@ -91,12 +99,29 @@ namespace AlarmApp.PageModels
 			if((bool)returnedData)
 			{
 				Alarms.Clear();
-
-				if (_alarmListType == AlarmListType.All)
-					Alarms = new ObservableCollection<Alarm>(Defaults.AllAlarms.ToList());
-				else
-					Alarms = new ObservableCollection<Alarm>(Defaults.TodaysAlarms.ToList());
+				CreateLists();
 			}
+		}
+
+		void CreateLists()
+		{
+			if(_alarmListType == AlarmListType.Today)
+				Alarms = new ObservableCollection<Alarm>(Defaults.AllAlarms.Where(x => x.OccursToday == true).ToList());
+			else
+				Alarms = new ObservableCollection<Alarm>(Defaults.AllAlarms);
+
+			//var todayGroup = new AlarmListGroup(Defaults.TodaysAlarms.Where(x => x.OccursToday == true).ToList());
+			//todayGroup.Title = "Today";
+
+			//var allGroup = new AlarmListGroup(Defaults.TodaysAlarms.Where(x => x.OccursToday == false).ToList());
+			//allGroup.Title = "All";
+			//System.Diagnostics.Debug.WriteLine("TODAY: " + todayGroup.Count + ", ALL: " + allGroup.Count);
+			//System.Diagnostics.Debug.WriteLine(Defaults.TodaysAlarms.Where(x => x.OccursToday == true).ToList().Count);
+			//Alarms = new List<AlarmListGroup>()
+			//{
+			//	todayGroup, allGroup
+			//};
+
 		}
 	}
 }

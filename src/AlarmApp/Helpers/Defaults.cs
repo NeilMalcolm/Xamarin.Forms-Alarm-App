@@ -16,7 +16,7 @@ namespace AlarmApp
 		public readonly static TimeSpan THREE_HOURS = new TimeSpan(0, 3, 0, 0);
 		public readonly static TimeSpan FIVE_HOURS = new TimeSpan(0, 5, 0, 0);
 
-		public static ObservableCollection<Alarm> TodaysAlarms = new ObservableCollection<Alarm>()
+		public static ObservableCollection<Alarm> AllAlarms = new ObservableCollection<Alarm>()
 		{
 			new Alarm
 			{
@@ -25,7 +25,7 @@ namespace AlarmApp
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = false,
 				Duration = new TimeSpan(1, 0, 0),
-				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, true})
 			}, 
 			new Alarm
 			{
@@ -43,7 +43,7 @@ namespace AlarmApp
 				Frequency = new TimeSpan(0, 5, 0),
 				IsActive = false,
 				Duration = new TimeSpan(0, 30, 0),
-				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
+				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, true})
 			}, 
 			new Alarm
 			{
@@ -388,8 +388,6 @@ namespace AlarmApp
 				Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
 			}, 
 		};
-
-		public static ObservableCollection<Alarm> AllAlarms = new ObservableCollection<Alarm>();
 	}
 
 	public enum AlarmListType

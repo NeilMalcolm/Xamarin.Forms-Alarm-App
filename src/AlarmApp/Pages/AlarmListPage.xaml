@@ -14,17 +14,33 @@
 	</ContentPage.Resources>
 	<ContentPage.Content>
 		<Grid>
-			<ListView x:Name="listView" ItemsSource="{Binding Alarms}" RowHeight="150" SelectedItem="{Binding SelectedAlarm}" ItemSelected="Handle_ItemSelected" SeparatorColor="{StaticResource SeparatorColor}">
+			<ListView x:Name="listView" 
+					  ItemsSource="{Binding Alarms}" 
+					 HasUnevenRows="true"
+					  SelectedItem="{Binding SelectedAlarm}" 
+					  ItemSelected="Handle_ItemSelected" 
+					  SeparatorColor="{StaticResource SeparatorColor}">					  
+				<!--IsGroupingEnabled="true"
+					  GroupDisplayBinding="{Binding Title}"-->
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<local:AlarmListCell>
+						<local:AlarmListCell Height="150">
 							<local:AlarmListCell.ContextActions>
 								<MenuItem Icon="delete.png" Text="Delete" Command="{Binding Source={x:Reference listView}, Path=BindingContext.DeleteAlarmCommand}" CommandParameter="{Binding .}" IsDestructive="true"/>
 							</local:AlarmListCell.ContextActions>
 						</local:AlarmListCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>
-			</ListView>
+<!--				<ListView.GroupHeaderTemplate>
+					<DataTemplate>
+						<ViewCell Height="60">
+							<ViewCell.View>
+								<Label Text="{Binding Title}" Margin="20, 0, 0, 0" VerticalOptions="Center" TextColor="White" FontSize="20"/>
+							</ViewCell.View>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.GroupHeaderTemplate>
+-->			</ListView>
 			<Label Text="No alarms!" VerticalOptions="Center" HorizontalOptions="Center" InputTransparent="true">
 				<Label.Triggers>
 					<!-- If we have 0 items, show the label -->
