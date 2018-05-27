@@ -55,8 +55,18 @@
 				<Setter Property="FontSize" Value="25"/>
 			</Style>
 
+			<Style x:Key="AlarmNameDisabledHeading" TargetType="Label">
+				<Setter Property="TextColor" Value="#8A92B7"/>
+				<Setter Property="FontSize" Value="25"/>
+			</Style>
+			
 			<Style x:Key="AlarmTimeHeading" TargetType="Label">
 				<Setter Property="TextColor" Value="#D9DFFA"/>
+				<Setter Property="FontSize" Value="50"/>
+			</Style>
+
+			<Style x:Key="AlarmTimeDisabledHeading" TargetType="Label">
+				<Setter Property="TextColor" Value="#7C84A8"/>
 				<Setter Property="FontSize" Value="50"/>
 			</Style>
 
@@ -65,6 +75,10 @@
 				<Setter Property="FontSize" Value="14"/>
 			</Style>
 
+			<Style x:Key="AlarmExtrasDisabledHeading" TargetType="Label">
+				<Setter Property="TextColor" Value="#757B96"/>
+				<Setter Property="FontSize" Value="14"/>
+			</Style>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

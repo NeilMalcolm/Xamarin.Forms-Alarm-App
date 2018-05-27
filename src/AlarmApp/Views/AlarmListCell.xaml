@@ -4,9 +4,10 @@
 		  x:Class="AlarmApp.Views.AlarmListCell"
 		  xmlns:local="clr-namespace:AlarmApp.Views">
 	<ViewCell.View>
-		<StackLayout Padding="20, 0" Spacing="3" VerticalOptions="CenterAndExpand">
+		<StackLayout Orientation="Horizontal" Padding="20, 0" VerticalOptions="CenterAndExpand">
+			<StackLayout Spacing="3">
 			<Label x:Name="NameLabel" Style="{StaticResource AlarmNameHeading}" Margin="0, 0, 0, -10"/>
-			<Label  Style="{StaticResource AlarmTimeHeading}">
+			<Label x:Name="TimeLabel"  Style="{StaticResource AlarmTimeHeading}">
 				<Label.FormattedText>
 					<FormattedString>
 						<Span x:Name="StartSpan"/>
@@ -17,9 +18,11 @@
 			</Label>
 			<StackLayout Orientation="Horizontal" Spacing="0">
 				<Label x:Name="FrequencyLabel" Style="{StaticResource AlarmExtrasHeading}"/>
-				<Label Text=" on " Style="{StaticResource AlarmExtrasHeading}"/>
+				<Label x:Name="OnLabel" Text=" on " Style="{StaticResource AlarmExtrasHeading}"/>
 				<local:DaysOfWeekView x:Name="DaysOfWeekView" HorizontalOptions="FillAndExpand"/>
 			</StackLayout>
+			</StackLayout>
+			<Switch x:Name="ActiveSwitch" IsToggled="{Binding IsActive}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
 		</StackLayout>
 	</ViewCell.View>
 </ViewCell>

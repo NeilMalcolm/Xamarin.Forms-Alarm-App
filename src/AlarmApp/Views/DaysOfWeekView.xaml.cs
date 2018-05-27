@@ -4,6 +4,7 @@ using System.Text;
 using AlarmApp.Models;
 using Xamarin.Forms;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace AlarmApp.Views
 {
@@ -20,13 +21,13 @@ namespace AlarmApp.Views
 			InitializeComponent();
 		}
 
-
 		protected override void OnBindingContextChanged()
 		{
 			base.OnBindingContextChanged();
 
 			if (BindingContext == null) return;
 			var alarm = ((Alarm)BindingContext);
+			IsEnabled = alarm.IsActive;
 
 			var daysOfWeek = alarm.Days;
 			_sb = new StringBuilder();
@@ -60,6 +61,24 @@ namespace AlarmApp.Views
 			//FridayLabel.IsVisible = daysOfWeek.Friday;
 			//SaturdayLabel.IsVisible = daysOfWeek.Saturday;
 			//SundayLabel.IsVisible = daysOfWeek.Sunday;
+		}
+
+		protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		{
+			base.OnPropertyChanged(propertyName);
+
+			if (propertyName == IsEnabledProperty.PropertyName)
+			{
+				SetLabelStyle(IsEnabled);
+			}	
+		}
+
+		void SetLabelStyle(bool state)
+		{
+			if (state)
+				DaysLabel.Style = (Style)App.Current.Resources["AlarmExtrasHeading"];
+			else
+				DaysLabel.Style = (Style)App.Current.Resources["AlarmExtrasDisabledHeading"];
 		}
 	}
 }

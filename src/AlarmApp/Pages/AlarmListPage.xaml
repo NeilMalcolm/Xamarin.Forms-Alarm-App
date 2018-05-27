@@ -17,7 +17,7 @@
 			<ListView x:Name="listView" ItemsSource="{Binding Alarms}" RowHeight="150" SelectedItem="{Binding SelectedAlarm}" ItemSelected="Handle_ItemSelected" SeparatorColor="{StaticResource SeparatorColor}">
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<local:AlarmListCell IsEnabled="{Binding IsActive}">
+						<local:AlarmListCell>
 							<local:AlarmListCell.ContextActions>
 								<MenuItem Icon="delete.png" Text="Delete" Command="{Binding Source={x:Reference listView}, Path=BindingContext.DeleteAlarmCommand}" CommandParameter="{Binding .}" IsDestructive="true"/>
 							</local:AlarmListCell.ContextActions>
