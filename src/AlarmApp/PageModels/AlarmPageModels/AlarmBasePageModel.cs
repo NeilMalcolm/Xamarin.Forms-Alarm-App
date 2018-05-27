@@ -130,10 +130,6 @@ namespace AlarmApp.PageModels
 						{
 							HasDayBeenSelected = true;
 						}
-						foreach(bool b in Days.AllDays)
-						{
-							System.Diagnostics.Debug.WriteLine(b);
-						}
 					}
 				});
 			}

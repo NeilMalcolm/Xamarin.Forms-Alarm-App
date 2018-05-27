@@ -48,8 +48,6 @@ namespace AlarmApp.PageModels
 			var now = DateTime.Now;
 
 			var alarmDateTime = new DateTime(now.Year, now.Month, now.Day, time.Hours, time.Minutes, time.Seconds, time.Milliseconds);
-			System.Diagnostics.Debug.WriteLine("Time: " + Alarm.Time);
-			System.Diagnostics.Debug.WriteLine("offset: " + Alarm.TimeOffset.TimeOfDay);
 
 			Alarm.IsActive = true;
 			Alarm.Frequency = (TimeSpan)frequency;

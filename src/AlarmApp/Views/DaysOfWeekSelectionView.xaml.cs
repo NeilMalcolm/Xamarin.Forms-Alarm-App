@@ -21,17 +21,9 @@ namespace AlarmApp.Views
 			InitializeComponent();
 		}
 
-		protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			base.OnPropertyChanged(propertyName);
-
-			System.Diagnostics.Debug.WriteLine(propertyName);
-		}
-
 		protected override void OnBindingContextChanged()
 		{
 			base.OnBindingContextChanged();
-			System.Diagnostics.Debug.WriteLine("bindingcontext: " + this.BindingContext.GetType());
 		}
 
 	}
