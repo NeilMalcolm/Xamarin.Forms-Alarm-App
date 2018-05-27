@@ -48,15 +48,16 @@ namespace AlarmApp.PageModels
 			var now = DateTime.Now;
 
 			var alarmDateTime = new DateTime(now.Year, now.Month, now.Day, time.Hours, time.Minutes, time.Seconds, time.Milliseconds);
+			System.Diagnostics.Debug.WriteLine("Time: " + Alarm.Time);
+			System.Diagnostics.Debug.WriteLine("offset: " + Alarm.TimeOffset.TimeOfDay);
 
-			Alarm.Time = alarmDateTime.TimeOfDay;
 			Alarm.IsActive = true;
 			Alarm.Frequency = (TimeSpan)frequency;
 			Alarm.Duration = (TimeSpan)duration;
 
 			//Set alarm and add to our list of alarms
 			_alarmSetter.SetAlarm(alarmDateTime);
-			Defaults.AllAlarms.Add(Alarm);
+			_alarmStorage.AddAlarm(Alarm);
 
 			//pop the page
 			CoreMethods.PopPageModel(true, false, true);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using AlarmApp.Models;
+using AlarmApp.Services;
 using FreshMvvm;
 
 namespace AlarmApp.PageModels
@@ -15,6 +16,7 @@ namespace AlarmApp.PageModels
 		int _durationNumber;
 		string _durationPeriod;
 		DaysOfWeek _days;
+		protected AlarmStorageService _alarmStorage = new AlarmStorageService();
 
 		//True by default, so we can be notified if false
 		bool _hasDayBeenSelected = true;
@@ -189,5 +191,6 @@ namespace AlarmApp.PageModels
 
 			return validation;
 		}
+
 	}
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+using Realms;
+
 namespace AlarmApp.Models
 {
-	public class DaysOfWeek
+	public class DaysOfWeek : RealmObject
 	{
 		public bool Monday { get; set; }
 		public bool Tuesday { get; set; }

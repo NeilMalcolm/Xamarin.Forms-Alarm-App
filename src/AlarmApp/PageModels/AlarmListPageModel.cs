@@ -6,13 +6,14 @@ using System.Windows.Input;
 using AlarmApp.Models;
 using FreshMvvm;
 using AlarmApp.Helpers;
+using AlarmApp.Services;
 
 namespace AlarmApp.PageModels
 {
 	public class AlarmListPageModel : FreshBasePageModel
 	{
 		AlarmListType _alarmListType;
-
+		AlarmStorageService _alarmStorage = new AlarmStorageService();
 		//List<AlarmListGroup> _alarms = null;
 		Alarm _selectedAlarm;
 
@@ -62,7 +63,9 @@ namespace AlarmApp.PageModels
 					//Defaults.AllAlarms.Remove((Alarm)param);
 					//Alarms.Clear();
 					//CreateLists();
-					Alarms.Remove((Alarm)param);
+					var alarm = (Alarm)param;
+					Alarms.Remove(alarm);
+					_alarmStorage.DeleteAlarm(alarm);
 				});
 			}
 
@@ -105,10 +108,12 @@ namespace AlarmApp.PageModels
 
 		void CreateLists()
 		{
-			if(_alarmListType == AlarmListType.Today)
-				Alarms = new ObservableCollection<Alarm>(Defaults.AllAlarms.Where(x => x.OccursToday == true).ToList());
+			if (_alarmListType == AlarmListType.Today)
+				//Alarms = new ObservableCollection<Alarm>(Defaults.AllAlarms.Where(x => x.OccursToday == true).ToList());
+				Alarms = new ObservableCollection<Alarm>(_alarmStorage.GetTodaysAlarms());
 			else
-				Alarms = new ObservableCollection<Alarm>(Defaults.AllAlarms);
+				//Alarms = new ObservableCollection<Alarm>(Defaults.AllAlarms);
+				Alarms = new ObservableCollection<Alarm>(_alarmStorage.GetAllAlarms());
 
 			//var todayGroup = new AlarmListGroup(Defaults.TodaysAlarms.Where(x => x.OccursToday == true).ToList());
 			//todayGroup.Title = "Today";

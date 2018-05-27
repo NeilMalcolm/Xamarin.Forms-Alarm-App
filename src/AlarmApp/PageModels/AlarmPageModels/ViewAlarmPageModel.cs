@@ -53,11 +53,14 @@ namespace AlarmApp.PageModels
 			var frequency = Alarm.GetFrequencyDurationFromNumberAndPeriod(FrequencyNumber, FrequencyPeriod);
 			var duration = Alarm.GetFrequencyDurationFromNumberAndPeriod(DurationNumber, DurationPeriod);
 
-			Alarm.Frequency = frequency;
-			Alarm.Time = Time;
-			Alarm.Days = Days;
-			Alarm.Duration = duration;
-
+			var realm = Realms.Realm.GetInstance();
+			realm.Write(() =>
+		   {
+			   Alarm.Frequency = frequency;
+			   Alarm.Time = Time;
+			   Alarm.Days = Days;
+			   Alarm.Duration = duration;
+		   });
 			CoreMethods.PopPageModel(true, false,true);
 		}
 

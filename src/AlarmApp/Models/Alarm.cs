@@ -1,33 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
+using Realms;
 
 namespace AlarmApp.Models
 {
-	public class Alarm
+	public class Alarm : RealmObject
 	{
 		public string Name { get; set; }
-		public TimeSpan Time { get; set; }
-		public TimeSpan Frequency { get; set; }
 
-		public string UserFriendlyFrequency
-		{
-			get
-			{
-				return GetFrequencyAsReadableString(Frequency);
-			}
+		public DateTimeOffset TimeOffset { get; set; }
+
+		[Ignored]
+		public TimeSpan Time { 
+			get { return TimeOffset.TimeOfDay; } 
+			set { TimeOffset = GetDateTimeOffsetFromTimeSpan(value);}
 		}
 
-		public TimeSpan Duration { get; set; }
+		public DateTimeOffset FrequencyOffset { get; set; }
 
-		public string UserFriendlyDuration
-		{
-			get
-			{
-				return GetFrequencyAsReadableString(Duration);
-			}
+		[Ignored]
+		public TimeSpan Frequency { 
+			get { return FrequencyOffset.TimeOfDay; } 
+			set { FrequencyOffset = GetDateTimeOffsetFromTimeSpan(value); }
 		}
 
+		public string UserFriendlyFrequency { get { return GetFrequencyAsReadableString(Frequency); } }
+
+		public DateTimeOffset DurationOffset { get; set; }
+
+		[Ignored]
+		public TimeSpan Duration { 
+			get { return DurationOffset.TimeOfDay; } 
+			set { DurationOffset = GetDateTimeOffsetFromTimeSpan(value); }
+		}
+
+		public string UserFriendlyDuration { get { return GetFrequencyAsReadableString(Duration); } }
+
+		[Ignored]
 		public TimeSpan EndTime { get { return Time.Add(Duration); } }
+
 		public bool IsActive { get; set; }
 		public DaysOfWeek Days { get; set; }
 		public bool OccursToday { get { return Days.Equals(DateTime.Now.DayOfWeek); } }
@@ -102,11 +113,17 @@ namespace AlarmApp.Models
 		}
 
 
+		protected DateTimeOffset GetDateTimeOffsetFromTimeSpan(TimeSpan time)
+		{
+			var now = DateTime.Now;
+			var dateTime = new DateTime(now.Year, now.Month, now.Day, time.Hours, time.Minutes, time.Seconds);
+			return new DateTimeOffset(dateTime);
+		}
 
 		public override string ToString()
 		{
 			return base.ToString();
-			return $"Alarm set for: {Time.ToString("hh/mm/ss")}, occuring every {Frequency.ToString("dd days, hh hours, mm minutes, ss seconds")}";
+			//return $"Alarm set for: {Time.ToString("hh/mm/ss")}, occuring every {Frequency.ToString("dd days, hh hours, mm minutes, ss seconds")}";
 		}
 	}
 }
