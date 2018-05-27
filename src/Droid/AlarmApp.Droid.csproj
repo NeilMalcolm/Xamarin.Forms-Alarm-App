@@ -135,6 +135,7 @@
     <Compile Include="Renderers\AndroidDayOfTheWeekButtonRenderer.cs" />
     <Compile Include="SplashActivity.cs" />
     <Compile Include="Renderers\AndroidCircleLabelRenderer.cs" />
+    <Compile Include="Services\DeviceStorageAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
