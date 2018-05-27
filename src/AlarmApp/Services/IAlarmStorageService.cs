@@ -7,7 +7,11 @@ namespace AlarmApp.Services
 	public interface IAlarmStorageService
 	{
 		List<Alarm> GetAllAlarms();
-		bool SaveAlarm(Alarm alarm);
-		bool DeleteAlarm(Alarm alarm);
+		List<Alarm> GetTodaysAlarms();
+
+		void AddAlarm(Alarm alarm);
+		void UpdateAlarm(Alarm alarm);
+		void DeleteAlarm(Alarm alarm);
+		bool DoesAlarmExist(Alarm alarm);
 	}
 }
