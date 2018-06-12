@@ -14,7 +14,7 @@
 	</ContentPage.Resources>
 	<ContentPage.Content>
 		<Grid>
-			<ListView x:Name="listView" 
+			<ListView BackgroundColor="Transparent" x:Name="listView" 
 					  ItemsSource="{Binding Alarms}" 
 					 HasUnevenRows="true"
 					  SelectedItem="{Binding SelectedAlarm}" 
@@ -24,7 +24,13 @@
 					  GroupDisplayBinding="{Binding Title}"-->
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<local:AlarmListCell Height="150">
+						<local:AlarmListCell>
+							<local:AlarmListCell.Height>
+								<OnPlatform x:TypeArguments="x:Double">
+									<On Platform="Android" Value="150"/>
+									<On Platform="iOS" Value="175"/>
+								</OnPlatform>
+							</local:AlarmListCell.Height>
 							<local:AlarmListCell.ContextActions>
 								<MenuItem Icon="delete.png" Text="Delete" Command="{Binding Source={x:Reference listView}, Path=BindingContext.DeleteAlarmCommand}" CommandParameter="{Binding .}" IsDestructive="true"/>
 							</local:AlarmListCell.ContextActions>

@@ -2,6 +2,7 @@ using System;
 using AlarmApp.Models;
 using Xunit;
 using Xunit.Abstractions;
+using AlarmApp.PageModels;
 
 namespace AlarmApp.Tests
 {

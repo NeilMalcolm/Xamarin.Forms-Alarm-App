@@ -42,7 +42,6 @@ namespace AlarmApp.Models
 			return days.AllDays.Contains(true);
 		}
 
-
 		public override bool Equals(object obj)
 		{
 			if (obj is DayOfWeek)

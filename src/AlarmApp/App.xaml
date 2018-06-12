@@ -22,6 +22,11 @@
 				<Setter Property="BackgroundColor" Value="#1F2230"/>
 			</Style>
 
+			<Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
+				<Setter Property="BarTextColor" Value="#FFFFFF"/>
+			</Style>
+
+
 			<!-- Label Styles -->
 			<Style TargetType="Label" ApplyToDerivedTypes="True">
 				<Setter Property="TextColor" Value="#FFFFFF"/>

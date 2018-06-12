@@ -16,7 +16,6 @@ namespace AlarmApp
 			/*
 			 * TabbedPage page 
 			 */
-
 			var tabbedNavigation = new FreshTabbedFONavigationContainer("Alarm App");
 			tabbedNavigation.BackgroundColor = (Color)Resources["PrimaryColor"];
 

@@ -12,7 +12,7 @@ namespace AlarmApp.Models
 
 		[Ignored]
 		public TimeSpan Time { 
-			get { return TimeOffset.TimeOfDay; } 
+			get { return TimeOffset.LocalDateTime.TimeOfDay; } 
 			set { TimeOffset = GetDateTimeOffsetFromTimeSpan(value);}
 		}
 
@@ -20,7 +20,7 @@ namespace AlarmApp.Models
 
 		[Ignored]
 		public TimeSpan Frequency { 
-			get { return FrequencyOffset.TimeOfDay; } 
+			get { return FrequencyOffset.LocalDateTime.TimeOfDay; } 
 			set { FrequencyOffset = GetDateTimeOffsetFromTimeSpan(value); }
 		}
 
@@ -30,7 +30,7 @@ namespace AlarmApp.Models
 
 		[Ignored]
 		public TimeSpan Duration { 
-			get { return DurationOffset.TimeOfDay; } 
+			get { return DurationOffset.LocalDateTime.TimeOfDay; } 
 			set { DurationOffset = GetDateTimeOffsetFromTimeSpan(value); }
 		}
 
