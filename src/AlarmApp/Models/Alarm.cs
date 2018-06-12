@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Realms;
+using PropertyChanged;
 
 namespace AlarmApp.Models
 {
+	[AddINotifyPropertyChangedInterface]
 	public class Alarm : RealmObject
 	{
 		public string Name { get; set; }

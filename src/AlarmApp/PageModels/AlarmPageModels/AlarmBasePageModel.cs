@@ -3,112 +3,30 @@ using System.Windows.Input;
 using AlarmApp.Models;
 using AlarmApp.Services;
 using FreshMvvm;
+using PropertyChanged;
 
 namespace AlarmApp.PageModels
 {
+	[AddINotifyPropertyChangedInterface]
 	public class AlarmBasePageModel : FreshBasePageModel
 	{
-		string _name;
-		Alarm _alarm;
-		TimeSpan _time;
-		int _frequencyNumber;
-		string _frequencyPeriod;
-		int _durationNumber;
-		string _durationPeriod;
-		DaysOfWeek _days;
 		protected AlarmStorageService _alarmStorage = new AlarmStorageService();
 
-		//True by default, so we can be notified if false
-		bool _hasDayBeenSelected = true;
-		bool _isRepetitionsSet = true;
-		bool _isIntervalSset = true;
-		bool _isTotalDurationSet = true;
-		bool _isFrequencyPeriodValid = true;
-		bool _isDurationeriodValid = true;
-		bool _isFrequencyNumberValid = true;
-		bool _isDurationNumberValid = true;
+		public string Name { get; set; }
+		public Alarm Alarm { get; set; }
+		public TimeSpan Time { get; set; }
+		public int FrequencyNumber { get; set; }
+		public string FrequencyPeriod { get; set; }
+		public int DurationNumber { get; set; }
+		public string DurationPeriod { get; set; }
+		public DaysOfWeek Days { get; set; }
 
-		public string Name
-		{
-			get { return _name; }
-			set { _name = value; RaisePropertyChanged(); }
-		}
-
-		public Alarm Alarm
-		{
-			get { return _alarm; }
-			set { _alarm = value; RaisePropertyChanged(); }
-		}
-
-		public TimeSpan Time
-		{
-			get { return _time; }
-			set { _time = value; RaisePropertyChanged(); }
-		}
-
-		// repeat every
-
-		public int FrequencyNumber
-		{
-			get { return _frequencyNumber; }
-			set { _frequencyNumber = value; RaisePropertyChanged(); }
-		}
-
-		public string FrequencyPeriod
-		{
-			get { return _frequencyPeriod; }
-			set { _frequencyPeriod = value; RaisePropertyChanged(); }
-		}
-
-		// for
-
-		public int DurationNumber
-		{
-		    get{ return _durationNumber;  }
-			set{ _durationNumber = value; RaisePropertyChanged(); }
-		}
-
-		public string DurationPeriod
-		{
-			get{ return _durationPeriod;  }
-			set{ _durationPeriod = value; RaisePropertyChanged(); }
-		}
-
-		public DaysOfWeek Days
-		{
-			get { return _days; }
-			set { _days = value; RaisePropertyChanged(); }
-		}
-
-		public bool HasDayBeenSelected
-		{
-			get { return _hasDayBeenSelected; }
-			set { _hasDayBeenSelected = value; RaisePropertyChanged(); }
-		}
-
-		public bool IsFrequencyNumberValid
-		{
-			get { return _isFrequencyNumberValid; }
-			set { _isFrequencyNumberValid = value; RaisePropertyChanged(); }
-		}
-
-		public bool IsFrequencyPeriodValid
-		{
-			get { return _isFrequencyPeriodValid; }
-			set { _isFrequencyPeriodValid = value; RaisePropertyChanged(); }
-		}
-
-		public bool IsDurationNumberValid
-		{
-			get { return _isDurationNumberValid; }
-			set { _isDurationNumberValid = value; RaisePropertyChanged(); }
-		}
-
-		public bool IsDurationPeriodValid
-		{
-			get { return _isDurationeriodValid; }
-			set { _isDurationeriodValid = value; RaisePropertyChanged(); }
-		}
+		// Validation
+		public bool HasDayBeenSelected { get; set; } = true;
+		public bool IsFrequencyNumberValid { get; set; } = true;
+		public bool IsFrequencyPeriodValid { get; set; } = true;
+		public bool IsDurationNumberValid { get; set; } = true;
+		public bool IsDurationPeriodValid { get; set; } = true;
 
 
 		public ICommand DayPressedCommand

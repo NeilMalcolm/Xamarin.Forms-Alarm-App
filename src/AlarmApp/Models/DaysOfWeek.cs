@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 using Realms;
+using PropertyChanged;
 
 namespace AlarmApp.Models
 {
+	[AddINotifyPropertyChangedInterface]
 	public class DaysOfWeek : RealmObject
 	{
 		public bool Monday { get; set; }

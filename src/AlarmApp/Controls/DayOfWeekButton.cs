@@ -17,7 +17,6 @@ namespace AlarmApp.Controls
 			set
 			{
 				SetValue(IsSelectedProperty, value);
-				OnPropertyChanged("IsSelected");
 			}
 		}
 	}

@@ -7,29 +7,18 @@ using AlarmApp.Models;
 using FreshMvvm;
 using AlarmApp.Helpers;
 using AlarmApp.Services;
+using PropertyChanged;
 
 namespace AlarmApp.PageModels
 {
+	[AddINotifyPropertyChangedInterface]
 	public class AlarmListPageModel : FreshBasePageModel
 	{
 		AlarmListType _alarmListType;
 		AlarmStorageService _alarmStorage = new AlarmStorageService();
-		//List<AlarmListGroup> _alarms = null;
 		Alarm _selectedAlarm;
 
-		//public List<AlarmListGroup> Alarms
-		//{
-		//	get { return _alarms; }
-		//	set { _alarms = value; RaisePropertyChanged(); }
-		//}
-
-		ObservableCollection<Alarm> _alarms;
-
-		public ObservableCollection<Alarm> Alarms
-		{
-			get { return _alarms; }
-			set { _alarms = value; RaisePropertyChanged(); }
-		}
+		public ObservableCollection<Alarm> Alarms { get; set; } = new ObservableCollection<Alarm>();
 
 
 		public Alarm SelectedAlarm
