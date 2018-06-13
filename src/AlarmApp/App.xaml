@@ -8,7 +8,10 @@
 			
 			<Color x:Key="PrimaryColor">#1F2230</Color>
 			<Color x:Key="PrimaryDarkColor">#1A1E29</Color>
-			<!--<Color x:Key="AccentColor"></Color>-->
+			<Color x:Key="AccentColor">#FF4081</Color>
+
+			<Color x:Key="TitleColor">#D9DFFA</Color>
+			<Color x:Key="SubtitleColor">#8894CB</Color>
 
 			<!-- Would be good to reference primary here-->
 			<Color x:Key="ContentPageBackgroundColor"></Color>

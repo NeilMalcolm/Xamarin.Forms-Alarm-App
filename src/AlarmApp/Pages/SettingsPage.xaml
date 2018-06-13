@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 xmlns:views="clr-namespace:AlarmApp.Views" 
+			 x:Class="AlarmApp.Pages.SettingsPage"
+			 Title="Settings"
+			 BackgroundColor="#161823">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style TargetType="Label" x:Key="SettingsTitleStyle">
+				<Setter Property="TextColor" Value="#8894CB"/>
+				<Setter Property="FontSize" Value="23"/>
+			</Style>
+
+			<Style TargetType="Label" x:Key="SettingsSubtitleStyle">
+				<Setter Property="TextColor" Value="#616EAB"/>
+				<Setter Property="Margin" Value="0, -8, 0, 0"/>
+			</Style>
+
+			<Style TargetType="Label" x:Key="SettingsWarningSubtitleStyle">
+				<Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+				<Setter Property="Margin" Value="0, -8, 0, 0"/>
+			</Style>
+
+			<Style TargetType="StackLayout" x:Key="SettingsCellStackStyle">
+				<Setter Property="Padding" Value="20, 15, 20, 15"/>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<TableView Intent="Settings" HasUnevenRows="true">
+			<TableRoot>
+				<TableSection>
+					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Clock Format">
+						<views:SettingsViewCell.View>
+							<StackLayout Style="{StaticResource SettingsCellStackStyle}">
+								<Label Style="{StaticResource SettingsTitleStyle}" Text="Clock Format"/>
+								<Label Style="{StaticResource SettingsSubtitleStyle}" Text="24 Hour - 19:00 (use DateTime.Now in currentFormat"/>
+							</StackLayout>
+						</views:SettingsViewCell.View>
+					</views:SettingsViewCell>
+
+					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Alarm Tone">
+						<views:SettingsViewCell.View>
+							<StackLayout Style="{StaticResource SettingsCellStackStyle}">
+								<Label Style="{StaticResource SettingsTitleStyle}" Text="Default alarm tone"/>
+								<Label Style="{StaticResource SettingsSubtitleStyle}" Text="Shooting Star"/>
+							</StackLayout>
+						</views:SettingsViewCell.View>
+					</views:SettingsViewCell>
+
+					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Vibrate">
+						<views:SettingsViewCell.View>
+							<Grid Padding="20">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="Auto"/>
+								</Grid.RowDefinitions>
+								<Label Grid.Row="0" Style="{StaticResource SettingsTitleStyle}" Text="Vibrate"/>
+
+								<Switch x:Name="VibrateSwitch" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
+
+								<Label Grid.Row="1" Style="{StaticResource SettingsSubtitleStyle}" Text="Off"/>
+							</Grid>
+						</views:SettingsViewCell.View>
+					</views:SettingsViewCell>
+				</TableSection>
+				
+				<TableSection>
+					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Delete Alarms">
+						<views:SettingsViewCell.View>
+							<StackLayout Style="{StaticResource SettingsCellStackStyle}">
+								<Label Style="{StaticResource SettingsTitleStyle}" Text="Delete all alarms"/>
+								<Label Style="{StaticResource SettingsWarningSubtitleStyle}" Text="Warning! This action cannot be undone"/>
+							</StackLayout>
+						</views:SettingsViewCell.View>
+					</views:SettingsViewCell>
+				</TableSection>
+			</TableRoot>
+		</TableView>
+	</ContentPage.Content>
+</ContentPage>

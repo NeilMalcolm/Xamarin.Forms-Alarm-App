@@ -3,6 +3,7 @@ using AlarmApp.PageModels;
 using FreshMvvm;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AlarmApp.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AlarmApp
@@ -13,6 +14,7 @@ namespace AlarmApp
 		{
 			InitializeComponent();
 
+			SetUpIoC();
 			/*
 			 * TabbedPage page 
 			 */
@@ -36,6 +38,11 @@ namespace AlarmApp
 
 			//testing
 			//MainPage = new TestPage();
+		}
+
+		void SetUpIoC()
+		{
+			FreshIOC.Container.Register<IAlarmStorageService, AlarmStorageService>();
 		}
 
 		public void DoThing()

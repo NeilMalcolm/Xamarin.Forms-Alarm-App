@@ -15,7 +15,7 @@ namespace AlarmApp.PageModels
 	public class AlarmListPageModel : FreshBasePageModel
 	{
 		AlarmListType _alarmListType;
-		AlarmStorageService _alarmStorage = new AlarmStorageService();
+		IAlarmStorageService _alarmStorage;
 		Alarm _selectedAlarm;
 
 		public ObservableCollection<Alarm> Alarms { get; set; } = new ObservableCollection<Alarm>();
@@ -60,8 +60,21 @@ namespace AlarmApp.PageModels
 
 		}
 
-		public AlarmListPageModel()
+		public ICommand SettingsCommand
 		{
+			get
+			{
+				return new FreshAwaitCommand(async (o, tcs) =>
+				{
+					await CoreMethods.PushPageModel<SettingsPageModel>(null, false, true);
+					tcs.SetResult(true);
+				});
+			}
+		}
+
+		public AlarmListPageModel(IAlarmStorageService alarmStorage)
+		{
+			_alarmStorage = alarmStorage;
 		}
 
 		public override void Init(object initData)

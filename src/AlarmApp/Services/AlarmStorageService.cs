@@ -85,5 +85,22 @@ namespace AlarmApp.Services
 
 			return false;
 		}
+
+		/// <summary>
+		/// Gets the settings
+		/// </summary>
+		/// <returns>The settings object</returns>
+		public Settings GetSettings()
+		{
+			Settings settings = new Settings();
+
+			var settingsList =_realm.All<Settings>();
+			var settingsAreFound = settingsList?.Count() > 0;
+
+			if(settingsAreFound)
+				settings = settingsList.ElementAt(0);
+
+			return settings;
+		}
 	}
 }

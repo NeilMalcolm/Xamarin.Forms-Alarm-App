@@ -58,6 +58,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -106,6 +110,12 @@
     <Compile Include="Services\IAlarmStorageService.cs" />
     <Compile Include="Services\AlarmStorageService.cs" />
     <Compile Include="Services\IDeviceStorageService.cs" />
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageModels\SettingsPageModel.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Views\SettingsViewCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

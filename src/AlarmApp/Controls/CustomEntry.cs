@@ -4,7 +4,12 @@ namespace AlarmApp.Controls
 {
 	public class CustomEntry : Entry
 	{
-		public static readonly BindableProperty IsValidProperty = BindableProperty.Create("IsValid", typeof(bool?), typeof(CustomEntry), null, propertyChanged: OnIsValidChanged);
+		public static readonly BindableProperty IsValidProperty =  
+			BindableProperty.Create("IsValid", 
+			                        typeof(bool?), 
+			                        typeof(CustomEntry), 
+			                        null, 
+			                        propertyChanged: OnIsValidChanged);
 
 		public bool? IsValid
 		{

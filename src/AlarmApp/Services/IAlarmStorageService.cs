@@ -13,5 +13,7 @@ namespace AlarmApp.Services
 		void UpdateAlarm(Alarm alarm);
 		void DeleteAlarm(Alarm alarm);
 		bool DoesAlarmExist(Alarm alarm);
+
+		Settings GetSettings();
 	}
 }

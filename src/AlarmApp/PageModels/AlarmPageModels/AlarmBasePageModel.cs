@@ -10,7 +10,7 @@ namespace AlarmApp.PageModels
 	[AddINotifyPropertyChangedInterface]
 	public class AlarmBasePageModel : FreshBasePageModel
 	{
-		protected AlarmStorageService _alarmStorage = new AlarmStorageService();
+		protected IAlarmStorageService _alarmStorage;
 
 		public string Name { get; set; }
 		public Alarm Alarm { get; set; }
@@ -106,5 +106,14 @@ namespace AlarmApp.PageModels
 			return validation;
 		}
 
+		public AlarmBasePageModel()
+		{
+			
+		}
+
+		public AlarmBasePageModel(IAlarmStorageService alarmStorage)
+		{
+			_alarmStorage = alarmStorage;
+		}
 	}
 }
