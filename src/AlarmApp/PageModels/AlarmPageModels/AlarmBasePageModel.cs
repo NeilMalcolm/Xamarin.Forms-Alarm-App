@@ -106,11 +106,6 @@ namespace AlarmApp.PageModels
 			return validation;
 		}
 
-		public AlarmBasePageModel()
-		{
-			
-		}
-
 		public AlarmBasePageModel(IAlarmStorageService alarmStorage)
 		{
 			_alarmStorage = alarmStorage;

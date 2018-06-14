@@ -62,8 +62,6 @@ namespace AlarmApp.Droid.Services
 			Log.Debug(AlarmTag, "time diff: " + (long)differenceAsMillis);
 			Log.Debug(AlarmTag, "System current time in millis: " + Java.Lang.JavaSystem.CurrentTimeMillis() + " alarm set at: " + Java.Lang.JavaSystem.CurrentTimeMillis() + (long)differenceAsMillis);
 
-
-			Toast.MakeText(Android.App.Application.Context, "Alarm set for " + GetTimeDifferenceAsString(time) + " from now", ToastLength.Short);
 			//openAlarmIntent.
 		}
 

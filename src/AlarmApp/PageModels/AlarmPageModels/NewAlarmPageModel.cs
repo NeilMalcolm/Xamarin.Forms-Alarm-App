@@ -23,7 +23,7 @@ namespace AlarmApp.PageModels
 			}
 		}
 
-		public NewAlarmPageModel()
+		public NewAlarmPageModel(IAlarmStorageService alarmStorage) : base(alarmStorage)
 		{
 			Alarm = new Alarm();
 			Alarm.Time = DateTime.Now.TimeOfDay;

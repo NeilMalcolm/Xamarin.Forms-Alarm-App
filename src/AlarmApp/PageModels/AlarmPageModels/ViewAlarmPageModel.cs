@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using AlarmApp.Models;
+using AlarmApp.Services;
 using FreshMvvm;
 
 namespace AlarmApp.PageModels
@@ -17,6 +18,11 @@ namespace AlarmApp.PageModels
 					tcs.SetResult(true);
 				});
 			}
+		}
+
+		public ViewAlarmPageModel(IAlarmStorageService alarmStorage) : base(alarmStorage)
+		{
+			
 		}
 
 		public override void Init(object initData)
