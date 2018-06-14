@@ -5,7 +5,7 @@
 			 xmlns:controls="clr-namespace:AlarmApp.Controls" 
 			 x:Class="AlarmApp.Pages.SettingsPage"
 			 Title="Settings"
-			 BackgroundColor="#161823">
+			 BackgroundColor="{StaticResource DarkBackgroundColor}">
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<Style TargetType="Label" x:Key="SettingsTitleStyle">

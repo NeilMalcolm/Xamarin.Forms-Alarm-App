@@ -14,6 +14,7 @@
 			<Color x:Key="TitleDisabledColor">#7C84A8</Color>
 			<Color x:Key="SubtitleColor">#8894CB</Color>
 			<Color x:Key="SubtitleDisabledColor">#757B96</Color>
+			<Color x:Key="DarkBackgroundColor">#161823</Color>
 
 			<!-- Would be good to reference primary here-->
 			<Color x:Key="ContentPageBackgroundColor"></Color>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using AlarmApp.Models;
+using System.Collections.Generic;
 
 namespace AlarmApp
 {
@@ -64,6 +65,18 @@ namespace AlarmApp
 		//		Days = new DaysOfWeek(new bool[]{true, true, true, false, false, false, false})
 		//	}, 
 		//};
+
+		public static readonly List<KeyValuePair<string, string>> Tones = new List<KeyValuePair<string, string>>()
+		{
+			new KeyValuePair<string, string>("Select custom tone...", "null"),
+			new KeyValuePair<string, string>("Buzz", "Buzz"),
+			new KeyValuePair<string, string>("Shooting Star", "Shooting Star"),
+			new KeyValuePair<string, string>("Raindrops", "Raindrops"),
+			new KeyValuePair<string, string>("Flutter", "Flutter"),
+			new KeyValuePair<string, string>("Whistle", "Whistle"),
+			new KeyValuePair<string, string>("Windy Day", "Windy Day")
+		};
+
 	}
 
 	public enum AlarmListType

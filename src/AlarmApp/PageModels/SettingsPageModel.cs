@@ -49,7 +49,7 @@ namespace AlarmApp.PageModels
 					SwitchFormat();
 					break;
 				case "Alarm Tone":
-					ChangeAlarmTone();
+					await GoToAlarmTonePage();
 					break;
 				case "Vibrate":
 					ToggleVibrate();
@@ -79,10 +79,9 @@ namespace AlarmApp.PageModels
 			_alarmStorage.DeleteAllAlarms();
 		}
 
-		void ChangeAlarmTone()
+		async Task GoToAlarmTonePage()
 		{
-
-			//_alarmStorage.UpdateSettings(Settings);
+			await CoreMethods.PushPageModel<SettingsTonePageModel>(null, false, true);
 		}
 
 		void ToggleVibrate()
