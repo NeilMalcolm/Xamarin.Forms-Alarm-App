@@ -34,7 +34,7 @@ namespace AlarmApp.PageModels
 			_alarmStorage = alarmStorage;
 		}
 
-		protected async override void ViewIsAppearing(object sender, EventArgs e)
+		protected override void ViewIsAppearing(object sender, EventArgs e)
 		{
 			base.ViewIsAppearing(sender, e);
 
@@ -43,9 +43,62 @@ namespace AlarmApp.PageModels
 
 		async Task OnCellTapped(string parameter)
 		{
-			await Task.Delay(1000);
-			System.Diagnostics.Debug.WriteLine(parameter);
+			switch (parameter)
+			{
+				case "Clock Format":
+					SwitchFormat();
+					break;
+				case "Alarm Tone":
+					ChangeAlarmTone();
+					break;
+				case "Vibrate":
+					ToggleVibrate();
+					break;
+				case "Delete":
+					await DoDeleteAlert();
+					break;
+			}
 			return;
+		}
+
+		async Task DoDeleteAlert()
+		{
+			var shouldDeleteAlarms = await CoreMethods.DisplayAlert("Are you sure?", 
+			                               "You are about to delete all your alarms, " +
+			                               "this action is permanent and cannot be undone.", 
+			                               "DELETE", "CANCEL");
+
+			if(shouldDeleteAlarms)
+			{
+				DeleteAlarms();
+			}
+		}
+
+		void DeleteAlarms()
+		{
+			_alarmStorage.DeleteAllAlarms();
+		}
+
+		void ChangeAlarmTone()
+		{
+
+			//_alarmStorage.UpdateSettings(Settings);
+		}
+
+		void ToggleVibrate()
+		{
+			_alarmStorage.Realm.Write(() =>
+			{
+				Settings.IsVibrateOn = !Settings.IsVibrateOn;
+			});
+		}
+
+		void SwitchFormat()
+		{
+			_alarmStorage.Realm.Write(() =>
+			{
+				Settings.SwitchFormat();
+			});
 		}
 	}
 }

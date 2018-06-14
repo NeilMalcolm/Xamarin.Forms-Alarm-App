@@ -62,6 +62,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SettingsTonePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -116,6 +120,10 @@
     <Compile Include="PageModels\SettingsPageModel.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Views\SettingsViewCell.cs" />
+    <Compile Include="Pages\SettingsTonePage.xaml.cs">
+      <DependentUpon>SettingsTonePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageModels\SettingsTonePageModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

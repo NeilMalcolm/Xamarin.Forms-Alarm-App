@@ -10,7 +10,8 @@ namespace AlarmApp.Services
 {
 	public class AlarmStorageService : IAlarmStorageService
 	{
-		static Realm _realm = Realm.GetInstance();
+		public Realm Realm { get { return Realm.GetInstance();} }
+
 
 		public AlarmStorageService()
 		{
@@ -23,7 +24,7 @@ namespace AlarmApp.Services
 		/// <returns>All alarms</returns>
 		public List<Alarm> GetAllAlarms()
 		{
-			return _realm.All<Alarm>().ToList();
+			return Realm.All<Alarm>().ToList();
 		}
 
 		/// <summary>
@@ -32,7 +33,7 @@ namespace AlarmApp.Services
 		/// <returns>Today's alarms</returns>
 		public List<Alarm> GetTodaysAlarms()
 		{
-			var all = _realm.All<Alarm>();
+			var all = Realm.All<Alarm>();
 			return all.ToList().Where(x => x.OccursToday == true).ToList();
 		}
 
@@ -42,9 +43,9 @@ namespace AlarmApp.Services
 		/// <param name="alarm">Alarm to add</param>
 		public void AddAlarm(Alarm alarm)
 		{
-			_realm.Write(() =>
+			Realm.Write(() =>
 			{
-				_realm.Add<Alarm>(alarm);
+				Realm.Add<Alarm>(alarm);
 			});
 		}
 
@@ -54,9 +55,9 @@ namespace AlarmApp.Services
 		/// <param name="alarm">Alarm to update</param>
 		public void UpdateAlarm(Alarm alarm)
 		{
-			_realm.Write(() =>
+			Realm.Write(() =>
 			{
-				_realm.Add<Alarm>(alarm, true);
+				Realm.Add<Alarm>(alarm, true);
 			});
 		}
 
@@ -66,9 +67,9 @@ namespace AlarmApp.Services
 		/// <param name="alarm">Alarm we want to delete</param>
 		public void DeleteAlarm(Alarm alarm)
 		{
-			_realm.Write(() =>
+			Realm.Write(() =>
 			{
-				_realm.Remove(alarm);
+				Realm.Remove(alarm);
 			});
 		}
 
@@ -79,11 +80,22 @@ namespace AlarmApp.Services
 		/// <param name="alarm">The Alarm we want to know already exists</param>
 		public bool DoesAlarmExist(Alarm alarm)
 		{
-			var containsAlarm = _realm.All<Alarm>().Contains(alarm);
+			var containsAlarm = Realm.All<Alarm>().Contains(alarm);
 			if (containsAlarm)
 				return true;
 
 			return false;
+		}
+
+		/// <summary>
+		/// Deletes all the alarms
+		/// </summary>
+		public void DeleteAllAlarms()
+		{
+			Realm.Write(() =>
+			{
+				Realm.RemoveAll<Alarm>();
+			});
 		}
 
 		/// <summary>
@@ -94,11 +106,13 @@ namespace AlarmApp.Services
 		{
 			Settings settings = new Settings();
 
-			var settingsList =_realm.All<Settings>();
+			var settingsList =Realm.All<Settings>();
 			var settingsAreFound = settingsList?.Count() > 0;
 
-			if(settingsAreFound)
+			if (settingsAreFound)
 				settings = settingsList.ElementAt(0);
+			else
+				Realm.Write(() => Realm.Add(settings));
 
 			return settings;
 		}

@@ -2,21 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 			 xmlns:views="clr-namespace:AlarmApp.Views" 
+			 xmlns:controls="clr-namespace:AlarmApp.Controls" 
 			 x:Class="AlarmApp.Pages.SettingsPage"
 			 Title="Settings"
 			 BackgroundColor="#161823">
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<Style TargetType="Label" x:Key="SettingsTitleStyle">
-				<Setter Property="TextColor" Value="#8894CB"/>
+				<Setter Property="TextColor" Value="{StaticResource TitleColor}"/>
 				<Setter Property="FontSize" Value="23"/>
 			</Style>
 
+			<Style TargetType="Label" x:Key="SettingsTitleDisabledStyle">
+				<Setter Property="TextColor" Value="{StaticResource TitleDisabledColor}"/>
+				<Setter Property="FontSize" Value="23"/>
+			</Style>
+			
 			<Style TargetType="Label" x:Key="SettingsSubtitleStyle">
-				<Setter Property="TextColor" Value="#616EAB"/>
+				<Setter Property="TextColor" Value="{StaticResource SubtitleColor}"/>
 				<Setter Property="Margin" Value="0, -8, 0, 0"/>
 			</Style>
 
+			<Style TargetType="Label" x:Key="SettingsSubtitleDisabledStyle">
+				<Setter Property="TextColor" Value="{StaticResource SubtitleDisabledColor}"/>
+				<Setter Property="Margin" Value="0, -8, 0, 0"/>
+			</Style>
+			
 			<Style TargetType="Label" x:Key="SettingsWarningSubtitleStyle">
 				<Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
 				<Setter Property="Margin" Value="0, -8, 0, 0"/>
@@ -35,7 +46,7 @@
 						<views:SettingsViewCell.View>
 							<StackLayout Style="{StaticResource SettingsCellStackStyle}">
 								<Label Style="{StaticResource SettingsTitleStyle}" Text="Clock Format"/>
-								<Label Style="{StaticResource SettingsSubtitleStyle}" Text="24 Hour - 19:00 (use DateTime.Now in currentFormat"/>
+								<Label Style="{StaticResource SettingsSubtitleStyle}" Text="{Binding Settings.TimeFormat}"/>
 							</StackLayout>
 						</views:SettingsViewCell.View>
 					</views:SettingsViewCell>
@@ -44,7 +55,7 @@
 						<views:SettingsViewCell.View>
 							<StackLayout Style="{StaticResource SettingsCellStackStyle}">
 								<Label Style="{StaticResource SettingsTitleStyle}" Text="Default alarm tone"/>
-								<Label Style="{StaticResource SettingsSubtitleStyle}" Text="Shooting Star"/>
+								<Label Style="{StaticResource SettingsSubtitleStyle}" Text="{Binding Settings.AlarmTone}"/>
 							</StackLayout>
 						</views:SettingsViewCell.View>
 					</views:SettingsViewCell>
@@ -56,18 +67,42 @@
 									<RowDefinition Height="*"/>
 									<RowDefinition Height="Auto"/>
 								</Grid.RowDefinitions>
-								<Label Grid.Row="0" Style="{StaticResource SettingsTitleStyle}" Text="Vibrate"/>
+								<Label Grid.Row="0" Style="{StaticResource SettingsTitleStyle}" Text="Vibrate">
+									<Label.Triggers>
+										<DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference VibrateSwitch}, Path=IsToggled}" 
+												 Value="false">
+											<Setter Property="Style" Value="{StaticResource SettingsTitleDisabledStyle}"/>
+										</DataTrigger>
+										<DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference VibrateSwitch}, Path=IsToggled}" 
+												 Value="true">
+											<Setter Property="Style" Value="{StaticResource SettingsTitleStyle}"/>
+										</DataTrigger>
+									</Label.Triggers>
+								</Label>
 
-								<Switch x:Name="VibrateSwitch" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
+								<Switch x:Name="VibrateSwitch" IsToggled="{Binding Settings.IsVibrateOn}" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
 
-								<Label Grid.Row="1" Style="{StaticResource SettingsSubtitleStyle}" Text="Off"/>
+								<Label Grid.Row="1">
+									<Label.Triggers>
+										<DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference VibrateSwitch}, Path=IsToggled}" 
+												 Value="false">
+											<Setter Property="Text" Value="Off"/>
+											<Setter Property="Style" Value="{StaticResource SettingsSubtitleDisabledStyle}"/>
+										</DataTrigger>
+										<DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference VibrateSwitch}, Path=IsToggled}" 
+												 Value="true">
+											<Setter Property="Text" Value="On"/>
+											<Setter Property="Style" Value="{StaticResource SettingsSubtitleStyle}"/>
+										</DataTrigger>
+									</Label.Triggers>
+								</Label>
 							</Grid>
 						</views:SettingsViewCell.View>
 					</views:SettingsViewCell>
 				</TableSection>
 				
 				<TableSection>
-					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Delete Alarms">
+					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Delete">
 						<views:SettingsViewCell.View>
 							<StackLayout Style="{StaticResource SettingsCellStackStyle}">
 								<Label Style="{StaticResource SettingsTitleStyle}" Text="Delete all alarms"/>
