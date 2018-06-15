@@ -1,13 +1,14 @@
 ﻿using System;
+using AlarmApp.Models;
 
 namespace AlarmApp.Services
 {
 	public interface IAlarmSetter
 	{
-		void SetAlarm(DateTime time);
+		void SetAlarm(Alarm alarm);
 
-		void SetRepeatingAlarm(DateTime start, DateTime end, TimeSpan interval);
+		void SetRepeatingAlarm(Alarm alarm);
 
-		void DeleteAlarm(DateTime time);
+		void DeleteAlarm(Alarm alarm);
 	}
 }

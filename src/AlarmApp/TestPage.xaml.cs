@@ -43,7 +43,7 @@ namespace AlarmApp
 
 			var newDateTime = new DateTime(now.Year, now.Month, now.Day, time.Hours, time.Minutes, time.Seconds, time.Milliseconds);
 			_previouslySet = newDateTime;
-			_alarmSetter.SetAlarm(newDateTime);
+			//_alarmSetter.SetAlarm(newDateTime);
 
 			//if(string.IsNullOrWhiteSpace(FrequencyEntry.Text))
 			//{
@@ -78,7 +78,7 @@ namespace AlarmApp
 
 		void Delete_Pressed(object sender, EventArgs e)
 		{
-			_alarmSetter.DeleteAlarm(_previouslySet);
+			//_alarmSetter.DeleteAlarm(_previouslySet);
 		}
 	}
 }

@@ -20,81 +20,63 @@ namespace AlarmApp.Droid.Services
 		public static string AlarmTag = "Al4rm";
 		Calendar _now = Calendar.GetInstance(Android.Icu.Util.TimeZone.Default, Java.Util.Locale.Default);
 
-		string _previous;
 		public AlarmSetterAndroid()
 		{
 			
 		}
 
-		public void SetAlarm(DateTime time)
+		public void SetAlarm(Alarm alarm)
 		{
-			//time = DateTime.Now;
-			//time.AddSeconds(10);
-			Log.Debug(AlarmTag, "SET THE THING");
 			var alarmIntent = new Intent(Forms.Context, typeof(AlarmReceiver));
 			alarmIntent.SetFlags(ActivityFlags.IncludeStoppedPackages);
 			alarmIntent.PutExtra("message", "bing bong");
-			alarmIntent.PutExtra("hours", time.Hour);
-			alarmIntent.PutExtra("mins", time.Minute);
+			alarmIntent.PutExtra("hours", alarm.Time.Hours);
+			alarmIntent.PutExtra("mins", alarm.Time.Minutes);
 			PendingIntent pendingIntent = PendingIntent.GetBroadcast(Forms.Context, GetAlarmId(), alarmIntent, PendingIntentFlags.UpdateCurrent);
 			AlarmManager alarmManager = (AlarmManager)Forms.Context.GetSystemService(Context.AlarmService);
 
-			//var openAlarmIntent = new Intent(Android.Provider.AlarmClock.ActionSetAlarm);
-			//openAlarmIntent.SetFlags(ActivityFlags.NewTask);
-			//openAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraSkipUi, true);
-			//openAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraDays, time.Day);
-			//openAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraHour, time.Hour);
-			//openAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraMinutes, time.Minute);
-
-
-			//var guid = Guid.NewGuid();
-			//_previous = guid.ToString();
-			//openAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraMessage, "AlarmApp: " + _previous);
-
-			var difference = time.Subtract(DateTime.Now);
+			var difference = alarm.Time.Subtract(DateTime.Now.ToLocalTime().TimeOfDay);
 			var differenceAsMillis = difference.TotalMilliseconds;
 
-			//Forms.Context.StartActivity(openAlarmIntent);
-			time.AddHours(1);
+			alarm.Time.Add(new TimeSpan(1, 0, 0));
 			alarmManager.SetExact(AlarmType.RtcWakeup, Java.Lang.JavaSystem.CurrentTimeMillis() + (long)differenceAsMillis, pendingIntent);
-			//alarmManager.Set(AlarmType.RtcWakeup, )
-			Log.Debug(AlarmTag, "SET ALARM ANDROID: " + time.ToString());
-			//Log.Debug(AlarmTag, "milliseconds: " + (long)time.TimeOfDay.Milliseconds + ", current time in millis: " + (long)DateTime.Now.TimeOfDay.TotalMilliseconds);
-			Log.Debug(AlarmTag, "time diff: " + (long)differenceAsMillis);
-			Log.Debug(AlarmTag, "System current time in millis: " + Java.Lang.JavaSystem.CurrentTimeMillis() + " alarm set at: " + Java.Lang.JavaSystem.CurrentTimeMillis() + (long)differenceAsMillis);
-
 		}
 
-		public void SetRepeatingAlarm(DateTime start, DateTime end, TimeSpan interval)
+		public void SetRepeatingAlarm(Alarm alarm)
 		{
 			// if our end time is before our star ttime
-			if (start.CompareTo(end) > 0) return;
+			//if (start.CompareTo(end) > 0) return;
 
 
-			// if our two times
-			if(end.Subtract(start).TotalHours < 24)
-			{
+			//// if our two times
+			//if(end.Subtract(start).TotalHours < 24)
+			//{
 				
-			}
-			else
-			{
+			//}
+			//else
+			//{
 				
-			}
+			//}
 		}
 
-		public void DeleteAlarm(DateTime time)
+		public void DeleteAlarm(Alarm alarm)
 		{
-			var openAlarmIntent = new Intent(Android.Provider.AlarmClock.ActionDismissAlarm);
-			openAlarmIntent.SetFlags(ActivityFlags.NewTask);
-			//openAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraSkipUi, true);
-			//openAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraDays, time.Day);
-			//openAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraHour, time.Hour);
-			//openAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraMinutes, time.Minute);
-			//openAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraMessage, _previous);
+			var deleteAlarmIntent = new Intent(Android.Provider.AlarmClock.ActionDismissAlarm);
+			deleteAlarmIntent.SetFlags(ActivityFlags.NewTask);
+			deleteAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraSkipUi, true);
 
-			openAlarmIntent.PutExtra(Android.Provider.AlarmClock.AlarmSearchModeLabel, _previous);
+			var alarmHasName = string.IsNullOrWhiteSpace(alarm.Name);
+			if(alarmHasName)
+			{
+				deleteAlarmIntent.PutExtra(Android.Provider.AlarmClock.AlarmSearchModeLabel, alarm.Name);
+			}
+			else {
+				deleteAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraDays, DateTime.Now.Day);
+				deleteAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraHour, alarm.Time.Hours);
+				deleteAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraMinutes, alarm.Time.Minutes);
+			}
 
-			Forms.Context.StartActivity(openAlarmIntent);
+			Forms.Context.StartActivity(deleteAlarmIntent);
 		}
 
 		int GetAlarmId()

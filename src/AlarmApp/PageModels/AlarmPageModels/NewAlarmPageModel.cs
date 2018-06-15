@@ -54,7 +54,7 @@ namespace AlarmApp.PageModels
 			Alarm.Duration = (TimeSpan)duration;
 
 			//Set alarm and add to our list of alarms
-			_alarmSetter.SetAlarm(alarmDateTime);
+			_alarmSetter.SetAlarm(Alarm);
 			_alarmStorage.AddAlarm(Alarm);
 
 			//pop the page
