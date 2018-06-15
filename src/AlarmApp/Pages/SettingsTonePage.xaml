@@ -6,10 +6,12 @@
 			 Title="Select Tone"
 			 BackgroundColor="{StaticResource DarkBackgroundColor}">
 	<ContentPage.Content>
-		<ListView x:Name="ToneListView" ItemsSource="{x:Static Helpers:Defaults.Tones}" SelectedItem="{Binding SelectedTone}">
+		<ListView x:Name="ToneListView" ItemsSource="{x:Static Helpers:Defaults.Tones}" SelectedItem="{Binding SelectedTone}" HasUnevenRows="true">
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<TextCell Text="{Binding Key}" TextColor="{StaticResource TitleColor}"/>
+					<ViewCell>
+						<Label Text="{Binding Key}" FontSize="17" TextColor="{StaticResource TitleColor}" Margin="20"/>
+					</ViewCell> 
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
