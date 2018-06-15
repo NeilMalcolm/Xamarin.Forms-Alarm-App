@@ -34,6 +34,12 @@ namespace AlarmApp.Droid
 			var closeButton = FindViewById<Button>(Resource.Id.closeButton);
 			closeButton.Click += CloseButton_Click;
 
+			// add flags to turn screen on and appear over lock screen
+			Window.AddFlags(WindowManagerFlags.ShowWhenLocked);
+			Window.AddFlags(WindowManagerFlags.DismissKeyguard);
+			Window.AddFlags(WindowManagerFlags.KeepScreenOn);
+			Window.AddFlags(WindowManagerFlags.TurnScreenOn);
+
 			Intent intent = Intent;
 			Bundle bundle = intent.Extras;
 
@@ -44,7 +50,6 @@ namespace AlarmApp.Droid
 				var textView = FindViewById<TextView>(Resource.Id.timeTextView);
 				textView.Text = hours + ":" + mins;
 			}
-
 			_vibrator = Vibrator.FromContext(this);
 			AssetFileDescriptor assetFileDescriptor = Assets.OpenFd("alarm_tone.m4a");
 			_mediaPlayer.Looping = true;

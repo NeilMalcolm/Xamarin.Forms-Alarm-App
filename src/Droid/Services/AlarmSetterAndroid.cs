@@ -10,6 +10,7 @@ using Android.Util;
 using Android.Widget;
 using Plugin.CurrentActivity;
 using Xamarin.Forms;
+using AlarmApp.Models;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AlarmSetterAndroid))]
 namespace AlarmApp.Droid.Services
@@ -62,16 +63,15 @@ namespace AlarmApp.Droid.Services
 			Log.Debug(AlarmTag, "time diff: " + (long)differenceAsMillis);
 			Log.Debug(AlarmTag, "System current time in millis: " + Java.Lang.JavaSystem.CurrentTimeMillis() + " alarm set at: " + Java.Lang.JavaSystem.CurrentTimeMillis() + (long)differenceAsMillis);
 
-			//openAlarmIntent.
 		}
 
 		public void SetRepeatingAlarm(DateTime start, DateTime end, TimeSpan interval)
 		{
-			//if our end time is before our star ttime
+			// if our end time is before our star ttime
 			if (start.CompareTo(end) > 0) return;
 
 
-			//if our two times
+			// if our two times
 			if(end.Subtract(start).TotalHours < 24)
 			{
 				
