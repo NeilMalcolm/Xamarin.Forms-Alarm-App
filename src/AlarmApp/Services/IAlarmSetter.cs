@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AlarmApp.Models;
 
 namespace AlarmApp.Services
@@ -10,5 +11,7 @@ namespace AlarmApp.Services
 		void SetRepeatingAlarm(Alarm alarm);
 
 		void DeleteAlarm(Alarm alarm);
+
+		void DeleteAllAlarms(List<Alarm> alarms);
 	}
 }

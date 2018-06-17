@@ -11,6 +11,7 @@ using Android.Widget;
 using Plugin.CurrentActivity;
 using Xamarin.Forms;
 using AlarmApp.Models;
+using System.Collections.Generic;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AlarmSetterAndroid))]
 namespace AlarmApp.Droid.Services
@@ -32,7 +33,7 @@ namespace AlarmApp.Droid.Services
 			alarmIntent.PutExtra("message", "bing bong");
 			alarmIntent.PutExtra("hours", alarm.Time.Hours);
 			alarmIntent.PutExtra("mins", alarm.Time.Minutes);
-			PendingIntent pendingIntent = PendingIntent.GetBroadcast(Forms.Context, GetAlarmId(), alarmIntent, PendingIntentFlags.UpdateCurrent);
+			PendingIntent pendingIntent = PendingIntent.GetBroadcast(Forms.Context, GetAlarmId(alarm), alarmIntent, PendingIntentFlags.UpdateCurrent);
 			AlarmManager alarmManager = (AlarmManager)Forms.Context.GetSystemService(Context.AlarmService);
 
 			var difference = alarm.Time.Subtract(DateTime.Now.ToLocalTime().TimeOfDay);
@@ -44,44 +45,25 @@ namespace AlarmApp.Droid.Services
 
 		public void SetRepeatingAlarm(Alarm alarm)
 		{
-			// if our end time is before our star ttime
-			//if (start.CompareTo(end) > 0) return;
-
-
-			//// if our two times
-			//if(end.Subtract(start).TotalHours < 24)
-			//{
-				
-			//}
-			//else
-			//{
-				
-			//}
 		}
 
 		public void DeleteAlarm(Alarm alarm)
 		{
-			var deleteAlarmIntent = new Intent(Android.Provider.AlarmClock.ActionDismissAlarm);
-			deleteAlarmIntent.SetFlags(ActivityFlags.NewTask);
-			deleteAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraSkipUi, true);
+			var alarmIntent = new Intent(Forms.Context, typeof(AlarmReceiver));
+			alarmIntent.SetFlags(ActivityFlags.IncludeStoppedPackages);
+			alarmIntent.PutExtra("message", "bing bong");
+			alarmIntent.PutExtra("hours", alarm.Time.Hours);
+			alarmIntent.PutExtra("mins", alarm.Time.Minutes);
 
-			var alarmHasName = string.IsNullOrWhiteSpace(alarm.Name);
-			if(alarmHasName)
-			{
-				deleteAlarmIntent.PutExtra(Android.Provider.AlarmClock.AlarmSearchModeLabel, alarm.Name);
-			}
-			else {
-				deleteAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraDays, DateTime.Now.Day);
-				deleteAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraHour, alarm.Time.Hours);
-				deleteAlarmIntent.PutExtra(Android.Provider.AlarmClock.ExtraMinutes, alarm.Time.Minutes);
-			}
-
-			Forms.Context.StartActivity(deleteAlarmIntent);
+			var alarmToDeleteId = GetAlarmId(alarm);
+			var alarmManager = (AlarmManager)Forms.Context.GetSystemService(Context.AlarmService);
+			var toDeletePendingIntent = PendingIntent.GetBroadcast(Forms.Context, alarmToDeleteId, alarmIntent, PendingIntentFlags.CancelCurrent);
+			alarmManager.Cancel(toDeletePendingIntent);
 		}
 
-		int GetAlarmId()
+		int GetAlarmId(Alarm alarm)
 		{
-			return (int)DateTime.Now.TimeOfDay.TotalMilliseconds;
+			return (int)alarm.Time.TotalMilliseconds;
 		}
 
 		string GetTimeDifferenceAsString(DateTime alarmTime)
@@ -141,6 +123,14 @@ namespace AlarmApp.Droid.Services
 
 			return diff;
 		}
+
+		public void DeleteAllAlarms(List<Alarm> alarms)
+		{
+			foreach(Alarm alarm in alarms)
+			{
+				DeleteAlarm(alarm);
+			}
+		}
 	}
 
 	[BroadcastReceiver]
@@ -161,5 +151,5 @@ namespace AlarmApp.Droid.Services
 			context.StartActivity(disIntent);
 			Log.Debug(AlarmSetterAndroid.AlarmTag, "current time in millis: " + (long)DateTime.Now.TimeOfDay.TotalMilliseconds);
 		}
-	} 
+	}
 }

@@ -2,6 +2,7 @@
 using AlarmApp.Services;
 using AlarmApp.iOS.Services;
 using AlarmApp.Models;
+using System.Collections.Generic;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AlarmSetterIos))]
 namespace AlarmApp.iOS.Services
@@ -22,5 +23,11 @@ namespace AlarmApp.iOS.Services
 		{
 			
 		}
+
+		public void DeleteAllAlarms(List<Alarm> alarms)
+		{
+			
+		}
+
 	}
 }

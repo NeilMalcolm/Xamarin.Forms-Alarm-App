@@ -10,6 +10,8 @@ namespace AlarmApp.Services
 {
 	public class AlarmStorageService : IAlarmStorageService
 	{
+		IAlarmSetter AlarmSetter { get; } = DependencyService.Get<IAlarmSetter>();
+
 		public Realm Realm { get { return Realm.GetInstance();} }
 
 
@@ -67,6 +69,7 @@ namespace AlarmApp.Services
 		/// <param name="alarm">Alarm we want to delete</param>
 		public void DeleteAlarm(Alarm alarm)
 		{
+			AlarmSetter.DeleteAlarm(alarm);
 			Realm.Write(() =>
 			{
 				Realm.Remove(alarm);
@@ -92,6 +95,8 @@ namespace AlarmApp.Services
 		/// </summary>
 		public void DeleteAllAlarms()
 		{
+			//remove all from android
+			AlarmSetter.DeleteAllAlarms(Realm.All<Alarm>().ToList());
 			Realm.Write(() =>
 			{
 				Realm.RemoveAll<Alarm>();
