@@ -5,8 +5,8 @@
 			 xmlns:local="clr-namespace:AlarmApp.Views"
 			 xmlns:converters="clr-namespace:AlarmApp.Converters">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Text="New alarm" Icon="add_new" Command="{Binding NewAlarmCommand}"/>
-		<ToolbarItem Text="Settings" Command="{Binding SettingsCommand}" Order="Secondary"/>
+		<ToolbarItem Text="New alarm" Icon="list_add_alarm" Command="{Binding NewAlarmCommand}"/>
+		<ToolbarItem Text="Settings" Icon="list_settings" Command="{Binding SettingsCommand}"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Resources>
 		<ResourceDictionary>

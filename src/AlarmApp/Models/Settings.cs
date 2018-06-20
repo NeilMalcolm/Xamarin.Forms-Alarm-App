@@ -19,7 +19,7 @@ namespace AlarmApp.Models
 
 		[Ignored]
 		public string TimeFormat => GetTimeFormatAsString();
-		public string AlarmTone { get; set; } = "Buzz";
+		public AlarmTone AlarmTone { get; set; }
 		public bool IsVibrateOn { get; set; } = true;
 
 		/// <summary>
@@ -51,6 +51,11 @@ namespace AlarmApp.Models
 				Format = ClockFormat.Hour24;
 			else
 				Format = ClockFormat.Hour12;
+		}
+
+		public Settings()
+		{
+			//AlarmTone = Defaults.Tones[1];
 		}
 	}
 

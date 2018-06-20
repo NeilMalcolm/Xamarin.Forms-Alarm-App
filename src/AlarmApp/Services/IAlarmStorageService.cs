@@ -2,6 +2,7 @@
 using AlarmApp.Models;
 using System.Collections.Generic;
 using Realms;
+using System.Threading.Tasks;
 
 namespace AlarmApp.Services
 {
@@ -19,5 +20,6 @@ namespace AlarmApp.Services
 		void DeleteAllAlarms();
 
 		Settings GetSettings();
+		Task<Settings> GetSettingsAsync();
 	}
 }

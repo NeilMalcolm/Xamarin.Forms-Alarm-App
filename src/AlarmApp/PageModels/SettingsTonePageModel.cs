@@ -14,11 +14,11 @@ namespace AlarmApp.PageModels
 	public class SettingsTonePageModel : FreshBasePageModel
 	{
 		IAlarmStorageService _alarmStorage;
-		KeyValuePair<string, string> _selectedTone;
+		AlarmTone _selectedTone;
 
 		public Settings Settings { get; set; }
 
-		public KeyValuePair<string, string> SelectedTone
+		public AlarmTone SelectedTone
 		{
 			get { return _selectedTone; }
 			set 
@@ -33,8 +33,8 @@ namespace AlarmApp.PageModels
 			{
 				return new FreshAwaitCommand(async (obj, tcs) =>
 				{
-					var kvp = (KeyValuePair<string, string>)obj;
-					OnToneSelected(kvp.Key);
+					var selectedTone = (AlarmTone)obj;
+					OnToneSelected(selectedTone);
 					await CoreMethods.PopPageModel(false, true);
 					tcs.SetResult(true);
 				});
@@ -58,39 +58,36 @@ namespace AlarmApp.PageModels
 		/// Handles setting the current tone value
 		/// </summary>
 		/// <param name="value">Value.</param>
-		void SetSelectedTone(object value)
+		void SetSelectedTone(AlarmTone value)
 		{
-			var isSelectedNull = value.Equals(default(KeyValuePair<string, string>));
+			var isSelectedNull = value.Equals(default(AlarmTone)) || value == null;
 			if (isSelectedNull) return;
 
 			var wasSelectCustomToneSelected = value.Equals(Defaults.Tones[0]);
 			if(wasSelectCustomToneSelected)
 			{
-				DoSetCustomTone();
+				value = GetAlarmToneNotSetTone();
 			}
-			else 
-			{
-				_selectedTone = (KeyValuePair<string, string>)value;
-				ToneSelectedCommand.Execute(value);
-			}
+
+			//_selectedTone = value;
+			ToneSelectedCommand.Execute(value);
+			System.Diagnostics.Debug.WriteLine("DONE TONE");
 		}
 
 		/// <summary>
 		/// Allows the user to set a custom tone
 		/// </summary>
-		void DoSetCustomTone()
+		AlarmTone GetAlarmToneNotSetTone()
 		{
 			//temporary until final solution has been implemented
-			ToneSelectedCommand.Execute(
-				new KeyValuePair<string, string>("In future, you will be able to select custom tones",
-				                                "value"));
+			return new AlarmTone("In future, you will be able to select custom tones", null);
 		}
 
 		/// <summary>
 		/// Saves the tone to settings when the tone has been selected
 		/// </summary>
 		/// <param name="alarmTone">The selected alarm tone</param>
-		void OnToneSelected(string alarmTone)
+		void OnToneSelected(AlarmTone alarmTone)
 		{
 			_alarmStorage.Realm.Write(() =>
 			{

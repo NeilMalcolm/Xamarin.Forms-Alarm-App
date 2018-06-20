@@ -53,7 +53,7 @@
 								</Grid.ColumnDefinitions>
 								<Grid.RowDefinitions>
 									<RowDefinition Height="*"/>
-									<RowDefinition Height="Auto"/>
+									<RowDefinition Height="20"/>
 								</Grid.RowDefinitions>
 								<Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" WidthRequest="25" HeightRequest="25" Source="settings_clock_format.png" VerticalOptions="Center"/>
 								
@@ -73,12 +73,12 @@
 								</Grid.ColumnDefinitions>
 								<Grid.RowDefinitions>
 									<RowDefinition Height="*"/>
-									<RowDefinition Height="Auto"/>
+									<RowDefinition Height="20"/>
 								</Grid.RowDefinitions>
 								<Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" WidthRequest="25" HeightRequest="25" Source="settings_alarm_tone.png" VerticalOptions="Center"/>
 								
 								<Label Grid.Column="1" Grid.Row="0" Style="{StaticResource SettingsTitleStyle}" Text="Default Alarm Tone"/>
-								<Label Grid.Column="1" Grid.Row="1" Style="{StaticResource SettingsSubtitleStyle}" Text="{Binding Settings.AlarmTone}"/>
+								<Label Grid.Column="1" Grid.Row="1" Style="{StaticResource SettingsSubtitleStyle}" Text="{Binding Settings.AlarmTone.Name}"/>
 							</Grid>
 						</views:SettingsViewCell.View>
 					</views:SettingsViewCell>
@@ -94,7 +94,7 @@
 								</Grid.ColumnDefinitions>
 								<Grid.RowDefinitions>
 									<RowDefinition Height="*"/>
-									<RowDefinition Height="Auto"/>
+									<RowDefinition Height="20"/>
 								</Grid.RowDefinitions>
 								<Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" WidthRequest="25" HeightRequest="25" Source="settings_vibrate.png" VerticalOptions="Center"/>
 
@@ -144,12 +144,12 @@
 								</Grid.ColumnDefinitions>
 								<Grid.RowDefinitions>
 									<RowDefinition Height="*"/>
-									<RowDefinition Height="Auto"/>
+									<RowDefinition Height="20"/>
 								</Grid.RowDefinitions>
-								<Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" WidthRequest="25" HeightRequest="25" Source="settings_delete_alarms.png" VerticalOptions="Center"/>
+								<Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" WidthRequest="25" HeightRequest="25" Source="settings_delete_forever.png" VerticalOptions="Center"/>
 								
 								<Label Grid.Column="1" Grid.Row="0" Style="{StaticResource SettingsTitleStyle}" Text="Delete all alarms"/>
-								<Label Grid.Column="1" Grid.Row="1" Style="{StaticResource SettingsSubtitleStyle}" Text="Warning! This action cannot be undone"/>
+								<Label Grid.Column="1" Grid.Row="1" Style="{StaticResource SettingsWarningSubtitleStyle}" Text="Warning! This action cannot be undone"/>
 							</Grid>
 						</views:SettingsViewCell.View>
 					</views:SettingsViewCell>

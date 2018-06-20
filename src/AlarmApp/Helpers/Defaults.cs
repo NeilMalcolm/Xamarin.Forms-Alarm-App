@@ -66,15 +66,15 @@ namespace AlarmApp
 		//	}, 
 		//};
 
-		public static readonly List<KeyValuePair<string, string>> Tones = new List<KeyValuePair<string, string>>()
+		public static readonly List<AlarmTone> Tones = new List<AlarmTone>()
 		{
-			new KeyValuePair<string, string>("Select custom tone...", "null"),
-			new KeyValuePair<string, string>("Buzz", "Buzz"),
-			new KeyValuePair<string, string>("Shooting Star", "Shooting Star"),
-			new KeyValuePair<string, string>("Raindrops", "Raindrops"),
-			new KeyValuePair<string, string>("Flutter", "Flutter"),
-			new KeyValuePair<string, string>("Whistle", "Whistle"),
-			new KeyValuePair<string, string>("Windy Day", "Windy Day")
+			new AlarmTone("Select custom tone...", null),
+			new AlarmTone("Buzz", "buzz.mp3"),
+			new AlarmTone("Synth", "synth.mp3"),
+			new AlarmTone("Xylophone", "xylophone.mp3"),
+			new AlarmTone("Flutter", "Flutter"),
+			new AlarmTone("Whistle", "Whistle"),
+			new AlarmTone("Windy Day", "Windy Day")
 		};
 
 	}

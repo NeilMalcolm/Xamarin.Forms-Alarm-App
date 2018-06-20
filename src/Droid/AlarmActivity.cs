@@ -13,12 +13,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using AlarmApp.Services;
 
 namespace AlarmApp.Droid
 {
 	[Activity(Label = "AlarmActivity", NoHistory = true, Theme = "@style/MyTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class AlarmActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
+		AlarmStorageService _alarmStorageService = new AlarmStorageService();
+
 		MediaPlayer _mediaPlayer = new MediaPlayer();
 		Vibrator _vibrator;
 		readonly long[] _pattern =
@@ -50,13 +53,24 @@ namespace AlarmApp.Droid
 				var textView = FindViewById<TextView>(Resource.Id.timeTextView);
 				textView.Text = hours + ":" + mins;
 			}
-			_vibrator = Vibrator.FromContext(this);
-			AssetFileDescriptor assetFileDescriptor = Assets.OpenFd("alarm_tone.m4a");
+			var settings = _alarmStorageService.GetSettings();
+			string alarmTonePath = "alarm_tone.m4a";
+
+			if(settings.AlarmTone != null)
+			{
+				alarmTonePath = settings.AlarmTone.Path;
+			}
+
+			AssetFileDescriptor assetFileDescriptor = Assets.OpenFd(alarmTonePath);
 			_mediaPlayer.Looping = true;
 			_mediaPlayer.SetDataSource(assetFileDescriptor.FileDescriptor, assetFileDescriptor.StartOffset, assetFileDescriptor.Length);
 			_mediaPlayer.Prepare();
 			_mediaPlayer.Start();
 
+			if (!settings.IsVibrateOn) return;
+
+
+			_vibrator = Vibrator.FromContext(this);
 			_vibrator.Vibrate(_pattern, 0);
 		}
 

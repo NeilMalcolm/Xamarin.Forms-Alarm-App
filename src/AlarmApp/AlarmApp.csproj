@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -58,14 +57,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\SettingsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\SettingsTonePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <Compile Include="Pages\SettingsTonePage.xaml.cs">
+      <DependentUpon>SettingsTonePage.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <Compile Include="Models\AlarmTone.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -120,9 +123,6 @@
     <Compile Include="PageModels\SettingsPageModel.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Views\SettingsViewCell.cs" />
-    <Compile Include="Pages\SettingsTonePage.xaml.cs">
-      <DependentUpon>SettingsTonePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PageModels\SettingsTonePageModel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
-						<Label Text="{Binding Key}" FontSize="17" TextColor="{StaticResource TitleColor}" Margin="20"/>
+						<Label Text="{Binding Name}" FontSize="17" TextColor="{StaticResource TitleColor}" Margin="20"/>
 					</ViewCell> 
 				</DataTemplate>
 			</ListView.ItemTemplate>

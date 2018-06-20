@@ -34,11 +34,11 @@ namespace AlarmApp.PageModels
 			_alarmStorage = alarmStorage;
 		}
 
-		protected override void ViewIsAppearing(object sender, EventArgs e)
+		protected async override void ViewIsAppearing(object sender, EventArgs e)
 		{
 			base.ViewIsAppearing(sender, e);
 
-			Settings = _alarmStorage.GetSettings();
+			Settings = await _alarmStorage.GetSettingsAsync();
 		}
 
 		async Task OnCellTapped(string parameter)

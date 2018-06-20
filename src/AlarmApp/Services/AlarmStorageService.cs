@@ -5,6 +5,7 @@ using System.IO;
 using Xamarin.Forms;
 using Realms;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AlarmApp.Services
 {
@@ -112,6 +113,26 @@ namespace AlarmApp.Services
 			Settings settings = new Settings();
 
 			var settingsList =Realm.All<Settings>();
+			var settingsAreFound = settingsList?.Count() > 0;
+
+			if (settingsAreFound)
+				settings = settingsList.ElementAt(0);
+			else
+				Realm.Write(() => Realm.Add(settings));
+
+			return settings;
+		}
+
+		/// <summary>
+		/// Gets the settings
+		/// </summary>
+		/// <returns>The settings object</returns>
+		public async Task<Settings> GetSettingsAsync()
+		{
+			Settings settings = new Settings();
+
+			var realm = await Realm.GetInstanceAsync(RealmConfiguration.DefaultConfiguration);
+			var settingsList = realm.All<Settings>();
 			var settingsAreFound = settingsList?.Count() > 0;
 
 			if (settingsAreFound)
