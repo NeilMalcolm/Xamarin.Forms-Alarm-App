@@ -33,8 +33,9 @@
 				<Setter Property="Margin" Value="0, -8, 0, 0"/>
 			</Style>
 
-			<Style TargetType="StackLayout" x:Key="SettingsCellStackStyle">
-				<Setter Property="Padding" Value="20, 15, 20, 15"/>
+			<Style TargetType="Grid" x:Key="SettingsCellGridStyle">
+				<Setter Property="Padding" Value="10, 15, 10, 15"/>
+				<Setter Property="ColumnSpacing" Value="10"/>
 			</Style>
 		</ResourceDictionary>
 	</ContentPage.Resources>
@@ -42,32 +43,63 @@
 		<TableView Intent="Settings" HasUnevenRows="true">
 			<TableRoot>
 				<TableSection>
+					<!-- Clock Format Row -->
 					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Clock Format">
 						<views:SettingsViewCell.View>
-							<StackLayout Style="{StaticResource SettingsCellStackStyle}">
-								<Label Style="{StaticResource SettingsTitleStyle}" Text="Clock Format"/>
-								<Label Style="{StaticResource SettingsSubtitleStyle}" Text="{Binding Settings.TimeFormat}"/>
-							</StackLayout>
-						</views:SettingsViewCell.View>
-					</views:SettingsViewCell>
-
-					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Alarm Tone">
-						<views:SettingsViewCell.View>
-							<StackLayout Style="{StaticResource SettingsCellStackStyle}">
-								<Label Style="{StaticResource SettingsTitleStyle}" Text="Default alarm tone"/>
-								<Label Style="{StaticResource SettingsSubtitleStyle}" Text="{Binding Settings.AlarmTone}"/>
-							</StackLayout>
-						</views:SettingsViewCell.View>
-					</views:SettingsViewCell>
-
-					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Vibrate">
-						<views:SettingsViewCell.View>
-							<Grid Padding="20">
+							<Grid Style="{StaticResource SettingsCellGridStyle}">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="50"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
 								<Grid.RowDefinitions>
 									<RowDefinition Height="*"/>
 									<RowDefinition Height="Auto"/>
 								</Grid.RowDefinitions>
-								<Label Grid.Row="0" Style="{StaticResource SettingsTitleStyle}" Text="Vibrate">
+								<Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" WidthRequest="25" HeightRequest="25" Source="settings_clock_format.png" VerticalOptions="Center"/>
+								
+								<Label Grid.Column="1" Grid.Row="0" Style="{StaticResource SettingsTitleStyle}" Text="Clock Format"/>
+								<Label Grid.Column="1" Grid.Row="1" Style="{StaticResource SettingsSubtitleStyle}" Text="{Binding Settings.TimeFormat}"/>
+							</Grid>
+						</views:SettingsViewCell.View>
+					</views:SettingsViewCell>
+
+					<!-- Alarm Tone Row -->
+					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Alarm Tone">
+						<views:SettingsViewCell.View>
+							<Grid Style="{StaticResource SettingsCellGridStyle}">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="50"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="Auto"/>
+								</Grid.RowDefinitions>
+								<Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" WidthRequest="25" HeightRequest="25" Source="settings_alarm_tone.png" VerticalOptions="Center"/>
+								
+								<Label Grid.Column="1" Grid.Row="0" Style="{StaticResource SettingsTitleStyle}" Text="Default Alarm Tone"/>
+								<Label Grid.Column="1" Grid.Row="1" Style="{StaticResource SettingsSubtitleStyle}" Text="{Binding Settings.AlarmTone}"/>
+							</Grid>
+						</views:SettingsViewCell.View>
+					</views:SettingsViewCell>
+
+					<!-- Vibrate Row -->
+					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Vibrate">
+						<views:SettingsViewCell.View>
+							<Grid Style="{StaticResource SettingsCellGridStyle}">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="50"/>
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="Auto"/>
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="Auto"/>
+								</Grid.RowDefinitions>
+								<Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" WidthRequest="25" HeightRequest="25" Source="settings_vibrate.png" VerticalOptions="Center"/>
+
+								
+								<Label Grid.Column="1" Grid.Row="0" Style="{StaticResource SettingsTitleStyle}" Text="Vibrate">
 									<Label.Triggers>
 										<DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference VibrateSwitch}, Path=IsToggled}" 
 												 Value="false">
@@ -80,9 +112,9 @@
 									</Label.Triggers>
 								</Label>
 
-								<Switch x:Name="VibrateSwitch" IsToggled="{Binding Settings.IsVibrateOn}" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
+								<Switch Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" x:Name="VibrateSwitch" IsToggled="{Binding Settings.IsVibrateOn}"/>
 
-								<Label Grid.Row="1">
+								<Label Grid.Column="1" Grid.Row="1">
 									<Label.Triggers>
 										<DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference VibrateSwitch}, Path=IsToggled}" 
 												 Value="false">
@@ -100,14 +132,25 @@
 						</views:SettingsViewCell.View>
 					</views:SettingsViewCell>
 				</TableSection>
-				
+
+				<!-- Delete Alarms Row -->
 				<TableSection>
 					<views:SettingsViewCell Command="{Binding CellTappedCommand}" CommandParameter="Delete">
 						<views:SettingsViewCell.View>
-							<StackLayout Style="{StaticResource SettingsCellStackStyle}">
-								<Label Style="{StaticResource SettingsTitleStyle}" Text="Delete all alarms"/>
-								<Label Style="{StaticResource SettingsWarningSubtitleStyle}" Text="Warning! This action cannot be undone"/>
-							</StackLayout>
+							<Grid Style="{StaticResource SettingsCellGridStyle}">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="50"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="Auto"/>
+								</Grid.RowDefinitions>
+								<Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" WidthRequest="25" HeightRequest="25" Source="settings_delete_alarms.png" VerticalOptions="Center"/>
+								
+								<Label Grid.Column="1" Grid.Row="0" Style="{StaticResource SettingsTitleStyle}" Text="Delete all alarms"/>
+								<Label Grid.Column="1" Grid.Row="1" Style="{StaticResource SettingsSubtitleStyle}" Text="Warning! This action cannot be undone"/>
+							</Grid>
 						</views:SettingsViewCell.View>
 					</views:SettingsViewCell>
 				</TableSection>
