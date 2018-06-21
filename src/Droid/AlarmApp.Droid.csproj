@@ -241,7 +241,6 @@
     <Folder Include="Resources\drawable-mdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\alarm_tone.m4a" />
     <AndroidAsset Include="Assets\xylophone.mp3" />
     <AndroidAsset Include="Assets\buzz.mp3" />
     <AndroidAsset Include="Assets\synth.mp3" />

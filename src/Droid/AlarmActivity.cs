@@ -14,6 +14,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AlarmApp.Services;
+using Android.Provider;
 
 namespace AlarmApp.Droid
 {
@@ -55,15 +56,31 @@ namespace AlarmApp.Droid
 			}
 			var settings = _alarmStorageService.GetSettings();
 			string alarmTonePath = "alarm_tone.m4a";
-
-			if(settings.AlarmTone != null)
+			var alarmTone = settings.AlarmTone;
+			if(alarmTone != null)
 			{
-				alarmTonePath = settings.AlarmTone.Path;
+				if(alarmTone.IsCustomTone)
+				{
+					
+					string[] split = alarmTone.Path.Split(':');
+					string type = split[0];
+
+					if (type.Contains("primary"))
+					{
+						alarmTonePath = Android.OS.Environment.ExternalStorageDirectory + "/" + split[1];
+						_mediaPlayer.SetDataSource(alarmTonePath);
+					}
+				}
+				else 
+				{
+					
+					alarmTonePath = settings.AlarmTone.Path;
+					AssetFileDescriptor assetFileDescriptor = Assets.OpenFd(alarmTonePath);
+					_mediaPlayer.SetDataSource(assetFileDescriptor.FileDescriptor, assetFileDescriptor.StartOffset, assetFileDescriptor.Length);
+				}
 			}
 
-			AssetFileDescriptor assetFileDescriptor = Assets.OpenFd(alarmTonePath);
 			_mediaPlayer.Looping = true;
-			_mediaPlayer.SetDataSource(assetFileDescriptor.FileDescriptor, assetFileDescriptor.StartOffset, assetFileDescriptor.Length);
 			_mediaPlayer.Prepare();
 			_mediaPlayer.Start();
 

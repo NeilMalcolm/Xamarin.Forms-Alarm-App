@@ -7,12 +7,15 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AlarmApp.Helpers;
+using Xamarin.Forms;
 
 namespace AlarmApp.PageModels
 {
 	[AddINotifyPropertyChangedInterface]
 	public class SettingsTonePageModel : FreshBasePageModel
 	{
+		IFileLocator _fileLocator = DependencyService.Get<IFileLocator>();
+
 		IAlarmStorageService _alarmStorage;
 		AlarmTone _selectedTone;
 
@@ -66,7 +69,9 @@ namespace AlarmApp.PageModels
 			var wasSelectCustomToneSelected = value.Equals(Defaults.Tones[0]);
 			if(wasSelectCustomToneSelected)
 			{
-				value = GetAlarmToneNotSetTone();
+				_fileLocator.OpenFileLocator();
+				_fileLocator.FileChosen += ToneFileChosen;
+				return;
 			}
 
 			//_selectedTone = value;
@@ -92,6 +97,15 @@ namespace AlarmApp.PageModels
 			_alarmStorage.Realm.Write(() =>
 			{
 				Settings.AlarmTone = alarmTone;
+			});
+		}
+
+		void ToneFileChosen(Uri uri)
+		{
+			System.Diagnostics.Debug.WriteLine("pcl: " + uri.LocalPath);
+			ToneSelectedCommand.Execute(new AlarmTone("New alarm tone", uri.LocalPath) 
+			{ 
+				IsCustomTone = true 
 			});
 		}
 	}

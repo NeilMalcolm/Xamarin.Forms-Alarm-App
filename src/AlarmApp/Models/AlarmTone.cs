@@ -9,6 +9,7 @@ namespace AlarmApp.Models
 	{
 		public string Name { get; set; }
 		public string Path { get; set; }
+		public bool IsCustomTone { get; set; }
 
 		public AlarmTone(){}
 
@@ -16,6 +17,7 @@ namespace AlarmApp.Models
 		{
 			Name = name;
 			Path = path;
+			IsCustomTone = false;
 		}
 	}
 }

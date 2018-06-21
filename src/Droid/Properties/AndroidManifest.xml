@@ -5,6 +5,7 @@
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<application android:label="AlarmApp"></application>
 	<receiver android:name=".AlarmReceiver" android:enabled="true" android:exported="true" />
 </manifest>

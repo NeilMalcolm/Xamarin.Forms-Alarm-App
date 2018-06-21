@@ -28,5 +28,23 @@ namespace AlarmApp.Droid
 
 			LoadApplication(new App());
 		}
+
+		public event Action<Uri> FileChosen;
+
+		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult(requestCode, resultCode, data);
+
+			if(requestCode == 42 && resultCode == Result.Ok)
+			{
+				if (data == null) return;
+
+				Uri uri = null;
+				var stringUri = data.ToUri(IntentUriType.None);
+				uri = new Uri(stringUri);
+
+				FileChosen?.Invoke(uri);
+			}
+		}
 	}
 }
