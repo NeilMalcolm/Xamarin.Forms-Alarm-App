@@ -69,6 +69,7 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <Compile Include="Models\AlarmTone.cs" />
+    <Compile Include="Services\IFileLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">

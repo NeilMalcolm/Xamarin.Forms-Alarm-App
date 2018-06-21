@@ -72,9 +72,9 @@ namespace AlarmApp
 			new AlarmTone("Buzz", "buzz.mp3"),
 			new AlarmTone("Synth", "synth.mp3"),
 			new AlarmTone("Xylophone", "xylophone.mp3"),
-			new AlarmTone("Flutter", "Flutter"),
-			new AlarmTone("Whistle", "Whistle"),
-			new AlarmTone("Windy Day", "Windy Day")
+			new AlarmTone("Shooting Stars", "shooting_stars.mp3"),
+			new AlarmTone("Sixteen Bit", "sixteen_bit"),
+			new AlarmTone("Sci-fi", "sci_fi.mp3")
 		};
 
 	}

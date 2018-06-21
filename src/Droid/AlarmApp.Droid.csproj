@@ -155,6 +155,7 @@
     <Compile Include="SplashActivity.cs" />
     <Compile Include="Renderers\AndroidCircleLabelRenderer.cs" />
     <Compile Include="Services\DeviceStorageAndroid.cs" />
+    <Compile Include="Services\FileLocatorAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -244,6 +245,9 @@
     <AndroidAsset Include="Assets\xylophone.mp3" />
     <AndroidAsset Include="Assets\buzz.mp3" />
     <AndroidAsset Include="Assets\synth.mp3" />
+    <AndroidAsset Include="Assets\shooting_stars.mp3" />
+    <AndroidAsset Include="Assets\sixteen_bit.mp3" />
+    <AndroidAsset Include="Assets\sci_fi.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets')" />
