@@ -55,7 +55,7 @@ namespace AlarmApp.Models
 
 		public Settings()
 		{
-			//AlarmTone = Defaults.Tones[1];
+			AlarmTone = Defaults.Tones[1];
 		}
 	}
 

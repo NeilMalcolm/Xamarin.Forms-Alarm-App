@@ -14,6 +14,8 @@ namespace AlarmApp
 		{
 			InitializeComponent();
 
+			AlarmStorageService.InitSettings();
+
 			SetUpIoC();
 			/*
 			 * TabbedPage page 
