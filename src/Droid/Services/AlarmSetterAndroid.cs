@@ -30,9 +30,7 @@ namespace AlarmApp.Droid.Services
 		{
 			var alarmIntent = new Intent(Forms.Context, typeof(AlarmReceiver));
 			alarmIntent.SetFlags(ActivityFlags.IncludeStoppedPackages);
-			alarmIntent.PutExtra("message", "bing bong");
-			alarmIntent.PutExtra("hours", alarm.Time.Hours);
-			alarmIntent.PutExtra("mins", alarm.Time.Minutes);
+			alarmIntent.PutExtra("id", alarm.Id);
 			PendingIntent pendingIntent = PendingIntent.GetBroadcast(Forms.Context, GetAlarmId(alarm), alarmIntent, PendingIntentFlags.UpdateCurrent);
 			AlarmManager alarmManager = (AlarmManager)Forms.Context.GetSystemService(Context.AlarmService);
 
@@ -51,9 +49,7 @@ namespace AlarmApp.Droid.Services
 		{
 			var alarmIntent = new Intent(Forms.Context, typeof(AlarmReceiver));
 			alarmIntent.SetFlags(ActivityFlags.IncludeStoppedPackages);
-			alarmIntent.PutExtra("message", "bing bong");
-			alarmIntent.PutExtra("hours", alarm.Time.Hours);
-			alarmIntent.PutExtra("mins", alarm.Time.Minutes);
+			alarmIntent.PutExtra("id", alarm.Id);
 
 			var alarmToDeleteId = GetAlarmId(alarm);
 			var alarmManager = (AlarmManager)Forms.Context.GetSystemService(Context.AlarmService);
@@ -141,12 +137,10 @@ namespace AlarmApp.Droid.Services
 
 			//App.Current.MainPage.Navigation.PushAsync(new AlarmAppPage());
 			Log.Debug(AlarmSetterAndroid.AlarmTag, "OPEN THE THING");
-			var hours = intent.GetIntExtra("hours", 0);
-			var mins = intent.GetIntExtra("mins", 0);
-			Log.Debug(AlarmSetterAndroid.AlarmTag, "DO ALARM: " + hours + " - " + mins);
+			var id = intent.GetStringExtra("id");
+			Log.Debug(AlarmSetterAndroid.AlarmTag, "DO ALARM: " + id);
 			var disIntent = new Intent(context, typeof(AlarmActivity));
-			disIntent.PutExtra("hours", hours);
-			disIntent.PutExtra("mins", mins);
+			disIntent.PutExtra("id", id);
 			disIntent.SetFlags(ActivityFlags.NewTask);
 			context.StartActivity(disIntent);
 			Log.Debug(AlarmSetterAndroid.AlarmTag, "current time in millis: " + (long)DateTime.Now.TimeOfDay.TotalMilliseconds);

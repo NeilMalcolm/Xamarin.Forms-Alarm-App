@@ -15,6 +15,7 @@ using Android.Views;
 using Android.Widget;
 using AlarmApp.Services;
 using Android.Provider;
+using AlarmApp.Models;
 
 namespace AlarmApp.Droid
 {
@@ -22,6 +23,8 @@ namespace AlarmApp.Droid
 	public class AlarmActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		AlarmStorageService _alarmStorageService = new AlarmStorageService();
+		Alarm _alarm;
+		AlarmApp.Models.Settings _settings;
 
 		MediaPlayer _mediaPlayer = new MediaPlayer();
 		Vibrator _vibrator;
@@ -49,14 +52,14 @@ namespace AlarmApp.Droid
 
 			if (bundle != null)
 			{
-				int hours = (int)bundle.Get("hours");
-				int mins = (int)bundle.Get("mins");
+				var id = (string)bundle.Get("id");
 				var textView = FindViewById<TextView>(Resource.Id.timeTextView);
-				textView.Text = hours + ":" + mins;
+				_alarm = _alarmStorageService.GetAlarm(id);
+				textView.Text = _alarm.TimeOffset.ToLocalTime().ToString(@"hh\:mm");
 			}
-			var settings = _alarmStorageService.GetSettings();
+			_settings = _alarmStorageService.GetSettings();
 			string alarmTonePath = "alarm_tone.m4a";
-			var alarmTone = settings.AlarmTone;
+			var alarmTone = _settings.AlarmTone;
 			if(alarmTone != null)
 			{
 				if(alarmTone.IsCustomTone)
@@ -74,7 +77,7 @@ namespace AlarmApp.Droid
 				else 
 				{
 					
-					alarmTonePath = settings.AlarmTone.Path;
+					alarmTonePath = _settings.AlarmTone.Path;
 					AssetFileDescriptor assetFileDescriptor = Assets.OpenFd(alarmTonePath);
 					_mediaPlayer.SetDataSource(assetFileDescriptor.FileDescriptor, assetFileDescriptor.StartOffset, assetFileDescriptor.Length);
 				}
@@ -84,7 +87,7 @@ namespace AlarmApp.Droid
 			_mediaPlayer.Prepare();
 			_mediaPlayer.Start();
 
-			if (!settings.IsVibrateOn) return;
+			if (!_settings.IsVibrateOn) return;
 
 
 			_vibrator = Vibrator.FromContext(this);
@@ -102,7 +105,10 @@ namespace AlarmApp.Droid
 			{
 				Finish();
 			}
-			_vibrator.Cancel();
+
+			if(_settings.IsVibrateOn)
+				_vibrator.Cancel();
+
 			Java.Lang.JavaSystem.Exit(0);
 		}
 

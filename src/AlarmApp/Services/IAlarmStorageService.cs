@@ -10,6 +10,7 @@ namespace AlarmApp.Services
 	{
 		Realm Realm { get; }
 
+		Alarm GetAlarm(string id);
 		List<Alarm> GetAllAlarms();
 		List<Alarm> GetTodaysAlarms();
 

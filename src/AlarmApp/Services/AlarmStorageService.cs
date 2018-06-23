@@ -21,6 +21,11 @@ namespace AlarmApp.Services
 			
 		}
 
+		public Alarm GetAlarm(string id)
+		{
+			return Realm.Find<Alarm>(id);
+		}
+
 		/// <summary>
 		/// Gets all alarms
 		/// </summary>
@@ -141,6 +146,19 @@ namespace AlarmApp.Services
 				Realm.Write(() => Realm.Add(settings));
 
 			return settings;
+		}
+
+		public static void InitSettings()
+		{
+			var realm = Realms.Realm.GetInstance();
+			Settings settings = new Settings();
+			var settingsList = realm.All<Settings>();
+			var settingsAreFound = settingsList?.Count() > 0;
+
+			if (settingsAreFound)
+				settings = settingsList.ElementAt(0);
+			else
+				realm.Write(() => realm.Add(settings));
 		}
 	}
 }

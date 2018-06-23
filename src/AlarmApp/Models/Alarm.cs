@@ -8,6 +8,9 @@ namespace AlarmApp.Models
 	[AddINotifyPropertyChangedInterface]
 	public class Alarm : RealmObject
 	{
+		[PrimaryKey]
+		public string Id { get; set; }
+
 		public string Name { get; set; }
 
 		public DateTimeOffset TimeOffset { get; set; }
@@ -47,6 +50,7 @@ namespace AlarmApp.Models
 
 		public Alarm()
 		{
+			Id = Guid.NewGuid().ToString();
 			Days = new DaysOfWeek();
 		}
 
