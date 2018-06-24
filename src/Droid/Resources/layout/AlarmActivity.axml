@@ -2,19 +2,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/timeTextView"
-        android:gravity="center" />
-    <Button
-        android:text="Close"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/closeButton"
-        android:textAllCaps="false"
-        android:gravity="center" />
+    android:layout_height="match_parent"
+    android:background="#ff161823">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:gravity="center"
+        android:layout_gravity="center">
+        <TextView
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameTextView"
+            android:textColor="#ffcec6ff"
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal" />
+        <TextView
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timeTextView"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:phoneNumber="true"
+            android:textSize="45dp" />
+        <Button
+            android:text="Close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/closeButton"
+            android:textAllCaps="false"
+            android:gravity="center" />
+    </LinearLayout>
 </LinearLayout>

@@ -134,16 +134,14 @@ namespace AlarmApp.Droid.Services
 	{
 		public override void OnReceive(Context context, Intent intent)
 		{
-
-			//App.Current.MainPage.Navigation.PushAsync(new AlarmAppPage());
 			Log.Debug(AlarmSetterAndroid.AlarmTag, "OPEN THE THING");
 			var id = intent.GetStringExtra("id");
-			Log.Debug(AlarmSetterAndroid.AlarmTag, "DO ALARM: " + id);
+
 			var disIntent = new Intent(context, typeof(AlarmActivity));
 			disIntent.PutExtra("id", id);
 			disIntent.SetFlags(ActivityFlags.NewTask);
 			context.StartActivity(disIntent);
-			Log.Debug(AlarmSetterAndroid.AlarmTag, "current time in millis: " + (long)DateTime.Now.TimeOfDay.TotalMilliseconds);
+			Log.Debug(AlarmSetterAndroid.AlarmTag, "START ACTIVITY");
 		}
 	}
 }

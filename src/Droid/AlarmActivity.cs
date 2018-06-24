@@ -16,6 +16,8 @@ using Android.Widget;
 using AlarmApp.Services;
 using Android.Provider;
 using AlarmApp.Models;
+using AlarmApp.Droid.Services;
+using Android.Util;
 
 namespace AlarmApp.Droid
 {
@@ -33,8 +35,14 @@ namespace AlarmApp.Droid
 			0, 500, 500
 		};
 
+		public AlarmActivity()
+		{
+			Log.Debug(AlarmSetterAndroid.AlarmTag, "Constructor");
+		}
+
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
+			Log.Debug(AlarmSetterAndroid.AlarmTag, "OnCreate");
 			base.OnCreate(savedInstanceState);
 
 			SetContentView(Resource.Layout.AlarmActivity);
@@ -53,9 +61,11 @@ namespace AlarmApp.Droid
 			if (bundle != null)
 			{
 				var id = (string)bundle.Get("id");
-				var textView = FindViewById<TextView>(Resource.Id.timeTextView);
+				var timeTextView = FindViewById<TextView>(Resource.Id.timeTextView);
+				var nameTextView = FindViewById<TextView>(Resource.Id.nameTextView);
 				_alarm = _alarmStorageService.GetAlarm(id);
-				textView.Text = _alarm.TimeOffset.ToLocalTime().ToString(@"hh\:mm");
+				timeTextView.Text = _alarm.TimeOffset.ToLocalTime().ToString(@"hh\:mm");
+				nameTextView.Text = _alarm.Name;
 			}
 			_settings = _alarmStorageService.GetSettings();
 			string alarmTonePath = "alarm_tone.m4a";
@@ -92,6 +102,7 @@ namespace AlarmApp.Droid
 
 			_vibrator = Vibrator.FromContext(this);
 			_vibrator.Vibrate(_pattern, 0);
+			Log.Debug(AlarmSetterAndroid.AlarmTag, "Done Create");
 		}
 
 		void CloseButton_Click(object sender, EventArgs e)
