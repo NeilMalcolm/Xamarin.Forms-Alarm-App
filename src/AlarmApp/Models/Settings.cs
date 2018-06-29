@@ -2,6 +2,7 @@
 using System.Globalization;
 using Realms;
 using PropertyChanged;
+using System.Collections.Generic;
 
 namespace AlarmApp.Models
 {
@@ -20,6 +21,7 @@ namespace AlarmApp.Models
 		[Ignored]
 		public string TimeFormat => GetTimeFormatAsString();
 		public AlarmTone AlarmTone { get; set; }
+		public IList<AlarmTone> AllAlarmTones { get; }
 		public bool IsVibrateOn { get; set; } = true;
 
 		/// <summary>
@@ -55,7 +57,6 @@ namespace AlarmApp.Models
 
 		public Settings()
 		{
-			AlarmTone = Defaults.Tones[1];
 		}
 	}
 

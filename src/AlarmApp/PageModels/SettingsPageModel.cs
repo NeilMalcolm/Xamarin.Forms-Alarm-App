@@ -5,6 +5,7 @@ using AlarmApp.Models;
 using System.Threading.Tasks;
 using AlarmApp.Services;
 using System.Windows.Input;
+using System.Linq;
 
 namespace AlarmApp.PageModels
 {
@@ -38,8 +39,21 @@ namespace AlarmApp.PageModels
 		{
 			base.ViewIsAppearing(sender, e);
 
-			Settings = await _alarmStorage.GetSettingsAsync();
+			Settings = _alarmStorage.GetSettings();
+			System.Diagnostics.Debug.WriteLine(Settings.AlarmTone?.Name + "\n" + Settings.AlarmTone?.Path);
+			GetAllAlarmTones();
 		}
+
+		void GetAllAlarmTones()
+		{
+			var alarmList = _alarmStorage.GetAllTones();
+
+			if (alarmList == null || alarmList.Count < Defaults.Tones.Count)
+			{
+				_alarmStorage.SetDefaultTones();
+			}
+		}
+
 
 		async Task OnCellTapped(string parameter)
 		{

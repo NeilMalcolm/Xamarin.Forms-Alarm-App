@@ -156,6 +156,7 @@
     <Compile Include="Renderers\AndroidCircleLabelRenderer.cs" />
     <Compile Include="Services\DeviceStorageAndroid.cs" />
     <Compile Include="Services\FileLocatorAndroid.cs" />
+    <Compile Include="Services\PlaySoundServiceAndroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

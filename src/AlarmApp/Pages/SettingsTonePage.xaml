@@ -6,7 +6,9 @@
 			 Title="Select Tone"
 			 BackgroundColor="{StaticResource DarkBackgroundColor}">
 	<ContentPage.Content>
-		<ListView x:Name="ToneListView" ItemsSource="{x:Static Helpers:Defaults.Tones}" SelectedItem="{Binding SelectedTone}" HasUnevenRows="true">
+<!--		<ListView x:Name="ToneListView" ItemsSource="{x:Static Helpers:Defaults.Tones}" SelectedItem="{Binding SelectedTone}" HasUnevenRows="true">
+-->			
+		<ListView x:Name="ToneListView" ItemsSource="{Binding AllAlarmTones, Mode=OneWay}" SelectedItem="{Binding SelectedTone}" HasUnevenRows="true">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>

@@ -160,5 +160,41 @@ namespace AlarmApp.Services
 			else
 				realm.Write(() => realm.Add(settings));
 		}
+
+
+		public List<AlarmTone> GetAllTones()
+		{
+			return GetSettings().AllAlarmTones.ToList();
+		}
+
+		public void AddTone(AlarmTone alarmTone)
+		{
+			Realm.Write(() =>
+			{
+				GetSettings().AllAlarmTones.Add(alarmTone);
+			});
+		}
+
+		public void DeleteTone(AlarmTone alarmTone)
+		{
+			Realm.Write(() =>
+			{
+				GetSettings().AllAlarmTones.Remove(alarmTone);
+			});
+		}
+
+		public void SetDefaultTones()
+		{
+			var defaults = Defaults.Tones;
+			var settings = GetSettings();
+			
+			Realm.Write(() => {
+				foreach (AlarmTone tone in defaults)
+				{
+					settings.AllAlarmTones.Add(tone);
+				}
+				settings.AlarmTone = Defaults.Tones[1];
+			});
+		}
 	}
 }

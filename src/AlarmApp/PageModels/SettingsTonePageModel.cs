@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using AlarmApp.Helpers;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace AlarmApp.PageModels
 {
@@ -15,6 +17,7 @@ namespace AlarmApp.PageModels
 	public class SettingsTonePageModel : FreshBasePageModel
 	{
 		IFileLocator _fileLocator = DependencyService.Get<IFileLocator>();
+		IPlaySoundService _soundService = DependencyService.Get<IPlaySoundService>();
 
 		IAlarmStorageService _alarmStorage;
 		AlarmTone _selectedTone;
@@ -26,24 +29,26 @@ namespace AlarmApp.PageModels
 			get { return _selectedTone; }
 			set 
 			{
-				SetSelectedTone(value);
+				if(value != null)
+					SetSelectedTone(value);
 			}
 		}
 
-		public ICommand ToneSelectedCommand 
+		public ObservableCollection<AlarmTone> AllAlarmTones { get; set; }
+
+		public ICommand ToneSavedCommand 
 		{ 
 			get
 			{
 				return new FreshAwaitCommand(async (obj, tcs) =>
 				{
-					var selectedTone = (AlarmTone)obj;
+					var selectedTone = _selectedTone;
 					OnToneSelected(selectedTone);
 					await CoreMethods.PopPageModel(false, true);
 					tcs.SetResult(true);
 				});
 			}
 		}
-
 
 		public SettingsTonePageModel(IAlarmStorageService alarmStorage)
 		{
@@ -55,6 +60,14 @@ namespace AlarmApp.PageModels
 			base.Init(initData);
 
 			Settings = _alarmStorage.GetSettings();
+			AllAlarmTones = new ObservableCollection<AlarmTone>(_alarmStorage.GetAllTones());
+			
+		}
+
+
+		void PlayTone(AlarmTone tone)
+		{
+			_soundService.PlayAudio(tone);
 		}
 
 		/// <summary>
@@ -75,8 +88,23 @@ namespace AlarmApp.PageModels
 			}
 
 			//_selectedTone = value;
-			ToneSelectedCommand.Execute(value);
-			System.Diagnostics.Debug.WriteLine("DONE TONE");
+			PlayTone(value);
+			AddConfirmToolbarItem();
+
+			_selectedTone = value;
+		}
+
+		void AddConfirmToolbarItem()
+		{
+			if(CurrentPage.ToolbarItems.Count == 0)
+			{
+				CurrentPage.ToolbarItems.Add(new ToolbarItem
+				{
+					Text = "Save",
+					Icon = "save",
+					Command = ToneSavedCommand
+				});
+			}
 		}
 
 		/// <summary>
@@ -96,17 +124,32 @@ namespace AlarmApp.PageModels
 		{
 			_alarmStorage.Realm.Write(() =>
 			{
-				Settings.AlarmTone = alarmTone;
+				_alarmStorage.GetSettings().AlarmTone = alarmTone;
 			});
 		}
 
 		void ToneFileChosen(Uri uri)
 		{
 			System.Diagnostics.Debug.WriteLine("pcl: " + uri.LocalPath);
-			ToneSelectedCommand.Execute(new AlarmTone("New alarm tone", uri.LocalPath) 
-			{ 
-				IsCustomTone = true 
-			});
+
+			var newTone = new AlarmTone
+			{
+				Name = uri.AbsolutePath,
+				Path = uri.LocalPath,
+				IsCustomTone = true
+			};
+
+			AllAlarmTones.Add(newTone);
+			_alarmStorage.AddTone(newTone);
+
+			_fileLocator.FileChosen -= ToneFileChosen;
+			_selectedTone = AllAlarmTones.Last();
+		}
+
+		protected override void ViewIsDisappearing(object sender, EventArgs e)
+		{
+			_soundService.StopAudio();
+			base.ViewIsDisappearing(sender, e);
 		}
 	}
 }

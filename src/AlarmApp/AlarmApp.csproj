@@ -70,6 +70,7 @@
     </EmbeddedResource>
     <Compile Include="Models\AlarmTone.cs" />
     <Compile Include="Services\IFileLocator.cs" />
+    <Compile Include="Services\IPlaySoundService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
