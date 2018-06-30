@@ -17,12 +17,12 @@ namespace AlarmApp.Droid
 		{
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar;
-
+        
 			base.Window.RequestFeature(WindowFeatures.ActionBar);
 			base.SetTheme(Resource.Style.MyTheme);
 
+			Rg.Plugins.Popup.Popup.Init(this, bundle);
 			base.OnCreate(bundle);
-
 			Xamarin.Forms.Forms.SetFlags("FastRenderers_Experimental");
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 

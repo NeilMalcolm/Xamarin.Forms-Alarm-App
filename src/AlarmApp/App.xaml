@@ -17,7 +17,7 @@
 			<Color x:Key="DarkBackgroundColor">#161823</Color>
 
 			<!-- Would be good to reference primary here-->
-			<Color x:Key="ContentPageBackgroundColor"></Color>
+			<Color x:Key="ContentPageBackgroundColor">#1F2230</Color>
 			<Color x:Key="SeparatorColor">#4A4E63</Color>
 			<Color x:Key="PageSeparatorColor">#80363E61</Color>
 
@@ -25,7 +25,7 @@
 			
 			<!-- ContentPage Styles -->
 			<Style TargetType="ContentPage" ApplyToDerivedTypes="True">
-				<Setter Property="BackgroundColor" Value="#1F2230"/>
+				<Setter Property="BackgroundColor" Value="{StaticResource ContentPageBackgroundColor}"/>
 			</Style>
 
 			<Style TargetType="NavigationPage" ApplyToDerivedTypes="True">

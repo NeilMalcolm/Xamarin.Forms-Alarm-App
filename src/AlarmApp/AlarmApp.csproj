@@ -71,6 +71,13 @@
     <Compile Include="Models\AlarmTone.cs" />
     <Compile Include="Services\IFileLocator.cs" />
     <Compile Include="Services\IPlaySoundService.cs" />
+    <EmbeddedResource Include="Popups\AlarmToneNamingPopupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <Compile Include="Popups\AlarmToneNamingPopupPage.xaml.cs">
+      <DependentUpon>AlarmToneNamingPopupPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -161,6 +168,9 @@
     <Reference Include="PropertyChanged">
       <HintPath>..\packages\PropertyChanged.Fody.2.2.2.0\lib\netstandard1.0\PropertyChanged.dll</HintPath>
     </Reference>
+    <Reference Include="Rg.Plugins.Popup">
+      <HintPath>..\packages\Rg.Plugins.Popup.1.1.1.57\lib\netstandard1.0\Rg.Plugins.Popup.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -176,6 +186,7 @@
     <Folder Include="Views\" />
     <Folder Include="Converters\" />
     <Folder Include="PageModels\AlarmPageModels\" />
+    <Folder Include="Popups\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

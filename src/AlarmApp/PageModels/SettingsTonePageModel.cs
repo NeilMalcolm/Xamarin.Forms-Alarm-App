@@ -9,7 +9,10 @@ using System.Windows.Input;
 using AlarmApp.Helpers;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using AlarmApp.Popups;
+using Rg.Plugins.Popup.Pages;
 using System.Linq;
+using Rg.Plugins.Popup.Services;
 
 namespace AlarmApp.PageModels
 {
@@ -18,6 +21,9 @@ namespace AlarmApp.PageModels
 	{
 		IFileLocator _fileLocator = DependencyService.Get<IFileLocator>();
 		IPlaySoundService _soundService = DependencyService.Get<IPlaySoundService>();
+
+		Uri _newToneUri;
+		AlarmToneNamingPopupPage _namingPopupPage;
 
 		IAlarmStorageService _alarmStorage;
 		AlarmTone _selectedTone;
@@ -33,6 +39,8 @@ namespace AlarmApp.PageModels
 					SetSelectedTone(value);
 			}
 		}
+
+		public bool FileNeedsNamed { get; set; }
 
 		public ObservableCollection<AlarmTone> AllAlarmTones { get; set; }
 
@@ -128,22 +136,46 @@ namespace AlarmApp.PageModels
 			});
 		}
 
-		void ToneFileChosen(Uri uri)
+		/// <summary>
+		/// When the user selects an audio file from the file system
+		/// </summary>
+		/// <param name="uri">URI of the chosen audio file</param>
+		async void ToneFileChosen(Uri uri)
 		{
 			System.Diagnostics.Debug.WriteLine("pcl: " + uri.LocalPath);
+			_newToneUri = uri;
+			_namingPopupPage = new AlarmToneNamingPopupPage();
+			_namingPopupPage.ToneNameSet += OnNewToneNameSet;
+			FileNeedsNamed = true;
+		}
 
+		void OnNewToneNameSet(string toneName)
+		{
 			var newTone = new AlarmTone
 			{
-				Name = uri.AbsolutePath,
-				Path = uri.LocalPath,
+				Name = toneName,
+				Path = _newToneUri.LocalPath,
 				IsCustomTone = true
 			};
 
 			AllAlarmTones.Add(newTone);
 			_alarmStorage.AddTone(newTone);
 
+			_namingPopupPage.ToneNameSet -= OnNewToneNameSet;
 			_fileLocator.FileChosen -= ToneFileChosen;
 			_selectedTone = AllAlarmTones.Last();
+			SetSelectedTone(newTone);
+			FileNeedsNamed = false;
+		}
+
+		protected async override void ViewIsAppearing(object sender, EventArgs e)
+		{
+			base.ViewIsAppearing(sender, e);
+
+			if(FileNeedsNamed)
+			{
+				await PopupNavigation.Instance.PushAsync(_namingPopupPage);
+			}
 		}
 
 		protected override void ViewIsDisappearing(object sender, EventArgs e)
