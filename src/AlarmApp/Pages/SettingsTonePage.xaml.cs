@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using AlarmApp.Models;
+using AlarmApp.PageModels;
 using Xamarin.Forms;
 
 namespace AlarmApp.Pages
@@ -27,6 +28,32 @@ namespace AlarmApp.Pages
 		void ToneListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
 		{
 			ToneListView.SelectedItem = null;
+		}
+
+		void ViewCellBindingContextChanged(object sender, System.EventArgs e)
+		{
+			base.OnBindingContextChanged();
+			ViewCell viewCell = (ViewCell)sender;
+
+			if (!(viewCell.BindingContext is AlarmTone)) return;
+
+			var alarmTone = viewCell.BindingContext as AlarmTone;
+			viewCell.ContextActions.Clear();
+
+			if (alarmTone == null) return;
+
+			var isDefaultTone = Defaults.Tones.Contains(alarmTone);
+
+			if (isDefaultTone) return;
+
+			viewCell.ContextActions.Add(new MenuItem
+			{
+				Text = "Delete",
+				Icon = "delete",
+				IsDestructive = true,
+				Command = (BindingContext as SettingsTonePageModel).DeleteToneCommand,
+				CommandParameter = alarmTone
+			});
 		}
 	}
 }

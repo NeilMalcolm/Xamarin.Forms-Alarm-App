@@ -58,6 +58,17 @@ namespace AlarmApp.PageModels
 			}
 		}
 
+		public ICommand DeleteToneCommand
+		{
+			get
+			{
+				return new Command<AlarmTone>((alarmTone) =>
+				{
+					DeleteAlarmTone(alarmTone);
+				});
+			}
+		}
+
 		public SettingsTonePageModel(IAlarmStorageService alarmStorage)
 		{
 			_alarmStorage = alarmStorage;
@@ -87,6 +98,7 @@ namespace AlarmApp.PageModels
 			var isSelectedNull = value.Equals(default(AlarmTone)) || value == null;
 			if (isSelectedNull) return;
 
+			//if the user selected the 'choose custom tone' option, display file explorer
 			var wasSelectCustomToneSelected = value.Equals(Defaults.Tones[0]);
 			if(wasSelectCustomToneSelected)
 			{
@@ -166,6 +178,15 @@ namespace AlarmApp.PageModels
 			_selectedTone = AllAlarmTones.Last();
 			SetSelectedTone(newTone);
 			FileNeedsNamed = false;
+		}
+
+		void DeleteAlarmTone(AlarmTone alarmTone)
+		{
+			AllAlarmTones.Remove(alarmTone);
+			_alarmStorage.Realm.Write(() =>
+			{
+				_alarmStorage.Realm.Remove(alarmTone);
+			});
 		}
 
 		protected async override void ViewIsAppearing(object sender, EventArgs e)

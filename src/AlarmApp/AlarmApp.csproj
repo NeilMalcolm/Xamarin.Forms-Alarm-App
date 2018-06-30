@@ -78,6 +78,13 @@
     <Compile Include="Popups\AlarmToneNamingPopupPage.xaml.cs">
       <DependentUpon>AlarmToneNamingPopupPage.xaml</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\ToneViewCell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <Compile Include="Views\ToneViewCell.xaml.cs">
+      <DependentUpon>ToneViewCell.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">

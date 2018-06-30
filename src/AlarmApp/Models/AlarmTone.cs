@@ -26,6 +26,8 @@ namespace AlarmApp.Models
 
 		public override bool Equals(object obj)
 		{
+			if (this is null || obj is null) return false;
+			
 			if (!(obj is AlarmTone)) return false;
 
 			var otherTone = (AlarmTone)obj;
