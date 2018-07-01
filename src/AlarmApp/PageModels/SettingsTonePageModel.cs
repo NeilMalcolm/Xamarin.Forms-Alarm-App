@@ -161,6 +161,10 @@ namespace AlarmApp.PageModels
 			FileNeedsNamed = true;
 		}
 
+		/// <summary>
+		/// Action to be done when a newly added tone has its name set
+		/// </summary>
+		/// <param name="toneName">The name to be given to the alarm tone</param>
 		void OnNewToneNameSet(string toneName)
 		{
 			var newTone = new AlarmTone
@@ -180,6 +184,10 @@ namespace AlarmApp.PageModels
 			FileNeedsNamed = false;
 		}
 
+		/// <summary>
+		/// Deletes the given alarm tone
+		/// </summary>
+		/// <param name="alarmTone">Alarm tone to delete</param>
 		void DeleteAlarmTone(AlarmTone alarmTone)
 		{
 			AllAlarmTones.Remove(alarmTone);
@@ -187,6 +195,8 @@ namespace AlarmApp.PageModels
 			{
 				_alarmStorage.Realm.Remove(alarmTone);
 			});
+
+			_soundService.StopAudio();
 		}
 
 		protected async override void ViewIsAppearing(object sender, EventArgs e)
