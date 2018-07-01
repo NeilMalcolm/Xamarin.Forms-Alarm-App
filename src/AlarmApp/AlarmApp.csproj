@@ -85,6 +85,7 @@
     <Compile Include="Views\ToneViewCell.xaml.cs">
       <DependentUpon>ToneViewCell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataTemplateSelectors\AlarmToneDatatemplateSelector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -194,6 +195,7 @@
     <Folder Include="Converters\" />
     <Folder Include="PageModels\AlarmPageModels\" />
     <Folder Include="Popups\" />
+    <Folder Include="DataTemplateSelectors\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
