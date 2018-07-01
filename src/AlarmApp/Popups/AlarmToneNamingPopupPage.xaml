@@ -5,24 +5,28 @@
 		     xmlns:popups="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
 				CloseWhenBackgroundIsClicked="true">
 	<Frame 
+		Padding="0"
 		VerticalOptions="Center" 
 	    HorizontalOptions="Center"
-		BackgroundColor="{StaticResource ContentPageBackgroundColor}">
+		BackgroundColor="{StaticResource ContentPageBackgroundColor}"
+		OutlineColor="{StaticResource ContentPageBackgroundColor}"
+		WidthRequest="250">
 		<StackLayout 
 	        VerticalOptions="Center" 
-	        HorizontalOptions="Center" 
-	        Padding="20, 20, 20, 20">
+	        Padding="20, 20, 20, 20"
+			Spacing="5">
         <Label 
 			Text="Give Your Tone a Name" 
-			FontSize="Medium"/>
+			FontSize="Large"/>
 		<Entry 
-			x:Name="ToneNameEntry" 
+			x:Name="ToneNameEntry"
 		    Placeholder="E.g. Wake Up"/>
 		<Button 
 			Text="Set Name" 
 			BackgroundColor="{StaticResource AccentColor}" 
 			HorizontalOptions="End"
-			Pressed="SetNameButtonPressed"/>
+			Pressed="SetNameButtonPressed"
+			Margin="0, 10, 0, 0"/>
     	</StackLayout>
 	</Frame>
 </popups:PopupPage>

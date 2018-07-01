@@ -33,14 +33,13 @@
 								  Command="{Binding DeleteToneCommand}"/>
 					</ViewCell.ContextActions>
 					<ViewCell.View>
-						<StackLayout 
+						<StackLayout Padding="20"
 							Orientation="Horizontal">
 							
 							<Label 
 							Text="{Binding Name}" 
 							FontSize="17" 
 							TextColor="{StaticResource TitleColor}" 
-							Margin="20"
 							HorizontalOptions="StartAndExpand"
 							VerticalOptions="Center"/>
 							
@@ -48,10 +47,11 @@
 							Text="&#xf044;"
 							FontFamily="fontawesome.ttf#FontAwesome"
 							TextColor="{StaticResource AccentColor}"
+							FontSize="Large"
 							BackgroundColor="{StaticResource DarkBackgroundColor}"
-							WidthRequest="35"
-							HeightRequest="35"
-							BorderRadius="35"
+							WidthRequest="40"
+							HeightRequest="40"
+							BorderRadius="40"
 							Command="{Binding Source={x:Reference ToneListView}, Path=BindingContext.EditToneCommand}"
 							CommandParameter="{Binding .}"
 							VerticalOptions="Center"/>
