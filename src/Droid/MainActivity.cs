@@ -46,5 +46,18 @@ namespace AlarmApp.Droid
 				FileChosen?.Invoke(uri);
 			}
 		}
+
+		public override void OnBackPressed()
+		{
+			var thereArePopupsOnScreen = Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0;
+			if (thereArePopupsOnScreen)
+			{
+				Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
+			}
+			else
+			{
+				base.OnBackPressed();
+			}
+		}
 	}
 }
