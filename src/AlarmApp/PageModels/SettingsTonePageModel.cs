@@ -69,6 +69,17 @@ namespace AlarmApp.PageModels
 			}
 		}
 
+		public ICommand EditToneCommand
+		{
+			get
+			{
+				return new Command<AlarmTone>((alarmTone) =>
+				{
+					EditAlarmTone(alarmTone);
+				});
+			}
+		}
+
 		public SettingsTonePageModel(IAlarmStorageService alarmStorage)
 		{
 			_alarmStorage = alarmStorage;
@@ -197,6 +208,12 @@ namespace AlarmApp.PageModels
 			});
 
 			_soundService.StopAudio();
+		}
+
+		async void EditAlarmTone(AlarmTone alarmTone)
+		{
+			_namingPopupPage = new AlarmToneNamingPopupPage(alarmTone);
+			await PopupNavigation.Instance.PushAsync(_namingPopupPage);
 		}
 
 		protected async override void ViewIsAppearing(object sender, EventArgs e)

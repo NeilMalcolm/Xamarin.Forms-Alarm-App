@@ -40,10 +40,21 @@
 							Text="{Binding Name}" 
 							FontSize="17" 
 							TextColor="{StaticResource TitleColor}" 
-							Margin="20"/>
+							Margin="20"
+							HorizontalOptions="StartAndExpand"
+							VerticalOptions="Center"/>
 							
 							<Button 
-							Text="CUSTOM"/>
+							Text="&#xf044;"
+							FontFamily="fontawesome.ttf#FontAwesome"
+							TextColor="{StaticResource AccentColor}"
+							BackgroundColor="{StaticResource DarkBackgroundColor}"
+							WidthRequest="35"
+							HeightRequest="35"
+							BorderRadius="35"
+							Command="{Binding Source={x:Reference ToneListView}, Path=BindingContext.EditToneCommand}"
+							CommandParameter="{Binding .}"
+							VerticalOptions="Center"/>
 						</StackLayout>
 					</ViewCell.View>
 				</ViewCell>

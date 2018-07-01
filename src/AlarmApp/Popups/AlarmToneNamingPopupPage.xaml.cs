@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
+using AlarmApp.Models;
 
 using Xamarin.Forms;
 
@@ -9,6 +10,8 @@ namespace AlarmApp.Popups
 {
 	public partial class AlarmToneNamingPopupPage : PopupPage
 	{
+		AlarmTone _toneToEdit;
+		bool _isEditMode;
 		public event Action<string> ToneNameSet;
 
 		public AlarmToneNamingPopupPage()
@@ -16,9 +19,27 @@ namespace AlarmApp.Popups
 			InitializeComponent();
 		}
 
+		public AlarmToneNamingPopupPage(AlarmTone tone)
+		{
+			InitializeComponent();
+			_toneToEdit = tone;
+			ToneNameEntry.Text = tone.Name;
+			_isEditMode = true;
+		}
+
 		void SetNameButtonPressed(object sender, System.EventArgs e)
 		{
-			ToneNameSet?.Invoke(ToneNameEntry.Text);
+			if(_isEditMode)
+			{
+				var realm = Realms.Realm.GetInstance();
+				realm.Write(() =>
+				{
+					_toneToEdit.Name = ToneNameEntry.Text;
+				});
+			}
+			else {
+				ToneNameSet?.Invoke(ToneNameEntry.Text);
+			}
 
 			PopupNavigation.Instance.PopAsync();
 		}
