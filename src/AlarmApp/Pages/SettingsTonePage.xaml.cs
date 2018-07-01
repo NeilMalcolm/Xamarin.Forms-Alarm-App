@@ -42,7 +42,7 @@ namespace AlarmApp.Pages
 
 			if (alarmTone == null) return;
 
-			var isDefaultTone = Defaults.Tones.Contains(alarmTone);
+			var isDefaultTone = !alarmTone.IsCustomTone;
 
 			if (isDefaultTone) return;
 
