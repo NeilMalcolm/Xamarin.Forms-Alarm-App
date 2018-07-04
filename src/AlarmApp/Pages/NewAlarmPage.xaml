@@ -45,7 +45,7 @@
 
 					<Label Text="For" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource LargeCenteredHeading}" Margin="0, 20, 0,0"/>
 					<local:CustomEntry Text="{Binding DurationNumber, Mode=OneWayToSource}" IsValid="{Binding IsDurationNumberValid}" Grid.Row="3" Keyboard="Numeric" Placeholder="2" FontSize="30"/>
-					<local:CustomPicker SelectedItem="{Binding DurationPeriod}" IsValid="{Binding IsDurationPeriodValid}" Grid.Row="3" Grid.Column="1" Title="Set Frequency" Hint="Hours" FontSize="30">
+					<local:CustomPicker SelectedItem="{Binding DurationPeriod, Mode=OneWayToSource}" IsValid="{Binding IsDurationPeriodValid}" Grid.Row="3" Grid.Column="1" Title="Set Frequency" Hint="Hours" FontSize="30">
 						<local:CustomPicker.Items>
 							<x:String>Minutes</x:String>
 							<x:String>Hours</x:String>

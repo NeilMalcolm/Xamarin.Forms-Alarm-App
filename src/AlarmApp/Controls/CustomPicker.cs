@@ -13,14 +13,6 @@ namespace AlarmApp.Controls
 			set { SetValue(HintProperty, value); }
 		}
 
-		public static readonly BindableProperty FontSizeProperty = BindableProperty.Create("FontSize", typeof(double), typeof(CustomPicker), Entry.FontSizeProperty.DefaultValue);
-
-		public double FontSize
-		{
-			get { return (double)GetValue(FontSizeProperty); }
-			set { SetValue(FontSizeProperty, value); }
-		}
-
 		public static readonly BindableProperty IsValidProperty = BindableProperty.Create("IsValid", typeof(bool?), typeof(CustomPicker), null, propertyChanged: OnIsValidChanged);
 
 		public bool? IsValid

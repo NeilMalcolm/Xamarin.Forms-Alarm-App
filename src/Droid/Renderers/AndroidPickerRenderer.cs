@@ -51,7 +51,7 @@ namespace AlarmApp.Droid.Renderers
 
 		void OnIsValidChanged(object sender, System.EventArgs e)
 		{
-			if(!(bool)_customPicker.IsValid)
+			if (_customPicker.IsValid != true)
 			{
 				Control.Background = ResourcesCompat.GetDrawable(Resources, Resource.Drawable.control_background_invalid, null);
 			}
