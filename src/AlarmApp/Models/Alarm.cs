@@ -47,6 +47,7 @@ namespace AlarmApp.Models
 		public bool IsActive { get; set; }
 		public DaysOfWeek Days { get; set; }
 		public bool OccursToday { get { return Days.Equals(DateTime.Now.DayOfWeek); } }
+		public bool IsVibrateOn { get; set; } = new Services.AlarmStorageService().GetSettings().IsVibrateOn;
 
 		public Alarm()
 		{

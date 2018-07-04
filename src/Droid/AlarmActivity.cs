@@ -58,15 +58,15 @@ namespace AlarmApp.Droid
 			Intent intent = Intent;
 			Bundle bundle = intent.Extras;
 
-			if (bundle != null)
-			{
-				var id = (string)bundle.Get("id");
-				var timeTextView = FindViewById<TextView>(Resource.Id.timeTextView);
-				var nameTextView = FindViewById<TextView>(Resource.Id.nameTextView);
-				_alarm = _alarmStorageService.GetAlarm(id);
-				timeTextView.Text = _alarm.TimeOffset.ToLocalTime().ToString(@"hh\:mm");
-				nameTextView.Text = _alarm.Name;
-			}
+			if (bundle == null) return;
+
+			var id = (string)bundle.Get("id");
+			var timeTextView = FindViewById<TextView>(Resource.Id.timeTextView);
+			var nameTextView = FindViewById<TextView>(Resource.Id.nameTextView);
+			_alarm = _alarmStorageService.GetAlarm(id);
+			timeTextView.Text = _alarm.TimeOffset.ToLocalTime().ToString(@"hh\:mm");
+			nameTextView.Text = _alarm.Name;
+
 			_settings = _alarmStorageService.GetSettings();
 			string alarmTonePath = "alarm_tone.m4a";
 			var alarmTone = _settings.AlarmTone;
@@ -97,7 +97,7 @@ namespace AlarmApp.Droid
 			_mediaPlayer.Prepare();
 			_mediaPlayer.Start();
 
-			if (!_settings.IsVibrateOn) return;
+			if (_alarm.IsVibrateOn) return;
 
 
 			_vibrator = Vibrator.FromContext(this);

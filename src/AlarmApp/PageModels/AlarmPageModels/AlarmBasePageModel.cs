@@ -20,6 +20,7 @@ namespace AlarmApp.PageModels
 		public int DurationNumber { get; set; }
 		public string DurationPeriod { get; set; }
 		public DaysOfWeek Days { get; set; }
+		public bool IsVibrateOn { get; set; }
 
 		// Validation
 		public bool HasDayBeenSelected { get; set; } = true;

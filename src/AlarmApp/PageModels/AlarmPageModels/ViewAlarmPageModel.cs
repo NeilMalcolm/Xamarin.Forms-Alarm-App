@@ -42,6 +42,7 @@ namespace AlarmApp.PageModels
 			var duration = Alarm.GetNumberAndPeriodFromTimeSpan(Alarm.Duration);
 			DurationNumber = duration.Key;
 			DurationPeriod= duration.Value;
+			IsVibrateOn = Alarm.IsVibrateOn;
 
 			Time = Alarm.Time;
 			Days = new DaysOfWeek(Alarm.Days.AllDays);
