@@ -19,7 +19,6 @@ namespace AlarmApp.Droid.Services
 	public class AlarmSetterAndroid : IAlarmSetter
 	{
 		public static string AlarmTag = "Al4rm";
-		Calendar _now = Calendar.GetInstance(Android.Icu.Util.TimeZone.Default, Java.Util.Locale.Default);
 
 		public AlarmSetterAndroid()
 		{
