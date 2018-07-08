@@ -7,6 +7,7 @@ namespace AlarmApp.Models
 	[AddINotifyPropertyChangedInterface]
 	public class AlarmTone : RealmObject
 	{
+		[PrimaryKey]
 		public string Id { get; set; }
 		public string Name { get; set; }
 		public string Path { get; set; }

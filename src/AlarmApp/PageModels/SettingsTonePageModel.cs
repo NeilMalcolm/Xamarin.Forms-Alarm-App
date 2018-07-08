@@ -19,6 +19,7 @@ namespace AlarmApp.PageModels
 	[AddINotifyPropertyChangedInterface]
 	public class SettingsTonePageModel : FreshBasePageModel
 	{
+		bool _isIndividualAlarmTone = false;
 		IFileLocator _fileLocator = DependencyService.Get<IFileLocator>();
 		IPlaySoundService _soundService = DependencyService.Get<IPlaySoundService>();
 
@@ -51,8 +52,11 @@ namespace AlarmApp.PageModels
 				return new FreshAwaitCommand(async (obj, tcs) =>
 				{
 					var selectedTone = _selectedTone;
-					OnToneSelected(selectedTone);
-					await CoreMethods.PopPageModel(false, true);
+
+					// if we are changing the GLOBAL default tone in settings
+					if(!_isIndividualAlarmTone)
+						OnToneSelected(selectedTone);
+					await CoreMethods.PopPageModel(selectedTone, false, true);
 					tcs.SetResult(true);
 				});
 			}
@@ -89,9 +93,15 @@ namespace AlarmApp.PageModels
 		{
 			base.Init(initData);
 
+		
 			Settings = _alarmStorage.GetSettings();
 			AllAlarmTones = new ObservableCollection<AlarmTone>(_alarmStorage.GetAllTones());
-			
+
+			// if we are setting an individual alarm's tone
+			if(initData is bool) 
+			{
+				_isIndividualAlarmTone = (bool)initData;
+			}
 		}
 
 

@@ -10,7 +10,7 @@ namespace AlarmApp.PageModels
 	[AddINotifyPropertyChangedInterface]
 	public class AlarmBasePageModel : FreshBasePageModel
 	{
-		protected IAlarmStorageService _alarmStorage;
+		protected IAlarmStorageService AlarmStorage { get; set; }
 
 		public string Name { get; set; }
 		public Alarm Alarm { get; set; }
@@ -21,6 +21,8 @@ namespace AlarmApp.PageModels
 		public string DurationPeriod { get; set; }
 		public DaysOfWeek Days { get; set; }
 		public bool IsVibrateOn { get; set; }
+
+		public AlarmTone AlarmTone { get; set; }
 
 		// Validation
 		public bool HasDayBeenSelected { get; set; } = true;
@@ -50,6 +52,18 @@ namespace AlarmApp.PageModels
 							HasDayBeenSelected = true;
 						}
 					}
+				});
+			}
+		}
+
+		public ICommand GoToTonesCommand
+		{
+			get
+			{
+				return new FreshAwaitCommand(async (tcs) =>
+				{
+					await CoreMethods.PushPageModel<SettingsTonePageModel>(true, false, true);
+					tcs.SetResult(true);
 				});
 			}
 		}
@@ -109,7 +123,20 @@ namespace AlarmApp.PageModels
 
 		public AlarmBasePageModel(IAlarmStorageService alarmStorage)
 		{
-			_alarmStorage = alarmStorage;
+			AlarmStorage = alarmStorage;
+		}
+
+		public override void ReverseInit(object returnedData)
+		{
+			base.ReverseInit(returnedData);
+
+			if (returnedData is AlarmTone)
+			{
+				Realms.Realm.GetInstance().Write(() =>
+				{
+					AlarmTone = (AlarmTone)returnedData;
+				});
+			}
 		}
 	}
 }

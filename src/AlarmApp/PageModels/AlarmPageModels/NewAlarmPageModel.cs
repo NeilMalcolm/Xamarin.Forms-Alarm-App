@@ -26,12 +26,8 @@ namespace AlarmApp.PageModels
 		public NewAlarmPageModel(IAlarmStorageService alarmStorage) : base(alarmStorage)
 		{
 			Alarm = new Alarm();
+			AlarmTone = alarmStorage.GetTone(Alarm.Tone);
 			Alarm.Time = DateTime.Now.TimeOfDay;
-		}
-
-		public override void Init(object initData)
-		{
-			base.Init(initData);
 		}
 
 		/// <summary>
@@ -55,7 +51,16 @@ namespace AlarmApp.PageModels
 
 			//Set alarm and add to our list of alarms
 			_alarmSetter.SetAlarm(Alarm);
-			_alarmStorage.AddAlarm(Alarm);
+
+			var realm = Realms.Realm.GetInstance();
+
+			using (var transaction = realm.BeginWrite())
+			{
+				realm.Add(Alarm, true);
+				Alarm.Tone = AlarmTone.Id;
+
+				transaction.Commit();
+			}
 
 			//pop the page
 			CoreMethods.PopPageModel(true, false, true);

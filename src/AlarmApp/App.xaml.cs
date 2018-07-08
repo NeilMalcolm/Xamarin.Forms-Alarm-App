@@ -10,6 +10,8 @@ namespace AlarmApp
 {
 	public partial class App : Application
 	{
+		AlarmStorageService _alarmStorage = new AlarmStorageService();
+
 		public App()
 		{
 			InitializeComponent();
@@ -40,6 +42,16 @@ namespace AlarmApp
 
 			//testing
 			//MainPage = new TestPage();
+		}
+
+		void GetAllAlarmTones()
+		{
+			var alarmList = _alarmStorage.GetAllTones();
+
+			if (alarmList == null || alarmList.Count < Defaults.Tones.Count)
+			{
+				_alarmStorage.SetDefaultTones();
+			}
 		}
 
 		void SetUpIoC()

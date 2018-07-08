@@ -48,11 +48,13 @@ namespace AlarmApp.Models
 		public DaysOfWeek Days { get; set; }
 		public bool OccursToday { get { return Days.Equals(DateTime.Now.DayOfWeek); } }
 		public bool IsVibrateOn { get; set; } = new Services.AlarmStorageService().GetSettings().IsVibrateOn;
+		public string Tone { get; set; }
 
 		public Alarm()
 		{
 			Id = Guid.NewGuid().ToString();
 			Days = new DaysOfWeek();
+			Tone = new Services.AlarmStorageService().GetSettings().AlarmTone.Id;
 		}
 
 

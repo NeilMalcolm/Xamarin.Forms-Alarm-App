@@ -21,11 +21,11 @@ namespace AlarmApp.Services
 		void DeleteAllAlarms();
 
 		Settings GetSettings();
-		Task<Settings> GetSettingsAsync();
 
 		void SetDefaultTones();
 		List<AlarmTone> GetAllTones();
 		void AddTone(AlarmTone alarmTone);
 		void DeleteTone(AlarmTone alarmTone);
+		AlarmTone GetTone(string id);
 	}
 }

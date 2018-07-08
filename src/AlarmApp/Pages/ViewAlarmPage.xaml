@@ -26,8 +26,10 @@
 
 				<StackLayout Orientation="Horizontal">
 					<Label Text="Vibrate?"/>
-					<Switch IsToggled="{Binding IsVibrateOn}" HorizontalOptions="EndAndExpand"/>
+					<Switch IsToggled="{Binding Alarm.IsVibrateOn}" HorizontalOptions="EndAndExpand"/>
 				</StackLayout>
+				<Button Text="{Binding AlarmTone.Name}" Command="{Binding GoToTonesCommand}"/>
+				
 				
 				<Grid Padding="40, 20, 40, 30" BackgroundColor="#26000000">
 					<Grid.RowDefinitions>

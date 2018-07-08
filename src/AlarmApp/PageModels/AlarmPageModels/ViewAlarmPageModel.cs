@@ -29,6 +29,7 @@ namespace AlarmApp.PageModels
 		{
 			base.Init(initData);
 			Alarm = (Alarm)initData;
+			AlarmTone = AlarmStorage.GetTone(Alarm.Tone);
 		}
 
 		protected override void ViewIsAppearing(object sender, EventArgs e)
@@ -66,6 +67,7 @@ namespace AlarmApp.PageModels
 			   Alarm.Time = Time;
 			   Alarm.Days = Days;
 			   Alarm.Duration = duration;
+			   Alarm.Tone = AlarmTone.Id;
 		   });
 			CoreMethods.PopPageModel(true, false,true);
 		}
