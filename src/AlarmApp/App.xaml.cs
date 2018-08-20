@@ -17,6 +17,7 @@ namespace AlarmApp
 			InitializeComponent();
 
 			AlarmStorageService.InitSettings();
+			GetAllAlarmTones();
 
 			SetUpIoC();
 			/*
