@@ -27,7 +27,7 @@ namespace AlarmApp.Pages
 
 		void ToneListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
 		{
-			ToneListView.SelectedItem = null;
+			//ToneListView.SelectedItem = null;
 		}
 
 		void ViewCellBindingContextChanged(object sender, System.EventArgs e)

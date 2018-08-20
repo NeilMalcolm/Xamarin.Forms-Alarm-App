@@ -70,7 +70,7 @@
 		<ListView x:Name="ToneListView" 
 				  ItemTemplate="{StaticResource AlarmToneDataTemplateSelector}"
 				  ItemsSource="{Binding AllAlarmTones, Mode=OneWay}" 
-				  SelectedItem="{Binding SelectedTone}" 
+				  SelectedItem="{Binding SelectedTone, Mode=TwoWay}" 
 				  HasUnevenRows="true">
 		</ListView>
 	</ContentPage.Content>

@@ -117,7 +117,11 @@ namespace AlarmApp.PageModels
 		void SetSelectedTone(AlarmTone value)
 		{
 			var isSelectedNull = value.Equals(default(AlarmTone)) || value == null;
-			if (isSelectedNull) return;
+			if (isSelectedNull)
+			{
+				_selectedTone = null;
+				return;
+			}
 
 			//if the user selected the 'choose custom tone' option, display file explorer
 			var wasSelectCustomToneSelected = value.Equals(Defaults.Tones[0]);
@@ -133,6 +137,7 @@ namespace AlarmApp.PageModels
 			AddConfirmToolbarItem();
 
 			_selectedTone = value;
+			RaisePropertyChanged("SelectedTone");
 		}
 
 		void AddConfirmToolbarItem()
@@ -200,7 +205,6 @@ namespace AlarmApp.PageModels
 
 			_namingPopupPage.ToneNameSet -= OnNewToneNameSet;
 			_fileLocator.FileChosen -= ToneFileChosen;
-			_selectedTone = AllAlarmTones.Last();
 			SetSelectedTone(newTone);
 			FileNeedsNamed = false;
 		}
