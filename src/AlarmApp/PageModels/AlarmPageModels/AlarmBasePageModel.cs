@@ -62,7 +62,7 @@ namespace AlarmApp.PageModels
 			{
 				return new FreshAwaitCommand(async (tcs) =>
 				{
-					await CoreMethods.PushPageModel<SettingsTonePageModel>(true, false, true);
+					await CoreMethods.PushPageModel<SettingsTonePageModel>(Alarm, false, true);
 					tcs.SetResult(true);
 				});
 			}

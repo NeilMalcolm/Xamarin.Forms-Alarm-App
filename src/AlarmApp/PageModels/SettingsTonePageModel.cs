@@ -36,8 +36,8 @@ namespace AlarmApp.PageModels
 			get { return _selectedTone; }
 			set 
 			{
-				if(value != null)
-					SetSelectedTone(value);
+				if (value != null)
+					_selectedTone = value;
 			}
 		}
 
@@ -98,9 +98,10 @@ namespace AlarmApp.PageModels
 			AllAlarmTones = new ObservableCollection<AlarmTone>(_alarmStorage.GetAllTones());
 
 			// if we are setting an individual alarm's tone
-			if(initData is bool) 
+			if(initData is Alarm newAlarm) 
 			{
-				_isIndividualAlarmTone = (bool)initData;
+				_isIndividualAlarmTone = true;
+				SelectedTone = _alarmStorage.GetTone(newAlarm.Tone);
 			}
 		}
 

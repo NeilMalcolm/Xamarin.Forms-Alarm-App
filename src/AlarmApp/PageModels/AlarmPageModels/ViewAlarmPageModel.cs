@@ -30,6 +30,11 @@ namespace AlarmApp.PageModels
 			base.Init(initData);
 			Alarm = (Alarm)initData;
 			AlarmTone = AlarmStorage.GetTone(Alarm.Tone);
+
+			if(AlarmTone == null)
+			{
+				AlarmTone = AlarmStorage.GetAllTones()[0];
+			}
 		}
 
 		protected override void ViewIsAppearing(object sender, EventArgs e)
