@@ -242,6 +242,12 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\settings_delete_forever.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\settings_delete_forever.png" />
     <AndroidResource Include="Resources\drawable-mdpi\settings_delete_forever.png" />
+    <AndroidResource Include="Resources\drawable\music_selection_background.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\music.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\music.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\music.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\music.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\music.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
