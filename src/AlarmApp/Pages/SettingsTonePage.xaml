@@ -35,7 +35,6 @@
 					<ViewCell.View>
 						<StackLayout Padding="20"
 							Orientation="Horizontal">
-							
 							<Label 
 							Text="{Binding Name}" 
 							FontSize="17" 
