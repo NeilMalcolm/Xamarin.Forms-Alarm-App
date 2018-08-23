@@ -68,7 +68,9 @@
 				
 				<Label Text="On these days" Style="{StaticResource LargeCenteredHeading}"/>
 				<!-- Day of the week selectors -->
-				<views:DaysOfWeekSelectionView Days="{Binding Alarm.Days}" HorizontalOptions="Center"/>
+				<ScrollView Orientation="Horizontal">
+					<views:DaysOfWeekSelectionView Days="{Binding Alarm.Days}" HorizontalOptions="Center"/>
+				</ScrollView>
 				<Label Text="Please select a day on which the alarm should be set" IsVisible="{Binding HasDayBeenSelected, Converter={StaticResource InverseBoolConverter}}"/>
 			</StackLayout>
 		</ScrollView>
