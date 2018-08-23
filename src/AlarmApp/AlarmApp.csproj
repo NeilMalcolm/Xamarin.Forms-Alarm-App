@@ -87,6 +87,7 @@
       <DependentUpon>ToneViewCell.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataTemplateSelectors\AlarmToneDatatemplateSelector.cs" />
+    <Compile Include="Controls\MusicSelectionButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
