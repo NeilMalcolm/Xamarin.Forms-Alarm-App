@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using AlarmApp.Controls;
 using System.ComponentModel;
+using AColor = Android.Graphics.Color;
 
 [assembly: ExportRenderer(typeof(DayOfWeekButton), typeof(AndroidDayOfTheWeekButtonRenderer))]
 namespace AlarmApp.Droid.Renderers
@@ -12,6 +13,9 @@ namespace AlarmApp.Droid.Renderers
 	public class AndroidDayOfTheWeekButtonRenderer : Xamarin.Forms.Platform.Android.ButtonRenderer
 	{
 		DayOfWeekButton _dowButton;
+		AColor _selectedColor = new AColor(206, 217, 255);
+		AColor _selectedTextColor = new AColor(29, 33, 48);
+		AColor _deselectedColor =((Color)App.Current.Resources["ContentPageBackgroundColor"]).ToAndroid();
 
 		public AndroidDayOfTheWeekButtonRenderer(Context context) : base(context)
 		{
@@ -34,12 +38,13 @@ namespace AlarmApp.Droid.Renderers
 			
 			_dowButton.Clicked += Element_Clicked;
 
+			Control.StateListAnimator = null;
 			Control.SetPaddingRelative(0, 0, 0, 0);
 			Control.TextSize = 20;
 			Control.Background = ResourcesCompat.GetDrawable(Resources, Resource.Drawable.circle_background, null);
-			Control.SetTextColor(new Android.Graphics.Color(0, 0, 0, 125));
-			Control.Background.SetColorFilter(new Android.Graphics.Color(255, 255, 255, 80), Android.Graphics.PorterDuff.Mode.Src);
-
+			SetPadding(0, 0, 0, 0);
+			ButtonDeselected();
+			Control.Elevation = 0;
 		}
 
 		/// <summary>
@@ -66,15 +71,25 @@ namespace AlarmApp.Droid.Renderers
 			{
 				if(_dowButton.IsSelected)
 				{
-					Control.SetTextColor(new Android.Graphics.Color(0, 0, 0));
-					Control.Background.ClearColorFilter();
+					ButtonSelected();
 				}
 				else 
 				{
-					Control.SetTextColor(new Android.Graphics.Color(0, 0, 0, 125));
-					Control.Background.SetColorFilter(new Android.Graphics.Color(255, 255, 255, 80), Android.Graphics.PorterDuff.Mode.Src);
+					ButtonDeselected();
 				}
 			}
+		}
+
+		void ButtonSelected()
+		{
+			Control.SetTextColor(_selectedTextColor);
+			Control.Background.SetColorFilter(_selectedColor, Android.Graphics.PorterDuff.Mode.Src);
+		}
+
+		void ButtonDeselected()
+		{
+			Control.SetTextColor(_selectedColor);
+			Control.Background.SetColorFilter(_deselectedColor, Android.Graphics.PorterDuff.Mode.Src);
 		}
 	}
 }
