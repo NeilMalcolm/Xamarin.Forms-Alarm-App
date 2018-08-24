@@ -32,7 +32,7 @@ namespace AlarmApp.Droid.Renderers
 			Control.TextSize = 65;
 			Control.Background = ResourcesCompat.GetDrawable(Resources, Resource.Drawable.control_selector, null);
 			Control.SetPaddingRelative(10, 10, 10, 10);
-
+			Control.SetCursorVisible(false);
 			//Set the time format
 			Control.Text = Element.Time.ToString(@"hh\:mm");
 
